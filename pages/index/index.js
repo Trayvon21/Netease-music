@@ -1,24 +1,30 @@
+import api from "../../http/api"
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    img:''
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+   
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    api.getHeader().then(res=>{
+     let img=res.banners[0].imageUrl
+      this.setData({
+        img:img
+      })
+    })
   },
 
   /**

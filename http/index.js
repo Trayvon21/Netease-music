@@ -2,7 +2,7 @@ import Fly from '../lib/fly/wx'
 const fly = new Fly
 
 // 配置基础路径
-fly.config.baseURL = 'https://api.zhuishushenqi.com'
+fly.config.baseURL = 'https://www.trayvon21.cn/'
 
 // 请求拦截器 添加token
 fly.interceptors.request.use(config => {
