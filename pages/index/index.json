@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "input":"../../lib/vant/search/index"
+    "van-search": "../../lib/vant/search/index",
+    "homeBox":"../../components/homeBox/homeBox",
+    "van-field": "../../lib/vant/field/index"
   }
 }

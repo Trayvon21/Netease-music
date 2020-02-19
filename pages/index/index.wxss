@@ -1,0 +1,92 @@
+.home-container {
+    padding: 20rpx;
+}
+
+/* 头部 */
+.header {
+    height: 100rpx;
+    width: 100%;
+}
+
+.header-title {
+    margin: 10rpx 30rpx;
+    width: 120rpx;
+    line-height: 80rpx;
+    font-weight: 700;
+}
+
+.header-search {
+    width: 400rpx;
+    height: 70rpx;
+    margin: 15rpx 10rpx;
+    border-radius: 5rpx;
+    overflow: hidden;
+    padding: 0 !important;
+}
+
+.header-pic {
+    width: 70rpx;
+    height: 70rpx;
+    margin: 15rpx 30rpx;
+}
+.header-back{
+    width: 50rpx;
+    height: 50rpx;
+    margin: 15rpx 30rpx;
+}
+/* 轮播 */
+.siwper-box {
+    border-radius: 25rpx;
+    overflow: hidden;
+    margin: 25rpx 30rpx;
+    width: 650rpx;
+    height: 250rpx;
+}
+
+.siwper-each image {
+    width: 100%;
+    height: 100%;
+}
+
+/* 顶部导航 */
+.top-nav {
+    height: 140rpx;
+    width: 100%;
+}
+
+.top-nav-box {
+    height: 140rpx;
+    margin: 10rpx;
+}
+
+.top-nav-pic {
+    margin: 0 25rpx;
+    height: 80rpx;
+    width: 80rpx;
+}
+
+.top-nav-title {
+    font-size: 32rpx;
+    text-align: center;
+}
+.zone-title{
+    height: 100rpx;
+    line-height: 48rpx;
+}
+.zone-title >view{
+    margin: 25rpx 0;
+}
+.zone-title .more{
+    border: 1rpx solid #dedede;
+    padding: 0 15rpx;
+    border-radius: 25rpx;
+    font-size: 28rpx;
+    color: gray;
+}
+.new-title{
+    font-size: 30rpx;
+    margin-right:20rpx;
+}
+.new-actived{
+    font-size: 42rpx;
+}

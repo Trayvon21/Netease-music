@@ -1,0 +1,48 @@
+/* 推荐歌单 */
+.recommend-playlist {
+    width: 100%;
+}
+
+.rp-box {
+    position: relative;
+    width: 220rpx;
+    height: 320rpx;
+}
+
+.rp-playCount {
+    position: absolute;
+    top: 5rpx;
+    right: 15rpx;
+    color: white;
+    font-size: 30rpx;
+}
+
+.rp-play {
+    position: absolute;
+    top: 160rpx;
+    left: 10rpx;
+}
+
+.rp-icon {
+    width: 30rpx;
+    height: 30rpx;
+    margin-top: 6rpx;
+}
+.rp-icon2{
+    width: 50rpx;
+    height: 50rpx;
+}
+.rp-pic {
+    width: 220rpx;
+    height: 220rpx;
+    border-radius: 20rpx;
+}
+
+.rp-name {
+    font-size: 30rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

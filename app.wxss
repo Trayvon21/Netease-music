@@ -1,0 +1,16 @@
+.flex{
+    display: flex;
+}
+.flex1{
+    flex: 1;
+}
+.jc-between{
+    justify-content: space-between;
+}
+.jc-around{
+    justify-content: space-around;
+    
+}
+.flex-w{
+    flex-wrap: wrap;
+}

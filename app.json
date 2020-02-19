@@ -1,13 +1,44 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/artists/artists",
+    "pages/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#b62e1a",
+    "navigationBarTitleText": "网易云音乐",
+    "navigationBarTextStyle": "white"
   },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#b62e1a",
+    "backgroundColor": "white",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "网易云音乐",
+        "iconPath": "./assets/images/home.png",
+        "selectedIconPath": "./assets/images/home-active.png"
+      },
+      {
+        "pagePath": "pages/artists/artists",
+        "text": "歌手",
+        "iconPath": "./assets/images/artists.png",
+        "selectedIconPath": "./assets/images/artists-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "./assets/images/my.png",
+        "selectedIconPath": "./assets/images/my-active.png"
+      }
+    ]
+  },
+  
+    
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
