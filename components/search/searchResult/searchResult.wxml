@@ -1,0 +1,9 @@
+<view>
+  <van-tabs custom-class="result-nav"  active="{{ active }}" bind:change="onChange">
+    <van-tab wx:for="{{searchType}}" name="{{item.id}}" title="{{item.name}}"></van-tab>
+  </van-tabs>
+</view>
+<view wx:if="{{active===item.id}}" wx:for="{{searchType}}" class="main">
+  {{item.name}}
+</view>
+  

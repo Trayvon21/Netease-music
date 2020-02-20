@@ -1,0 +1,44 @@
+
+.hot-each{
+    height: 160rpx;
+    position: relative;
+}
+.hot-index{
+    line-height: 80rpx;
+    margin: 40rpx;
+}
+.index-red{
+    color: red;
+}
+.hot-icon{
+    /* margin-top:12rpx; */
+    margin-left: 5rpx;
+    width:50rpx;
+    height: 36rpx;
+}
+.hot-main{
+    margin-top: 20rpx;
+}
+.hot-title{
+    overflow: hidden;
+    font-size: 36rpx;
+    line-height: 60rpx;
+    margin-top: 30rpx;
+}
+.hot-content{
+    font-size: 28rpx;
+    line-height: 60rpx;
+    width: 450rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.hot-score{
+    position: absolute;
+    right: 20rpx;
+    height: 30rpx;
+    top: 50%;
+    margin-top: -15rpx;
+    line-height: 30rpx;
+    font-size: 30rpx;
+}

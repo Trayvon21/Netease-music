@@ -1,11 +1,12 @@
 .home-container {
-    padding: 20rpx;
+    padding: 0 20rpx;
 }
 
 /* 头部 */
 .header {
-    height: 100rpx;
+    height: 10vh;
     width: 100%;
+    position: relative;
 }
 
 .header-title {
@@ -25,15 +26,60 @@
 }
 
 .header-pic {
-    width: 70rpx;
-    height: 70rpx;
-    margin: 15rpx 30rpx;
-}
-.header-back{
     width: 50rpx;
     height: 50rpx;
-    margin: 15rpx 30rpx;
+    margin: 25rpx 30rpx;
 }
+
+.header-back {
+    width: 50rpx;
+    height: 50rpx;
+    margin: 25rpx 30rpx;
+}
+
+.header-search1 {
+    width: 500rpx;
+    height: 70rpx;
+    margin: 15rpx 0;
+    font-size: 3;
+    border-bottom: 1rpx solid black;
+}
+
+.search-suggest {
+    position: absolute;
+    top: 100rpx;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 0 10rpx gray;
+    z-index: 99;
+}
+
+.suggest-top {
+    color: #628c90;
+}
+
+.search-icon {
+    margin-right: 10rpx;
+}
+
+.suggest-each {
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0 20rpx;
+    border: .1rpx solid #dedede;
+}
+
+.main {
+    height: 90vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.main::-webkit-scrollbar {
+    display: none;
+}
+
 /* 轮播 */
 .siwper-box {
     border-radius: 25rpx;
@@ -69,24 +115,29 @@
     font-size: 32rpx;
     text-align: center;
 }
-.zone-title{
+
+.zone-title {
     height: 100rpx;
     line-height: 48rpx;
 }
-.zone-title >view{
+
+.zone-title>view {
     margin: 25rpx 0;
 }
-.zone-title .more{
+
+.zone-title .more {
     border: 1rpx solid #dedede;
     padding: 0 15rpx;
     border-radius: 25rpx;
     font-size: 28rpx;
     color: gray;
 }
-.new-title{
+
+.new-title {
     font-size: 30rpx;
-    margin-right:20rpx;
+    margin-right: 20rpx;
 }
-.new-actived{
+
+.new-actived {
     font-size: 42rpx;
 }

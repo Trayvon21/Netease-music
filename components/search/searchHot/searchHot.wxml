@@ -1,0 +1,14 @@
+<view class="hot-title">热搜榜</view>
+<view class="hot-box">
+    <view class="hot-each flex" wx:for="{{hotList}}" wx:key="index" data-keyword="{{item.searchWord}}" bind:tap="searchNow">
+        <view class="hot-index {{index<3?'index-red':''}}">{{index+1}}</view>
+        <view class="hot-main">
+            <view class="hot-title">
+                <text>{{item.searchWord}}</text>
+                <image class="hot-icon" mode="aspectFit" src="{{item.iconUrl}}"></image>
+            </view>
+            <view class="hot-content">{{item.content}}</view>
+        </view>
+        <view class="hot-score">{{item.score}}</view>
+    </view>
+</view>

@@ -1,0 +1,10 @@
+<view class="history-title flex jc-between">
+    <view>搜索记录</view>
+    <view class="clear" bind:tap="openClose">
+        <van-icon name="delete" />
+    </view>
+</view>
+<mp-dialog title="确认删除" show="{{show}}" bindbuttontap="goClear" buttons="{{buttons}}" />
+<view class="history-main flex">
+    <view wx:for="{{histories}}" bind:tap="goSearch" data-keyword="{{item}}" wx:key="index" class="hisotry-each">{{item}}</view>
+</view>

@@ -1,12 +1,26 @@
 <view class="home-container">
     <!-- 头部 -->
     <view>
+        <!-- 搜索 -->
         <view class="header flex" wx:if="{{searchFlag}}">
             <view>
                 <image bind:tap="goSearch" class="header-back" src="../../assets/images/back.png" />
             </view>
-            <van-field placeholder="{{keywords}}" />
+            <input type="text" value="{{value}}" auto-focus placeholder="{{keywords.showKeyword}}" bindinput="bindinput" bindconfirm="SearchNow" bindfocus="showSug" bindblur="closeSug" confirm-type="search" class="header-search1" />
+            <!-- 搜索建议 -->
+            <view wx:if="{{sugFlag}}" class="search-suggest">
+                <view bind:tap="SearchNow" class="suggest-top suggest-each">搜索"{{value}}"</view>
+                <view bind:tap="SearchNow" data-sug="{{item.keyword}}" class="suggest-each" wx:for="{{suggest}}" wx:key="index">
+                    <van-icon size='18' custom-class="search-icon" name="search" />
+                    {{item.keyword}}
+                </view>
+            </view>
+            <view>
+                <image wx:if="{{value===''}}" class="header-pic" src="../../assets/images/search.png" />
+                <image wx:else bind:tap="clearKeywords" class="header-pic" src="../../assets/images/clear.png" />
+            </view>
         </view>
+        <!-- 主页 -->
         <view class="header flex" wx:else>
             <view class="header-title">音乐馆</view>
             <van-search bind:tap="goSearch" placeholder="请输入搜索关键词" custom-class="header-search"></van-search>
@@ -16,8 +30,16 @@
         </view>
     </view>
     <!-- 主要 -->
-    <view class="" wx:if="{{searchFlag}}"></view>
-    <view class="mian" wx:else>
+    <scroll-view scroll-y="{{true}}" scroll-top="{{scrollTop}}" wx:if="{{searchFlag}}" class="main">
+        <view class="" wx:if="{{result.code}}">
+            <searchResult result="{{result}}" />
+        </view>
+        <view wx:else>
+            <searchHistory wx:if="{{histories.length>0}}" bind:send='getStorge' bind:goSearch='SearchNow' histories="{{histories}}" />
+            <searchHot wx:if="{{hotList.length>0}}" bind:send='SearchNow' hotList="{{hotList}}" />
+        </view>
+    </scroll-view>
+    <view class="main" wx:else>
         <!-- 轮播 -->
         <swiper class="siwper-box" indicator-dots="true" indicator-active-color="#b62e1a" autoplay="true">
             <swiper-item wx:for="{{banners}}" wx:key="index" class="siwper-each" bind:tap="swiperGo">
@@ -56,6 +78,7 @@
             <view class="desc">新歌新势力</view>
             <view class="more">新音乐</view>
         </view>
+        <!-- 电台节目 -->
         <homeBox List="{{newsong}}" />
         <view class="zone-title flex jc-between">
             <view class="desc">推荐电台</view>

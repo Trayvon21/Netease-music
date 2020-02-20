@@ -2,6 +2,9 @@
   "usingComponents": {
     "van-search": "../../lib/vant/search/index",
     "homeBox":"../../components/homeBox/homeBox",
-    "van-field": "../../lib/vant/field/index"
+    "van-icon":"../../lib/vant/icon/index",
+    "searchResult":"../../components/search/searchResult/searchResult",
+    "searchHot":"../../components/search/searchHot/searchHot",
+    "searchHistory":"../../components/search/searchHistory/searchHistory"
   }
 }

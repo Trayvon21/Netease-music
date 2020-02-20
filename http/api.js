@@ -36,6 +36,9 @@ export default {
         return fly.get(`/search/hot/detail`)
     },
     // 默认关键词
+    searchDefalut(){
+        return fly.get(`/search/default`)
+    },
     // 搜索联想词
     searchSuggest(keywords) {
         return fly.get(`/search/suggest?keywords=${keywords}&type=mobile`)

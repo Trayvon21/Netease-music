@@ -1,0 +1,6 @@
+.result-nav{
+    height: 8vh;
+}
+.main{
+    background: wheat;
+}

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-icon": "../../../lib/vant/icon/index",
+    "mp-dialog": "../../../lib/weui/dialog/dialog"
+  }
+}
