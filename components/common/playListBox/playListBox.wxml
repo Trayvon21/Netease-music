@@ -1,0 +1,6 @@
+<view class="flex">
+    <view>
+        <image src="{{item.coverImgUrl}}" />
+    </view>
+    <view class="playList-name" data-id="{{item.id}}">{{item.name}}</view>
+</view>

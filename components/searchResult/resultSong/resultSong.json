@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "songBox":"../../common/songBox/songBox"
+  }
+}

@@ -1,0 +1,9 @@
+<view>
+    <view>
+        <image src="{{item.picUrl}}" />
+    </view>
+    <view class="" hover-class="none" hover-stop-propagation="false">
+        <view>{{item.name}}</view>
+        <view wx:for="{{item.alia}}" wx:for-item="i">{{i}}</view>
+    </view>
+</view>

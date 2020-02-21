@@ -79,7 +79,9 @@
 .main::-webkit-scrollbar {
     display: none;
 }
-
+.search-result{
+    height: 8vh;
+}
 /* 轮播 */
 .siwper-box {
     border-radius: 25rpx;

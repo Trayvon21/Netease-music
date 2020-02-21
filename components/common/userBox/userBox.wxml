@@ -1,0 +1,10 @@
+<view>
+    <view>
+        <image src="{{item.avatarUrl}}" />
+    </view>
+    <view>
+        <view>{{item.nickname}}</view>
+        <view>{{item.signature}}</view>
+    </view>
+    <view>关注</view>
+</view>

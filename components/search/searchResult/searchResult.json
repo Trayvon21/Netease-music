@@ -2,6 +2,15 @@
   "component": true,
   "usingComponents": {
     "van-tab": "../../../lib/vant/tab/index",
-    "van-tabs": "../../../lib/vant/tabs/index"
+    "van-tabs": "../../../lib/vant/tabs/index",
+    "resulteAlbum":"../../searchResult/resultAlbum/resultAlbum",
+    "resultArtist":"../../searchResult/resultArtist/resultArtist",
+    "resultDjRadio":"../../searchResult/resultDjRadio/resultDjRadio",
+    "resultMV":"../../searchResult/resultMV/resultMV",
+    "resultMain":"../../searchResult/resultMain/resultMain",
+    "resultPlayList":"../../searchResult/resultPlayList/resultPlayList",
+    "resultSong":"../../searchResult/resultSong/resultSong",
+    "resultUser":"../../searchResult/resultUser/resultUser",
+    "resultVideo":"../../searchResult/resultVideo/resultVideo"
   }
 }

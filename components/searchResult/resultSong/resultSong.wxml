@@ -1,0 +1,3 @@
+<view>
+    <songBox wx:for="{{result.songs}}" item="{{item}}" wx:key="index" />
+</view>

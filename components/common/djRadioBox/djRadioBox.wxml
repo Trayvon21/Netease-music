@@ -1,0 +1,9 @@
+<view>
+    <view>
+        <image src="{{item.picUrl}}" />
+    </view>
+    <view>
+        <view class="">{{item.name}}</view>
+        <view>{{item.dj.nickname}}</view>
+    </view>
+</view>

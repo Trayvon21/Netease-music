@@ -31,8 +31,8 @@
     </view>
     <!-- 主要 -->
     <scroll-view scroll-y="{{true}}" scroll-top="{{scrollTop}}" wx:if="{{searchFlag}}" class="main">
-        <view class="" wx:if="{{result.code}}">
-            <searchResult result="{{result}}" />
+        <view class="" wx:if="{{result!==null}}">
+            <searchResult class="search-result"  bind:send='getResult' result="{{result}}" />
         </view>
         <view wx:else>
             <searchHistory wx:if="{{histories.length>0}}" bind:send='getStorge' bind:goSearch='SearchNow' histories="{{histories}}" />

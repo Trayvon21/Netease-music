@@ -1,0 +1,88 @@
+<view>您可能感兴趣</view>
+<view></view>
+<view class="songs">
+    <view class="main-title flex jc-between">
+        <view>单曲</view>
+        <view data-list="{{result.song.songs}}">播放全部</view>
+    </view>
+    <view>
+        <songBox wx:for="{{result.song.songs}}" item="{{item}}" wx:key="index" />
+    </view>
+    <view class="reader-more">{{result.songs.moreText}}</view>
+</view>
+<view class="playList">
+    <view>歌单</view>
+    <view>
+        <playListBox wx:for="{{result.playList.playLists}}" item="{{item}}" wx:key="index" />
+    </view>
+    <view class="reader-more">{{result.playList.moreText}}</view>
+</view>
+<view class="video">
+    <view class="main-title">视频</view>
+    <view>
+        <videoBox wx:for="{{result.video.videos}}" item="{{item}}" wx:key="index" />
+    </view>
+    <view class="reader-more">{{result.video.moreText}}</view>
+</view>
+<view class="query">
+    <view class="main-title">相关搜索</view>
+    <view class="flex">
+        <view wx:for="{{result.sim_query.sim_querys}}" wx:key="index" data-keyword="item.keyword" bind:tap="">
+            {{item.keyword}}
+        </view>
+    </view>
+</view>
+<view class="Mlog">
+    <view class="main-title">Mlog</view>
+    <view class="flex">
+        <view wx:for="{{result.mlog.mlogs}}" wx:key="index">
+            <view class="">
+                <image src="{{item.resource.shareUrl}}" />
+                <view class="">{{item.matchFieldContent}}</view>
+            </view>
+            <view class="">
+                <view class="">{{item.resource.text}}</view>
+                <view class="flex">
+                    <image class="" src="{{item.resource.userProfile.avatarUrl}}" />
+                    <view>{{item.resource.userProfile.nickname}}</view>
+                    <view>{{item.resource.mlogExtVO.likedCount}}赞</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="talk">
+    <view class="main-title">主题</view>
+    <view>
+        <view class="flex" wx:for="{{result.talk.talks}}" wx:key="index">
+            <view>
+                <image src="{{item.showCover.url}}" />
+            </view>
+            <view>
+                <view>{{item.talkName}}</view>
+                <view>{{item.follows}}关注    {{item.participations}}人参与</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="artist">
+    <view class="main-title">歌手</view>
+    <view>
+      <artistBox wx:for="{{result.artist.artists}}" wx:key="index"/>
+    </view>
+</view>
+<view class="album">
+    <view class="main-title">专辑</view>
+    <albumBox wx:for="{{result.album.albums}}" item="{{item}}" wx:key="index" />
+     <view class="reader-more">{{result.album.moreText}}</view>
+</view>
+<view class="dj-radio">
+    <view class="main-title">电台</view>
+    <djRadioBox wx:for="{{result.djRadio.djRadios}}" item="{{item}}" wx:key="index" />
+     <view class="reader-more">{{result.djRadio.moreText}}</view>
+</view>
+<view class="user">
+    <view class="main-title">用户</view>
+    <userBox wx:for="{{result.user.users}}" item="{{item}}" wx:key="index" />
+     <view class="reader-more">{{result.user.moreText}}</view>
+</view>

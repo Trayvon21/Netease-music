@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //首页数据
     topNav: [{
         pic: 'list',
         name: '每日推荐'
@@ -34,10 +35,11 @@ Page({
     djprograms: [],
     recommends: [],
     actived: '1',
+    //搜索数据
     searchFlag: true,
     keywords: {},
     value: "",
-    result: {},
+    result: null,
     suggest: [],
     sugFlag: false,
     hotList: [],
@@ -59,9 +61,9 @@ Page({
   },
   //进入/离开搜索页面/清除搜索
   goSearch() {
-    if (this.data.result.code) {
+    if (this.data.result!==null) {
       this.setData({
-        result: {},
+        result: null,
         value: ''
       })
       wx.showLoading({
@@ -98,34 +100,48 @@ Page({
   //点击搜索
   SearchNow(e) {
     //搜索框
-    let keywords = e.detail.value
+    let keyword = e.detail.value
     if (e.currentTarget.dataset.sug) {
       //搜索推荐
-      keywords = e.currentTarget.dataset.sug
+      keyword = e.currentTarget.dataset.sug
       console.log('搜索推荐');
     } else if (typeof (e.detail) === 'string') {
       //热搜
-      keywords = e.detail
+      keyword = e.detail
       console.log('热搜');
     } else if (e.detail.value === '') {
       //默认值搜索
       console.log('默认值搜索');
-      keywords = this.data.keywords.realkeyword
+      keyword = this.data.keywords.realkeyword
     }
-    api.keywordSearch(keywords).then(res => {
+    this.setData({value: keyword})
+    console.log(keyword);
+    this.getResult()
+  },
+  getResult(e) {
+    wx.showLoading({
+      title:"加载中...",
+      mask: true,
+    });
+    let keyword=this.data.value
+    let searchType=1018
+    if(e){
+      searchType=e.detail
+    }
+    api.keywordSearch(keyword,searchType).then(res => {
       if (res.code === 200) {
         let histories = this.data.histories
-        if (!histories.includes(keywords)) {
-          histories.push(keywords)
+        if (!histories.includes(keyword)) {
+          histories.push(keyword)
         }
         wx.setStorageSync("histories", JSON.stringify(histories));
         this.setData({
-          value: keywords,
           result: res.result,
           sugFlag: false,
           histories: histories,
           scrollTop: 0
         })
+        wx.hideLoading();
       }
     })
   },
@@ -160,6 +176,11 @@ Page({
    */
   onReady: function () {
     this.getData()
+     //测试接口
+     this.setData({value:"陈奕迅"})
+     let e=null
+     this.getResult(e)
+     //测试接口结束
   },
   //获取数据
   getData() {

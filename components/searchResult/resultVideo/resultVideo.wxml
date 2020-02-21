@@ -1,0 +1,4 @@
+<view class="" >
+    <videoBox wx:for="{{result.videos}}" item="{{item}}" wx:key="index"/>
+</view>
+

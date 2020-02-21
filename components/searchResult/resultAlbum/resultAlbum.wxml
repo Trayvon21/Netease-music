@@ -1,0 +1,4 @@
+<view>
+    <albumBox  wx:for="{{result.albums}}" item="{{item}}" wx:key="index"/>
+</view>
+  

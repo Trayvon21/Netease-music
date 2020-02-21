@@ -1,0 +1,3 @@
+<view >
+<playListBox wx:for="{{result.playlists}}" item="{{item}}" wx:key="index"/>
+</view>

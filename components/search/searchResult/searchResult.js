@@ -16,8 +16,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    active: 1018,
-    searchType: [{
+    active:1018,
+    searchTypes: [{
         id: 1018,
         name: "综合"
       },
@@ -64,6 +64,13 @@ Component({
       this.setData({
         active: e.detail.name
       })
+      console.log(e);
+      this.triggerEvent("send",e.detail.name)
+    }
+  },
+  observers() {
+    result: (val) => {
+      console.log(res);
     }
   },
   ready() {

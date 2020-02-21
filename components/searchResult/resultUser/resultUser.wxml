@@ -1,0 +1,1 @@
+ <userBox wx:for="{{result.userprofiles}}" item="{{item}}" wx:key="index" />

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "albumBox":"../../common/albumBox/albumBox"
+  }
+}

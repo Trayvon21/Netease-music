@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "usingComponents": {
+    "playListBox":"../../common/playListBox/playListBox",
+    "albumBox":"../../common/albumBox/albumBox",
+    "djRadioBox":"../../common/djRadioBox/djRadioBox",
+    "songBox":"../../common/songBox/songBox",
+    "userBox":"../../common/userBox/userBox",
+    "videoBox":"../../common/videoBox/videoBox",
+    "artistBox":"../../common/artistBox/artistBox"
+  }
+}
