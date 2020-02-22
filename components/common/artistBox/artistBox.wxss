@@ -1,1 +1,17 @@
-/* components/common/artistBox/artistBox.wxss */
+.artist-pic{
+    width: 180rpx;
+    height: 180rpx;
+    margin: 30rpx 10rpx;
+    border-radius: 50%;
+}
+.artist-name{
+    line-height: 40rpx;
+    color: #84a6c7;
+    height: 40rpx;
+    margin: 100rpx 40rpx;
+}
+.artist-other{
+    line-height: 40rpx;
+    height: 40rpx;
+    margin: 100rpx 10rpx;
+}

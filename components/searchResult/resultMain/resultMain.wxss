@@ -1,1 +1,115 @@
-/* components/searchResult/resultMain/resultMain.wxss */
+.main-title {
+    margin: 60rpx 0 ;
+    font-size: 40rpx;
+    font-weight: 700;
+    line-height: 50rpx;
+}
+
+.main-title .right {
+    font-size: 32rpx;
+    padding: 0 20rpx;
+    border: 1rpx solid #ededed;
+    border-radius: 25rpx;
+}
+.reader-more{
+    margin-top: 20rpx;
+    text-align: center;
+    font-size: 34rpx;
+    color: #979797;
+}
+
+.query-box {
+    flex-wrap: wrap;
+}
+
+.query-each {
+    font-size: 34rpx;
+    line-height: 50rpx;
+    padding: 0 20rpx;
+    background: #ededed;
+    color: gray;
+    border-radius: 25rpx;
+    margin: 10rpx;
+}
+
+.mlog-box {
+    margin-top: 30rpx;
+}
+
+.mlog-each {
+    width: 320rpx;
+    height: 500rpx;
+    box-shadow: 0 0 10rpx rgb(160, 160, 160);
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+
+.mlog-pic-box {
+    position: relative;
+}
+
+.mlog-pic {
+    width: 320rpx;
+    height: 320rpx;
+}
+
+.content {
+    position: absolute;
+    bottom: 20rpx;
+    left: 10rpx;
+    padding: 0 10rpx;
+    border-radius: 15rpx;
+    font-size: 30rpx;
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.mlog-text {
+    font-size: 30rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.mlog-icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin: 5rpx;
+    border-radius: 50%;
+}
+
+.mlog-bottom {
+    height: 180rpx;
+    padding: 10rpx;
+
+}
+
+.mlog-user {
+    line-height: 50rpx;
+    font-size: 28rpx;
+    color: #bbbbbb;
+}
+
+.talk-pic {
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 20rpx;
+}
+
+.talk-right {
+    margin-left: 20rpx;
+    margin-top: 30rpx;
+}
+
+.talk-title {
+    font-size: 32rpx;
+    line-height: 1.5;
+}
+
+.talk-info {
+    color: #bbbbbb;
+    line-height: 2;
+    font-size: 28rpx;
+}

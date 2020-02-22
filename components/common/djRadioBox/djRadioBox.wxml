@@ -1,9 +1,9 @@
-<view>
+<view class="dj-main flex">
     <view>
-        <image src="{{item.picUrl}}" />
+        <image class="dj-pic" src="{{item.picUrl}}" />
     </view>
-    <view>
-        <view class="">{{item.name}}</view>
-        <view>{{item.dj.nickname}}</view>
+    <view class="dj-right">
+        <view class="dj-title">{{item.name}}</view>
+        <view class="dj-info">{{item.dj.nickname}}</view>
     </view>
 </view>

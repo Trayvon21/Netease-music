@@ -1,1 +1,19 @@
-/* components/common/playListBox/playListBox.wxss */
+.playlist-main{
+    margin-top: 30rpx;
+}
+.playlist-pic{
+    height: 180rpx;
+    width: 180rpx;
+    margin: 10rpx;
+    border-radius: 30rpx;
+}
+.playlist-name{
+    margin-top: 20rpx;
+    font-size: 34rpx;
+    line-height: 50rpx;
+}
+.playlist-info{
+    font-size: 24rpx;
+    line-height: 50rpx;
+    color: #bbbbbb;
+}

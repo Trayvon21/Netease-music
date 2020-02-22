@@ -1,6 +1,11 @@
-<view class="flex">
+<view class="flex playlist-main">
     <view>
-        <image src="{{item.coverImgUrl}}" />
+        <image class="playlist-pic" src="{{item.coverImgUrl}}" />
     </view>
-    <view class="playList-name" data-id="{{item.id}}">{{item.name}}</view>
+    <view>
+        <view class="playlist-name" data-id="{{item.id}}">{{item.name}}</view>
+        <view class="playlist-info">
+            {{item.trackCount}}首 by {{item.creator.nickname}},播放{{(item.playCount/10000)}}万次
+        </view>
+    </view>
 </view>

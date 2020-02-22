@@ -36,7 +36,7 @@ export default {
         return fly.get(`/search/hot/detail`)
     },
     // 默认关键词
-    searchDefalut(){
+    searchDefalut() {
         return fly.get(`/search/default`)
     },
     // 搜索联想词
@@ -81,8 +81,8 @@ export default {
             name: "MV"
         },
     ],
-    keywordSearch(keyword, type = 1018) {
-        return fly.get(`/search?keywords=${keyword}&type=${type}`)
+    keywordSearch(keyword, type = 1018, offset = 0) {
+        return fly.get(`/search?keywords=${keyword}&type=${type}&offset=${offset}`)
     },
 
     /*歌手*/
@@ -200,7 +200,7 @@ export default {
     djdetail(id) {
         return fly.get(`/dj/program/detail?id=${id}`)
     },
-    
+
     /*歌曲详情*/
     getSongdetail(id) {
         return fly.get(`/song/detail?ids=${id}`)

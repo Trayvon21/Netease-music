@@ -1,0 +1,24 @@
+.song-name{
+    font-size: 34rpx;
+}
+.song-info{
+    font-size: 30rpx;
+    color: #adacac;
+}
+.song-artist{
+    color: #84a6c7;
+}
+.song-main{
+    margin-top: 20rpx;
+    line-height: 50rpx;
+}
+.play-pic{
+    width: 60rpx;
+    height: 60rpx;
+    margin: 20rpx;
+}
+.contorl-pic{
+    width: 40rpx;
+    height: 40rpx;
+    margin: 30rpx 0;
+}

@@ -1,10 +1,10 @@
-<view class="flex">
-    <view class="">
-        <image src="{{item.picUrl}}" />
+<view class="flex album-main">
+    <view>
+        <image class="album-pic" src="{{item.picUrl}}" />
     </view>
-    <view class="">
-        <view class="album-title"></view>
-        <view>
+    <view class="ablum-right">
+        <view class="album-title">{{item.name}}</view>
+        <view class="album-info">
             <text class="">{{item.artist.name}}</text>
             <text class="">{{item.publishTime}}</text>
         </view>

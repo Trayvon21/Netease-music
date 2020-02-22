@@ -16,7 +16,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    active:1018,
+    active: 1018,
     searchTypes: [{
         id: 1018,
         name: "综合"
@@ -65,14 +65,40 @@ Component({
         active: e.detail.name
       })
       console.log(e);
-      this.triggerEvent("send",e.detail.name)
-    }
+      this.triggerEvent("send", e.detail.name)
+    },
+    pullUp() {
+      let result = this.properties.result
+      let count = 0
+      result.songCount && result.songCount > result.songs.length ? count = result.songs.length : ''
+      result.videoCount && result.videoCount > result.videos.length ? count = result.videos.length : ''
+      result.artistCount && result.artistCount > result.artists.length ? count = result.artists.length : ''
+      result.albumCount && result.albumCount > result.albums.length ? count = result.albums.length : ''
+      result.playlistCount && result.playlistCount > result.playlists.length ? count = result.playlists.length : ''
+      result.djRadiosCount && result.djRadiosCount > result.djRadios.length ? count = result.djRadios.length : ''
+      result.userprofileCount && result.userprofileCount > result.userprofiles.length ? count = result.userprofiles.length : ''
+      result.mvCount && count > result.mvs.length ? count = result.mvs.length : ''
+      if (count !== 0) {
+        this.triggerEvent("pullUp", {
+          id: this.data.active,
+          count: count
+        })
+      } else {
+        wx.showToast({
+          title: '到底了...',
+          icon: 'none',
+          duration: 1500
+        })
+      }
+
+    },
   },
   observers() {
     result: (val) => {
       console.log(res);
     }
   },
+
   ready() {
 
     api.searchType

@@ -1,14 +1,18 @@
 <view>
-  <van-tabs custom-class="result-nav" active="{{ active }}" bind:change="onChange">
+  <van-tabs custom-class="result-nav" tab-class="result-nav2" tab-active-class="2" nav-class="result-nav1" active="{{ active }}" bind:change="onChange">
     <van-tab wx:for="{{searchTypes}}" wx:key="index" name="{{item.id}}" title="{{item.name}}"></van-tab>
   </van-tabs>
 </view>
-<resulteAlbum wx:if="{{active===10}}" result="{{result}}"></resulteAlbum>
-<resultArtist wx:if="{{active===100}}" result="{{result}}"></resultArtist>
-<resultDjRadio wx:if="{{active===1009}}" result="{{result}}"></resultDjRadio>
-<resultMV wx:if="{{active===1004}}" result="{{result}}"></resultMV>
-<resultMain wx:if="{{active===1018}}" result="{{result}}"></resultMain>
-<resultPlayList wx:if="{{active===1000}}" result="{{result}}"></resultPlayList>
-<resultSong wx:if="{{active===1}}" result="{{result}}"></resultSong>
-<resultUser wx:if="{{active===1002}}" result="{{result}}"></resultUser>
-<resultVideo wx:if="{{active===1014}}" result="{{result}}"></resultVideo>
+<scroll-view scroll-y="{{true}}" class="result-scorll" bindscrolltolower="pullUp">
+  <view class="result-pd">
+    <resulteAlbum wx:if="{{active===10}}" result="{{result}}"></resulteAlbum>
+    <resultArtist wx:if="{{active===100}}" result="{{result}}"></resultArtist>
+    <resultDjRadio wx:if="{{active===1009}}" result="{{result}}"></resultDjRadio>
+    <resultMV wx:if="{{active===1004}}" result="{{result}}"></resultMV>
+    <resultMain wx:if="{{active===1018}}" result="{{result}}"></resultMain>
+    <resultPlayList wx:if="{{active===1000}}" result="{{result}}"></resultPlayList>
+    <resultSong wx:if="{{active===1}}" result="{{result}}"></resultSong>
+    <resultUser wx:if="{{active===1002}}" result="{{result}}"></resultUser>
+    <resultVideo wx:if="{{active===1014}}" result="{{result}}"></resultVideo>
+  </view>
+</scroll-view>

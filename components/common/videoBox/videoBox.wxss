@@ -1,1 +1,42 @@
-/* components/common/videoBox/videoBox.wxss */
+.video-main {
+    margin: 40rpx 0;
+}
+
+.video-left {
+    position: relative;
+    margin: 10rpx;
+}
+
+.video-pic {
+    height: 160rpx;
+    width: 240rpx;
+    border-radius: 20rpx;
+}
+
+.playCount {
+    position: absolute;
+    right: 10rpx;
+    top: 5rpx;
+    color: white;
+    font-size: 28rpx;
+}
+
+.play-icon {
+    margin-top: 4rpx;
+    height: 30rpx;
+    width: 30rpx;
+}
+
+.video-right {
+    margin: 10rpx;
+    line-height: 40rpx;
+}
+
+.video-title {
+    font-size: 32rpx;
+}
+
+.video-time {
+    font-size: 28rpx;
+    color: #bbbbbb;
+}

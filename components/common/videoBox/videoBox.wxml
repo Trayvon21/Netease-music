@@ -1,12 +1,15 @@
 <view>
     <view class="flex">
-        <view>
-            <image src="{{item.coverUrl}}" />
-            <view>{{item.playTime}}</view>
+        <view class="video-left">
+            <image class="video-pic" src="{{item.coverUrl}}" />
+            <view class="playCount flex">
+                <image class="play-icon" src="../../../assets/images/play.png" />
+                <view>{{item.playTime}}</view>
+            </view>
         </view>
         <view>
             <view class="video-title">{{item.title}}</view>
-            <view class="time">{{item.durationms}}by {{item.creator[0].userName}}</view>
+            <view class="video-time">{{item.durationms}}by {{item.creator[0].userName}}</view>
         </view>
     </view>
 </view>

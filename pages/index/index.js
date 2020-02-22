@@ -44,7 +44,8 @@ Page({
     sugFlag: false,
     hotList: [],
     histories: [],
-    scrollTop: ''
+    scrollTop: '',
+    page: 1
   },
 
   changeNew(e) {
@@ -61,7 +62,7 @@ Page({
   },
   //进入/离开搜索页面/清除搜索
   goSearch() {
-    if (this.data.result!==null) {
+    if (this.data.result !== null) {
       this.setData({
         result: null,
         value: ''
@@ -114,33 +115,62 @@ Page({
       console.log('默认值搜索');
       keyword = this.data.keywords.realkeyword
     }
-    this.setData({value: keyword})
-    console.log(keyword);
+    let histories = this.data.histories
+    if (!histories.includes(keyword)) {
+      histories.push(keyword)
+    }
+    wx.setStorageSync("histories", JSON.stringify(histories));
+    this.setData({
+      value: keyword,
+      histories: histories
+    })
     this.getResult()
   },
+  //搜索之后
   getResult(e) {
     wx.showLoading({
-      title:"加载中...",
+      title: "加载中...",
       mask: true,
     });
-    let keyword=this.data.value
-    let searchType=1018
-    if(e){
-      searchType=e.detail
+    let keyword = this.data.value
+    let searchType = 1018
+    if (e) {
+      searchType = e.detail
     }
-    api.keywordSearch(keyword,searchType).then(res => {
+    api.keywordSearch(keyword, searchType, 0).then(res => {
       if (res.code === 200) {
-        let histories = this.data.histories
-        if (!histories.includes(keyword)) {
-          histories.push(keyword)
-        }
-        wx.setStorageSync("histories", JSON.stringify(histories));
         this.setData({
           result: res.result,
           sugFlag: false,
-          histories: histories,
           scrollTop: 0
         })
+        wx.hideLoading();
+      }
+    })
+  },
+  //上拉加载
+  pullUp(e) {
+    wx.showLoading({
+      title: "加载中...",
+      mask: true,
+    });
+    let info = e.detail
+    let keyword = this.data.value
+    let result = this.data.result
+    api.keywordSearch(keyword, info.id, info.count).then(res => {
+      if (res.code === 200) {
+        info.id === 1 ? result.songs.push(...res.result.songs) : ''
+        info.id === 1014 ? result.videos.push(...res.result.videos) : ''
+        info.id === 100 ? result.artists.push(...res.result.artists) : ''
+        info.id === 10 ? result.albums.push(...res.result.albums) : ''
+        info.id === 1000 ? result.playlists.push(...res.result.playlists) : ''
+        info.id === 1009 ? result.djRadios.push(...res.result.djRadios) : ''
+        info.id === 1002 ? result.userprofiles.push(...res.result.userprofiles) : ''
+        info.id === 1004 ? result.mvs.push(...res.result.mvs) : ''
+        this.setData({
+          result: result
+        })
+        console.log(result);
         wx.hideLoading();
       }
     })
@@ -176,11 +206,13 @@ Page({
    */
   onReady: function () {
     this.getData()
-     //测试接口
-     this.setData({value:"陈奕迅"})
-     let e=null
-     this.getResult(e)
-     //测试接口结束
+    //测试接口
+    this.setData({
+      value: "陈奕迅"
+    })
+    let e = null
+    this.getResult(e)
+    //测试接口结束
   },
   //获取数据
   getData() {

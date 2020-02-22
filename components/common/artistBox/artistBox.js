@@ -1,4 +1,7 @@
 Component({
+  options: {
+    addGlobalClass: true
+  },
   /**
    * 组件的属性列表
    */
@@ -21,5 +24,8 @@ Component({
    */
   methods: {
 
+  },
+  ready() {
+    console.log(this.properties.item);
   }
 })

@@ -1,9 +1,7 @@
-<view>
+<view class="flex">
     <view>
-        <image src="{{item.picUrl}}" />
+        <image class="artist-pic" src="{{item.picUrl}}" />
     </view>
-    <view class="" hover-class="none" hover-stop-propagation="false">
-        <view>{{item.name}}</view>
-        <view wx:for="{{item.alia}}" wx:for-item="i">{{i}}</view>
-    </view>
+    <view class="artist-name">{{item.name}}</view>
+    <view class="artist-other" wx:for="{{item.alia}}" wx:for-item="i">({{i}})</view>
 </view>

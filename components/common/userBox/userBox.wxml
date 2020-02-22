@@ -1,10 +1,10 @@
-<view>
+<view class="user-main flex">
     <view>
-        <image src="{{item.avatarUrl}}" />
+        <image class="user-pic" src="{{item.avatarUrl}}" />
     </view>
-    <view>
-        <view>{{item.nickname}}</view>
-        <view>{{item.signature}}</view>
+    <view class="user-right">
+        <view class="user-title">{{item.nickname}}</view>
+        <view class="user-info">{{item.signature}}</view>
     </view>
-    <view>关注</view>
+    <view class="user-follow">+关注</view>
 </view>

@@ -1,10 +1,13 @@
-<view class="flex jc-between">
+<view class="song-main flex jc-between">
     <view>
         <view class="song-name" data-id="{{item.id}}" bind:tap="goto">{{item.name}}</view>
         <view class="song-info">
-            <text wx:for="{{item.ar?item.ar:item.artists}}">{{item.name}}</text>
+            <text class="song-artist" wx:for="{{item.ar?item.ar:item.artists}}">{{item.name}}</text>
             -{{item.al?item.al.name:item.album.name}}
         </view>
     </view>
-    <view></view>
+    <view>
+        <image class="play-pic" src="../../../assets/images/play3.png" />
+        <image class="contorl-pic" src="../../../assets/images/control.png" />
+    </view>
 </view>

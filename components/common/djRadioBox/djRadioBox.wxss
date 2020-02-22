@@ -1,1 +1,23 @@
-/* components/common/djRadioBox/djRadioBox.wxss */
+.dj-main{
+    margin-top: 30rpx;
+}
+.dj-pic{
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 20rpx;
+}
+.dj-right{
+    margin-top: 30rpx;
+    margin-left: 40rpx;
+    line-height: 60rpx;
+}
+.dj-title{
+    height: 60rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.dj-info{
+    height: 60rpx;
+    font-size: 30rpx;
+}
