@@ -1,9 +1,9 @@
 import fly from './index'
 export default {
 
-    /*首页*/
-
-    // *主要*
+    /**
+     * 主页
+     */
     // 轮播
     getHeader() {
         return fly.get('/banner')
@@ -20,7 +20,6 @@ export default {
     newSong() {
         return fly.get(`/personalized/newsong`)
     },
-
     // 推荐电台
     djprogram() {
         return fly.get(`/personalized/djprogram`)
@@ -30,8 +29,10 @@ export default {
         return fly.get(`/program/recommend`)
     },
 
-    // *搜索*
-    // 热搜榜-
+    /**
+     * 搜索
+     */
+    // 热搜榜
     hotSearchList() {
         return fly.get(`/search/hot/detail`)
     },
@@ -43,132 +44,84 @@ export default {
     searchSuggest(keywords) {
         return fly.get(`/search/suggest?keywords=${keywords}&type=mobile`)
     },
-    // 关键词搜索(9个组件)
-    "searchType": [{
-            id: 1018,
-            name: "综合"
-        },
-        {
-            id: 1,
-            name: "单曲"
-        },
-        {
-            id: 1014,
-            name: "视频"
-        },
-        {
-            id: 100,
-            name: "歌手"
-        },
-        {
-            id: 10,
-            name: "专辑"
-        },
-        {
-            id: 1000,
-            name: "歌单"
-        },
-        {
-            id: 1009,
-            name: "电台"
-        },
-        {
-            id: 1002,
-            name: "用户"
-        },
-        {
-            id: 1004,
-            name: "MV"
-        },
-    ],
     keywordSearch(keyword, type = 1018, offset = 0) {
         return fly.get(`/search?keywords=${keyword}&type=${type}&offset=${offset}`)
     },
 
-    /*歌手*/
+    /**
+     * 歌手页
+     */
     //入驻歌手
-    artistList(artist_id, page, initial = 'A') {
+    artistList(artist_id, page, initial) {
         return fly.get(`/artist/list?cat=${artist_id}&initial=${initial}&limit=30&offset=${(page-1)*30}`)
     },
-    artistType: [{
-            id: '5001',
-            name: '入驻歌手',
-        },
-        {
-            id: '1001',
-            name: '华语男歌手',
-        },
-        {
-            id: '1002',
-            name: '华语女歌手',
-        },
-        {
-            id: '1003',
-            name: '华语组合/乐队',
-        },
-        {
-            id: '2001',
-            name: '欧美男歌手',
-        },
-        {
-            id: '2002',
-            name: '欧美女歌手',
-        },
-        {
-            id: '2003',
-            name: '欧美组合/乐队',
-        },
-        {
-            id: '6001',
-            name: '日本男歌手',
-        },
-        {
-            id: '6002',
-            name: '日本女歌手',
-        },
-        {
-            id: '6003',
-            name: '日本组合/乐队',
-        },
-        {
-            id: '7001',
-            name: '韩国男歌手',
-        },
-        {
-            id: '7002',
-            name: '韩国女歌手',
-        },
-        {
-            id: '7003',
-            name: '韩国组合/乐队',
-        },
-        {
-            id: '4001',
-            name: '其他男歌手',
-        },
-        {
-            id: '4002',
-            name: '其他女歌手',
-        },
-        {
-            id: '4003',
-            name: '其他组合/乐队',
-        },
-    ],
-    'initial': [
-        "热", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
-    ],
 
-    /*我的*/
-    //*登录*（手机/邮箱）
+    /**
+     * 歌手详情
+     */
+    // 歌手信息
+    getArtistDetails(id) {
+        return fly.get(`/artist/desc?id=${id}`)
+    },
+    // 专辑
+    getAlbum(id) {
+        return fly.get(`/artist/album?id=${id}`)
+    },
+    // 单曲
+    artists(id, offset) {
+        return fly.get(`/artists?id=${id}&offset=${offset}&limit=30`)
+    },
+    // MV
+    getArtistMv(id, offset) {
+        return fly.get(`/artist/mv?id=${id}&offset=${offset}&limit=30`)
+    },
+
+    /**
+     * 电台节目详情
+     */
+    //电台信息
+    djdetail(id) {
+        return fly.get(`/dj/program/detail?id=${id}`)
+    },
+    // // 电台节目
+    // djprogram(id){
+    //     return fly.get(`/dj/program?id=${id}`)
+    // },
+    // 电台评论
+    getDjComment(id) {
+        return fly.get(`/comment/dj?id=${id}&limit=20`)
+    },
+
+    /**
+     * 歌单
+     */
+    getPlaylistDetails(id) {
+        return fly.get(`/playlist/detail?id=${id}`)
+    },
+
+    /**
+     * 用户
+     */
+
+    /**
+     * 播放器
+     */
+    /*歌曲详情*/
+    getSongdetail(id) {
+        return fly.get(`/song/detail?ids=${id}`)
+    },
+
+    /**
+     * 我的(登录、注册)
+     */
+    //登录手机/邮箱
     loginbyTel(phone, password) {
         return fly.get(`/login/cellphone?phone=${phone}&password=${password}`)
     },
     loginbyEmail(email, password) {
         return fly.get(`/login?email${email}&password=${password}`)
     },
-
-    //*注册*
+    //注册
     // 发送验证码(phone: 手机号码)
     sendCaptcha(phone) {
         return fly.get(`/captcha/sent?phone=${phone}`)
@@ -184,35 +137,5 @@ export default {
     // 检测手机是否已被注册(phone: 手机号)
     checkTel(phone) {
         return fly.get(`/cellphone/existence/check?phone=${phone}`)
-    },
-
-    //*用户资料*
-
-    /*歌单详情*/
-    //获取歌单
-
-
-    /*专辑详情*/
-    getAlbum(id, limit) {
-        return fly.get(`/artist/album?id=${id}&limit=${limit}`)
-    },
-    /*电台-节目详情*/
-    djdetail(id) {
-        return fly.get(`/dj/program/detail?id=${id}`)
-    },
-
-    /*歌曲详情*/
-    getSongdetail(id) {
-        return fly.get(`/song/detail?ids=${id}`)
-    },
-
-    /*播放详情*/
-    //歌单播放
-    //获取音乐
-    //音乐是否可用
-    //歌词
-
-
-
-
+    }
 }

@@ -1,1 +1,45 @@
-/* pages/artists/artists.wxss */
+.artist-box {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.tab {
+    -webkit-flex: 0 0 26% !important;
+    flex: 0 0 26% !important;
+}
+
+.artist-top {
+    height: 8vh;
+}
+
+.artist-main {
+    height: 92vh;
+}
+.height-change{
+    height: 88vh;
+}
+
+.artist-nav {
+    width: 100%;
+}
+.artist-nav-box{
+    white-space: nowrap;
+}
+/* .artist-nav::-webkit-scrollbar {
+    display: none;
+} */
+
+.ar-nav-each {
+    display: inline-block;
+    width: 40rpx;
+    height: 4vh;
+    font-size: 32rpx;
+    line-height: 4vh;
+    text-align: center;
+    /* padding: 0 10rpx; */
+}
+.artist-initial{
+    background-color: red;
+    color: white;
+}

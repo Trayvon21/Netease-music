@@ -1,4 +1,4 @@
-<view class="flex playlist-main">
+<view class="flex playlist-main" bind:tap="goPlaylist">
     <view>
         <image class="playlist-pic" src="{{item.coverImgUrl}}" />
     </view>

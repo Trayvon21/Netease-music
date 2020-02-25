@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/artists/artists",
     "pages/my/my",
-    "pages/detail/detail"
+    "pages/artistDetail/artistDetail",
+    "pages/playListDetail/playListDetail",
+    "pages/djRadioDetail/djRadioDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,8 +40,6 @@
       }
     ]
   },
-  
-    
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

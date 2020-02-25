@@ -1,2 +1,15 @@
-<!--pages/artists/artists.wxml-->
-<text>pages/artists/artists.wxml</text>
+<view class="artist-box">
+  <van-tabs class="artist-top" active="{{ active }}" tab-class="tab" bind:change="onChange">
+    <van-tab wx:for="{{typeList}}" wx:key="index" name="{{item.id}}" title="{{item.name}}"></van-tab>
+  </van-tabs>
+  <scroll-view class="artist-nav" scroll-x="{{true}}" scroll-left="{{scrollLeft}}" wx:if="{{active!=='5001'}}">
+    <view class="artist-nav-box">
+      <view wx:for="{{initial}}" class="ar-nav-each {{item===active2?'artist-initial':''}}" data-each="{{item}}" bind:tap="changeInt">
+        {{item}}
+      </view>
+    </view>
+  </scroll-view>
+  <scroll-view scroll-y="{{true}}" scroll-top="{{scrollTop}}" class="{{active!=='5001'?'height-change':'artist-main'}}">
+    <artistBox wx:for="{{artistList}}" wx:key="index" item="{{item}}"></artistBox>
+  </scroll-view>
+</view>

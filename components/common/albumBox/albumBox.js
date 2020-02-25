@@ -9,6 +9,10 @@ Component({
     item: {
       type: Object,
       value: {}
+    },
+    size: {
+      type: String,
+      value: ''
     }
   },
 

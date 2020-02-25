@@ -1,10 +1,16 @@
 // components/searchResult/resultMV/resultMV.js
 Component({
+  options: {
+    addGlobalClass: true
+  },
   /**
    * 组件的属性列表
    */
   properties: {
-
+    result: {
+      type: Object,
+      value: {}
+    }
   },
 
   /**
@@ -19,5 +25,9 @@ Component({
    */
   methods: {
 
+  },
+  ready() {
+    console.log(this.properties.result);
   }
+
 })

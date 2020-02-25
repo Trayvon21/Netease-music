@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "mvBox":"../../common/mvBox/mvBox"
+  }
 }

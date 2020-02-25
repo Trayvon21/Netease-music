@@ -23,6 +23,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    goPlaylist(){
+      wx.navigateTo({
+        url: `/pages/playListDetail/playListDetail?id=${this.properties.item.id}`
+      });
+    }
   }
 })

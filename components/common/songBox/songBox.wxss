@@ -1,9 +1,18 @@
 .song-name{
     font-size: 34rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.song-left{
+    width: 550rpx; 
 }
 .song-info{
+    overflow: hidden;
     font-size: 30rpx;
     color: #adacac;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .song-artist{
     color: #84a6c7;

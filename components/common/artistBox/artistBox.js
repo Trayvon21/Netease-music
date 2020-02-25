@@ -23,9 +23,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    gotoArtist() {
+      wx.navigateTo({
+        url: `/pages/artistDetail/artistDetail?id=${this.properties.item.id}`
+      });
+    }
   },
-  ready() {
-    console.log(this.properties.item);
-  }
+  ready() {}
 })

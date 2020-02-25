@@ -1,20 +1,39 @@
-// pages/detail/detail.js
-Page({
+import api from "../../http/api"
 
+// pages/playListDetail/playListDetail.js
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-
+    playlist: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getPlaylistDetails(options.id)
   },
-
+  getPlaylistDetails(id) {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    });
+    api.getPlaylistDetails(id).then(res => {
+      if (res.code === 200) {
+        this.setData({
+          playlist: res.playlist
+        })
+        wx.hideLoading();
+      }
+    })
+  },
+  navBack() {
+    wx.navigateBack({
+      delta: 1
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

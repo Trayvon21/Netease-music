@@ -5,8 +5,9 @@
     <view class="ablum-right">
         <view class="album-title">{{item.name}}</view>
         <view class="album-info">
-            <text class="">{{item.artist.name}}</text>
+            <view class="album-name">{{item.artist.name}}</view>
             <text class="">{{item.publishTime}}</text>
+            <text wx:if="{{size!==''}}">歌曲{{size}}</text>
         </view>
     </view>
 </view>

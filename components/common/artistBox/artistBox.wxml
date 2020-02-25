@@ -1,4 +1,4 @@
-<view class="flex">
+<view class="flex" bind:tap="gotoArtist">
     <view>
         <image class="artist-pic" src="{{item.picUrl}}" />
     </view>

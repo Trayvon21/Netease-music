@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "albumBox":"../../components/common/albumBox/albumBox",
+    "mvBox":"../../components/common/mvBox/mvBox"
+  },
+  "navigationStyle":"custom"
+}

@@ -77,7 +77,8 @@ Component({
       result.playlistCount && result.playlistCount > result.playlists.length ? count = result.playlists.length : ''
       result.djRadiosCount && result.djRadiosCount > result.djRadios.length ? count = result.djRadios.length : ''
       result.userprofileCount && result.userprofileCount > result.userprofiles.length ? count = result.userprofiles.length : ''
-      result.mvCount && count > result.mvs.length ? count = result.mvs.length : ''
+      result.mvCount && result.mvCount > result.mvs.length ? count = result.mvs.length : ''
+      console.log(count);
       if (count !== 0) {
         this.triggerEvent("pullUp", {
           id: this.data.active,

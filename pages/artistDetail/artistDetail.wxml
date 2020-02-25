@@ -1,0 +1,70 @@
+<view class="artist-top">
+    <view class="top-pic " animation="{{opacityChange}}">
+        <image class="top-pic" src="{{artists.artist.picUrl}}" />
+    </view>
+    <view class="top-nav flex jc-between">
+        <view bind:tap="navBack">
+            <image class="nav-icon" src="../../assets/images/back-white.png" />
+        </view>
+        <view>
+            <image class="nav-icon" src="../../assets/images/share.png" />
+            <image class="nav-icon" src="../../assets/images/control.png" />
+        </view>
+    </view>
+</view>
+<view class="artist-main">
+    <view animation="{{opacityChange}}">
+        <view class="artist-title">
+            <view class="artist-name">{{artists.artist.name}}</view>
+            <view class="artist-alias">
+                <text class="" wx:for="{{artists.artist.alias}}">{{item}}</text>
+            </view>
+        </view>
+        <view class="artist-follow">+ 关注</view>
+    </view>
+    <view class="artist-nav flex">
+        <view wx:for="{{navList}}" bind:tap="changNav" data-title="{{item.title}}" class="artist-nav-each {{active===item.title?'artist-nav-actived':''}}">
+            <view>
+                <view>{{item.title}}</view>
+                <view class="artist-num" wx:if="{{item.num}}">{{item.num}}</view>
+                <view class="{{active===item.title?'artist-nav-line':''}}"></view>
+            </view>
+        </view>
+    </view>
+    <view class="main-box">
+        <view class="main-title" wx:if="{{active==='主页'||active==='歌曲'}}">播放全部</view>
+        <view class="flex song-each" wx:for="{{artists.hotSongs}}" wx:key="index" wx:if="{{active==='歌曲'?index>=0:active==='主页'?index<3:''}}">
+            <view class="song-index">{{index+1}}</view>
+            <view>
+                <image class="song-pic" src="{{item.al.picUrl}}" />
+            </view>
+            <view>
+                <view class="song-name">{{item.name}}</view>
+                <view class="song-desc">
+                    <text wx:for="{{item.ar}}">{{item.name}}</text>
+                    <text>-{{item.al.name}}</text>
+                </view>
+            </view>
+            <view>
+                <image class="song-control" src="../../assets/images/control.png" />
+            </view>
+        </view>
+        <view wx:if="{{active==='主页'}}">
+            <view class="readmore" bind:tap="moreSongs">更多热歌</view>
+            <view class="main-title">歌手简介</view>
+            <view>{{desc.briefDesc}}</view>
+        </view>
+        <view wx:if="{{active==='歌曲'}}">
+            <view class="readmore" wx:if="{{artists.hotSongs.length===0}}">暂无歌曲</view>
+            <view wx:else class="readmore" bind:tap="more">更多歌曲</view>
+        </view>
+        <view wx:if="{{active==='专辑'}}">
+            <albumBox wx:for="{{hotAlbums}}" wx:key="index" item="{{item}}" size="{{item.size}}" />
+            <view class="readmore" wx:if="{{hotAlbums.length===0}}">暂无专辑</view>
+        </view>
+        <view wx:if="{{active==='视频'}}" class="flex jc-between flex-w">
+            <mvBox wx:for="{{mvs}}" item="{{item}}" wx:key="index" />
+            <view class="readmore" wx:if="{{mvs.length===0}}">暂无视频</view>
+        </view>
+    </view>
+</view>

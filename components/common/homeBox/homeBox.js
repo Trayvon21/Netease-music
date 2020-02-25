@@ -14,6 +14,10 @@ Component({
     flag: {
       type: Boolean,
       value: false
+    },
+    type: {
+      type: String,
+      value: ''
     }
   },
 
@@ -28,6 +32,17 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    goDetail(e) {
+      if (this.properties.type === 'playlist') {
+        wx.navigateTo({
+          url: `/pages/playListDetail/playListDetail?id=${e.currentTarget.dataset.id}`
+        });
+      } else if (this.properties.type === 'song') {
+        console.log(1);
+      }else if(this.properties.type==='dj'){
+        console.log('dj');
+      }
 
+    }
   }
 })

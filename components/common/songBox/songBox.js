@@ -25,6 +25,5 @@ Component({
   methods: {
   },
   ready(){
-    console.log(this.properties.item);
   }
 })

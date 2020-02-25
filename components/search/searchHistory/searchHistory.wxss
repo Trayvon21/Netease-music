@@ -2,7 +2,12 @@
     margin: 30rpx 0;
 }
 .history-main{
-    flex-wrap: wrap;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+.history-main::-webkit-scrollbar{
+    display: none;
 }
 .hisotry-each{
     padding: 5rpx 20rpx;

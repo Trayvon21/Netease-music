@@ -1,5 +1,5 @@
 <view class="song-main flex jc-between">
-    <view>
+    <view class="song-left">
         <view class="song-name" data-id="{{item.id}}" bind:tap="goto">{{item.name}}</view>
         <view class="song-info">
             <text class="song-artist" wx:for="{{item.ar?item.ar:item.artists}}">{{item.name}}</text>

@@ -36,7 +36,7 @@ Page({
     recommends: [],
     actived: '1',
     //搜索数据
-    searchFlag: true,
+    searchFlag: false,
     keywords: {},
     value: "",
     result: null,
@@ -116,9 +116,8 @@ Page({
       keyword = this.data.keywords.realkeyword
     }
     let histories = this.data.histories
-    if (!histories.includes(keyword)) {
-      histories.push(keyword)
-    }
+    histories = histories.filter(item => item !== keyword)
+    histories.unshift(keyword)
     wx.setStorageSync("histories", JSON.stringify(histories));
     this.setData({
       value: keyword,
@@ -159,14 +158,14 @@ Page({
     let result = this.data.result
     api.keywordSearch(keyword, info.id, info.count).then(res => {
       if (res.code === 200) {
-        info.id === 1 ? result.songs.push(...res.result.songs) : ''
-        info.id === 1014 ? result.videos.push(...res.result.videos) : ''
-        info.id === 100 ? result.artists.push(...res.result.artists) : ''
-        info.id === 10 ? result.albums.push(...res.result.albums) : ''
-        info.id === 1000 ? result.playlists.push(...res.result.playlists) : ''
-        info.id === 1009 ? result.djRadios.push(...res.result.djRadios) : ''
-        info.id === 1002 ? result.userprofiles.push(...res.result.userprofiles) : ''
-        info.id === 1004 ? result.mvs.push(...res.result.mvs) : ''
+        info.id === 1 ? result.songs.push(...res.result.songs) :
+          info.id === 1014 ? result.videos.push(...res.result.videos) :
+          info.id === 100 ? result.artists.push(...res.result.artists) :
+          info.id === 10 ? result.albums.push(...res.result.albums) :
+          info.id === 1000 ? result.playlists.push(...res.result.playlists) :
+          info.id === 1009 ? result.djRadios.push(...res.result.djRadios) :
+          info.id === 1002 ? result.userprofiles.push(...res.result.userprofiles) :
+          info.id === 1004 ? result.mvs.push(...res.result.mvs) : ''
         this.setData({
           result: result
         })
@@ -206,13 +205,17 @@ Page({
    */
   onReady: function () {
     this.getData()
-    //测试接口
-    this.setData({
-      value: "陈奕迅"
-    })
-    let e = null
-    this.getResult(e)
-    //测试接口结束
+    this.getPersonalized()
+    this.getNewDisc()
+    this.getNewSong()
+    this.getDj()
+    this.getSearchHot()
+    // this.setData({
+    //   value: "陈奕迅"
+    // })
+    // let e = null
+    // this.getResult(e)
+    // //测试接口结束
   },
   //获取数据
   getData() {
@@ -226,12 +229,16 @@ Page({
         this.setData({
           banners: res.banners
         })
-        this.getPersonalized()
+        wx.hideLoading();
       }
     })
 
   },
   getPersonalized() {
+    wx.showLoading({
+      title: "加载中...",
+      mask: true
+    });
     //获取推荐歌单
     api.getPersonalized().then(res => {
       if (res.code === 200) {
@@ -244,63 +251,88 @@ Page({
         this.setData({
           recommendList: res.result
         })
-        this.getNewDisc()
+        wx.hideLoading();
       }
     })
   },
   getNewDisc() {
+    wx.showLoading({
+      title: "加载中...",
+      mask: true
+    });
     api.newDisc().then(res => {
       if (res.code === 200) {
         this.setData({
           newDisc: res.albums
         })
-        this.getNewSong()
+        wx.hideLoading();
       }
     })
   },
   getNewSong() {
+    wx.showLoading({
+      title: "加载中...",
+      mask: true
+    });
     api.newSong().then(res => {
       if (res.code === 200) {
         this.setData({
           newsong: res.result
         })
-        this.getDj();
+        wx.hideLoading();
       }
     })
   },
   getDj() {
+    wx.showLoading({
+      title: "加载中...",
+      mask: true
+    });
     api.djprogram().then(res => {
       if (res.code === 200) {
         this.getRecommend()
         this.setData({
           djprograms: res.result
         })
+        wx.hideLoading();
       }
-
     })
   },
   getRecommend() {
+    wx.showLoading({
+      title: "加载中...",
+      mask: true
+    });
     api.recommend().then(res => {
       if (res.code === 200) {
         this.setData({
           recommends: res.programs
         })
-        this.getSearchHot()
+        wx.hideLoading();
       }
     })
   },
 
   getSearchHot() {
+    wx.showLoading({
+      title: "加载中...",
+      mask: true
+    });
     api.hotSearchList().then(res => {
       if (res.code === 200) {
         this.getSearchDefalut()
         this.setData({
           hotList: res.data
         })
+        wx.hideLoading();
       }
     })
   },
   getSearchDefalut() {
+    wx.showLoading({
+      title: "加载中...",
+      mask: true
+    });
     api.searchDefalut().then(res => {
       if (res.code === 200) {
         this.setData({

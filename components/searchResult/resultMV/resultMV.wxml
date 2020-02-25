@@ -1,2 +1,4 @@
-<!--components/searchResult/resultMV/resultMV.wxml-->
-<text>components/searchResult/resultMV/resultMV.wxml</text>
+<view class="flex flex-w jc-around">
+    <mvBox  wx:for="{{result.mvs}}" item="{{item}}"></mvBox>
+</view>
+  

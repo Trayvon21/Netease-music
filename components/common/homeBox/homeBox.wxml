@@ -1,5 +1,5 @@
 <view class="recommend-playlist flex flex-w jc-around">
-    <view wx:for="{{6}}" wx:key="index" class="rp-box">
+    <view wx:for="{{6}}" wx:key="index" class="rp-box" data-id="{{List[item].id}}" bind:tap="goDetail">
         <view wx:if="{{!flag}}">
             <view class="rp-playCount flex" wx:if="{{List[item].playCount}}">
                 <image class="rp-icon" src="../../../assets/images/play.png" />

@@ -1,10 +1,16 @@
 // components/common/mvBox/mvBox.js
 Component({
+  options: {
+    addGlobalClass: true
+  },
   /**
    * 组件的属性列表
    */
   properties: {
-
+    item: {
+      type: Object,
+      value: {}
+    }
   },
 
   /**

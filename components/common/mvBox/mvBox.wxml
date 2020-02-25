@@ -1,2 +1,7 @@
-<!--components/common/mvBox/mvBox.wxml-->
-<text>components/common/mvBox/mvBox.wxml</text>
+<view class="mv-box">
+    <view class="mv-top">
+        <view class="mv-count">{{item.playCount}}</view>
+        <image class="mv-pic" src="{{item.cover?item.cover:item.imgurl}}"></image>
+    </view>
+    <view class="mv-title">{{item.name}}</view>
+</view>

@@ -7,14 +7,24 @@
     border-radius: 20rpx;
 }
 .ablum-right{
-    margin-top: 30rpx;
     margin-left: 40rpx;
     line-height: 60rpx;
 }
 .album-title{
+    width: 500rpx;
     height: 60rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .album-info{
     height: 60rpx;
-    font-size: 30rpx;
+    font-size: 28rpx;
+}
+.album-name{
+    width: 500rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+   
 }
