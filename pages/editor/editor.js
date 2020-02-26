@@ -1,51 +1,20 @@
-import api from "../../http/api"
-
-// pages/playListDetail/playListDetail.js
+// pages/editor/editor.js
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    playlist: {},
-    album: {},
-    songs: []
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    options.id ? this.getPlaylistDetails(options.id) : this.getAlbum(options.albumId)
+
   },
-  getAlbum(id) {
-    api.getAlbum(id).then(res => {
-      if (res.code === 200) {
-        this.setData({
-          album: res.album,
-          songs: res.songs
-        })
-      }
-    })
-  },
-  getPlaylistDetails(id) {
-    wx.showLoading({
-      title: '加载中',
-      mask: true
-    });
-    api.getPlaylistDetails(id).then(res => {
-      if (res.code === 200) {
-        this.setData({
-          playlist: res.playlist
-        })
-        wx.hideLoading();
-      }
-    })
-  },
-  navBack() {
-    wx.navigateBack({
-      delta: 1
-    });
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,15 +1,17 @@
+<wxs module="numFr" src="../../../lib/filter/filter.wxs"></wxs>
+<wxs module="DateFr" src="../../../lib/filter/filter.wxs"></wxs>
 <view>
     <view class="flex">
         <view class="video-left">
             <image class="video-pic" src="{{item.coverUrl}}" />
             <view class="playCount flex">
                 <image class="play-icon" src="../../../assets/images/play.png" />
-                <view>{{item.playTime}}</view>
+                <view>{{numFr.getCount(item.playTime)}}</view>
             </view>
         </view>
         <view>
             <view class="video-title">{{item.title}}</view>
-            <view class="video-time">{{item.durationms}}by {{item.creator[0].userName}}</view>
+            <view class="video-time">{{DateFr.getTime(item.durationms)}}by {{item.creator[0].userName}}</view>
         </view>
     </view>
 </view>

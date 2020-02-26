@@ -1,0 +1,28 @@
+<view class="flex player-top">
+    <view>
+        <image />
+    </view>
+    <view>
+        <view></view>
+        <view></view>
+    </view>
+    <view>
+        <image />
+    </view>
+</view>
+<view class="flex">
+    <view>
+        <image />
+    </view>
+    <view>
+        <view></view>
+        <view></view>
+    </view>
+    <view>订阅</view>
+</view>
+<view>
+    <view animation="{{}}">
+        <image />
+    </view>
+</view>
+<view></view>

@@ -73,7 +73,7 @@
             </view>
             <view class="more">更多新歌</view>
         </view>
-        <homeBox List="{{actived==='1'?newDisc:newsong}}" type="{{actived==='1'?'playlist':'song'}}" />
+        <homeBox List="{{actived==='1'?newDisc:newsong}}" type="{{actived==='1'?'album':'song'}}" />
         <view class="zone-title flex jc-between">
             <view class="desc">新歌新势力</view>
             <view class="more">新音乐</view>
@@ -84,11 +84,11 @@
             <view class="desc">推荐电台</view>
             <view class="more">电台广场</view>
         </view>
-        <homeBox List="{{djprograms}}" type="dj" flag="true" />
+        <homeBox List="{{recommends}}" type="dj" flag="true" />
         <view class="zone-title flex jc-between">
             <view class="desc">推荐节目</view>
             <view class="more">更多节目</view>
         </view>
-        <homeBox List="{{recommends}}" type="dj" flag="true" />
+        <homeBox List="{{djprograms}}" type="program" flag="true" />
     </view>
 </view>

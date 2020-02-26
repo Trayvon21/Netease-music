@@ -1,11 +1,51 @@
+import api from "../../http/api";
+
 // pages/my/my.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    uid: '',
+    user: {}
+  },
+  toLogin() {
+    wx.navigateTo({
+      url: '../../pages/login/login'
+    });
+  },
+  getUserInfo() {
+    api.userInfo(this.data.uid).then(res => {
+      if (res.code === 200) {
+        this.setData({
+          user: res
+        })
+      }
+    }).catch(err => {
+      console.log(err);
+    });
+  },
+  outLogin() {
+    if (wx.getStorageSync("uid")) {
+      wx.showModal({
+        title: '退出提示',
+        content: '您确定要退出登录吗',
+        success: (res => {
+          if (res.confirm) {
+            wx.removeStorageSync("uid");
+            this.setData({
+              uid: ''
+            })
+          } else if (res.cancel) {}
+        })
+      })
+    }
 
+  },
+  changeEditor() {
+    wx.navigateTo({
+      url: `../../pages/editor/editor?uid=${this.data.uid}`,
+    });
   },
   /**
    * 生命周期函数--监听页面加载
@@ -25,7 +65,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (wx.getStorageSync("uid")) {
+      this.setData({
+        uid: wx.getStorageSync("uid")
+      })
+      this.getUserInfo();
+    }
   },
 
   /**

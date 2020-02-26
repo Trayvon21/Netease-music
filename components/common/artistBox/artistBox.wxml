@@ -1,7 +1,9 @@
-<view class="flex" bind:tap="gotoArtist">
+<view class="flex artist-box a-center" bind:tap="gotoArtist">
     <view>
-        <image class="artist-pic" src="{{item.picUrl}}" />
+        <image class="artist-pic" mode="aspectFill" src="{{item.picUrl}}" />
     </view>
     <view class="artist-name">{{item.name}}</view>
-    <view class="artist-other" wx:for="{{item.alia}}" wx:for-item="i">({{i}})</view>
+    <view class="artist-other" wx:for="{{item.alia?item.alia:item.alias}}" wx:for-item="i">
+        ({{i}})
+    </view>
 </view>

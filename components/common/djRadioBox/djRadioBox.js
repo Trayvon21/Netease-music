@@ -23,6 +23,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    gotoDetail() {
+      wx.navigateTo({
+        url: `/pages/djRadioDetail/djRadioDetail?id=${this.properties.item.id}`
 
+      });
+    }
   }
 })

@@ -40,7 +40,7 @@ Page({
   },
   getAlbum(id, offset = 0) {
     let hotAlbums = this.data.hotAlbums
-    api.getAlbum(id, offset).then(res => {
+    api.getAlbums(id, offset).then(res => {
       if (res.code === 200) {
         hotAlbums.push(...res.hotAlbums)
         this.setData({

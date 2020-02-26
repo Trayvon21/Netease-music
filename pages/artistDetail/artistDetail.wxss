@@ -79,7 +79,7 @@
     text-align: center;
     flex: 1;
     font-size: 30rpx;
-    height: 6vh;
+    height: 80rpx;
     position: relative;
 }
 

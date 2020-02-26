@@ -1,16 +1,28 @@
-.flex{
+.flex {
     display: flex;
 }
-.flex1{
+
+.flex1 {
     flex: 1;
 }
-.jc-between{
+
+.jc-between {
     justify-content: space-between;
 }
-.jc-around{
+
+.jc-around {
     justify-content: space-around;
-    
+
 }
-.flex-w{
+
+.flex-w {
     flex-wrap: wrap;
+}
+
+.a-center {
+    align-items: center;
+}
+
+.t-center {
+    text-align: center;
 }

@@ -68,6 +68,48 @@
 					"pathName": "pages/playListDetail/playListDetail",
 					"query": "id=2927705317",
 					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/djRadioDetail/djRadioDetail",
+					"pathName": "pages/djRadioDetail/djRadioDetail",
+					"query": "id=344875085",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/player/player",
+					"pathName": "pages/player/player",
+					"query": "id=1425643256",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/artists/artists",
+					"pathName": "pages/artists/artists",
+					"query": "id=1425643256",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "id=1425643256",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/register/register",
+					"pathName": "pages/register/register",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

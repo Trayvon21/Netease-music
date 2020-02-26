@@ -67,7 +67,11 @@
 
 .top-info-title {
     font-size: 30rpx;
-    line-height: 60rpx;
+    line-height: 40rpx;
+    width: 460rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .top-info-nickname {
@@ -79,6 +83,7 @@
 .top-info-desc {
     margin-top: 30rpx;
     font-size: 24rpx;
+    width: 460rpx;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

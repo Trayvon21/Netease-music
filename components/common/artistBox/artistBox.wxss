@@ -1,17 +1,22 @@
+.artist-box{
+    padding: 20rpx;
+    width: 100%;
+    height: 140rpx;
+    border-bottom: 1rpx solid #ededed;
+}
 .artist-pic{
-    width: 180rpx;
-    height: 180rpx;
-    margin: 30rpx 10rpx;
+    width: 120rpx;
+    height: 120rpx;
+    margin: 10rpx;
     border-radius: 50%;
 }
 .artist-name{
     line-height: 40rpx;
     color: #84a6c7;
     height: 40rpx;
-    margin: 100rpx 40rpx;
+    margin-left:40rpx;
 }
 .artist-other{
     line-height: 40rpx;
     height: 40rpx;
-    margin: 100rpx 10rpx;
 }

@@ -172,6 +172,14 @@ Page({
         console.log(result);
         wx.hideLoading();
       }
+      wx.hideLoading();
+    }).catch(err => {
+      wx.showToast({
+        title: '列表丢失',
+        icon: 'none',
+        duration: 1500
+      });
+      wx.hideLoading();
     })
   },
   showSug() {
@@ -208,14 +216,9 @@ Page({
     this.getPersonalized()
     this.getNewDisc()
     this.getNewSong()
-    this.getDj()
+    this.djRecommend()
     this.getSearchHot()
-    // this.setData({
-    //   value: "陈奕迅"
-    // })
-    // let e = null
-    // this.getResult(e)
-    // //测试接口结束
+    this.programRecommend()
   },
   //获取数据
   getData() {
@@ -242,12 +245,6 @@ Page({
     //获取推荐歌单
     api.getPersonalized().then(res => {
       if (res.code === 200) {
-        res.result.map(item => {
-          item.playCount > 100000000 ?
-            item.playCount = `${(item.playCount/100000000).toFixed(2)}亿` :
-            item.playCount > 10000 ?
-            item.playCount = `${(item.playCount/10000).toFixed(0)}万` : ''
-        })
         this.setData({
           recommendList: res.result
         })
@@ -283,30 +280,29 @@ Page({
       }
     })
   },
-  getDj() {
+  djRecommend() {
     wx.showLoading({
       title: "加载中...",
       mask: true
     });
-    api.djprogram().then(res => {
+    api.djRecommend().then(res => {
       if (res.code === 200) {
-        this.getRecommend()
         this.setData({
-          djprograms: res.result
+          recommends: res.djRadios
         })
         wx.hideLoading();
       }
     })
   },
-  getRecommend() {
+  programRecommend() {
     wx.showLoading({
       title: "加载中...",
       mask: true
     });
-    api.recommend().then(res => {
+    api.programRecommend().then(res => {
       if (res.code === 200) {
         this.setData({
-          recommends: res.programs
+          djprograms: res.programs
         })
         wx.hideLoading();
       }

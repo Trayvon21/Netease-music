@@ -1,7 +1,8 @@
+<wxs module="numFr" src="../../../lib/filter/filter.wxs"></wxs>
 <view class="mv-box">
     <view class="mv-top">
-        <view class="mv-count">{{item.playCount}}</view>
-        <image class="mv-pic" src="{{item.cover?item.cover:item.imgurl}}"></image>
+        <view class="mv-count">{{numFr.getCount(item.playCount)}}</view>
+        <image class="mv-pic" mode="aspectFill" src="{{item.cover?item.cover:item.imgurl}}"></image>
     </view>
     <view class="mv-title">{{item.name}}</view>
 </view>

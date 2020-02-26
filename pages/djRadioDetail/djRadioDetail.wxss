@@ -1,1 +1,257 @@
-/* pages/djRadioDetail/djRadioDetail.wxss */
+.playlist-top {
+    height: 600rpx;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.top-nav {
+    position: absolute;
+    height: 60rpx;
+    top: 0;
+    left: 0;
+    padding: 40rpx;
+    width: 100%;
+    line-height: 60rpx;
+    color: white;
+    font-size: 40rpx;
+}
+
+.top-nav-icon {
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 30rpx;
+}
+
+.top-pic {
+    width: 100%;
+    height: 100%;
+}
+
+.top-info {
+    position: absolute;
+    bottom: 80rpx;
+    left: 0;
+    width: 100%;
+    color: white;
+    height: 150rpx;
+}
+
+.info-name {
+    font-size: 38rpx;
+    line-height: 50rpx;
+    white-space: nowrap;
+    width: 400rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info-count {
+    font-size: 28rpx;
+    line-height: 50rpx;
+    color: #bbbbbb;
+}
+
+.info-follow {
+    padding: 10rpx 20rpx;
+    border-radius: 30rpx;
+    height: 40rpx;
+    font-size: 30rpx;
+    background-color: #f75665;
+}
+
+.artist-nav {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: white;
+}
+
+.artist-nav-each {
+    text-align: center;
+    flex: 1;
+    font-size: 30rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    position: relative;
+}
+
+.artist-nav-actived {
+    color: #f75665;
+}
+
+.artist-num {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: 35rpx;
+    color: rgb(133, 133, 133);
+    line-height: 80rpx;
+    font-size: 22rpx;
+}
+
+.artist-nav-line {
+    position: absolute;
+    left: 50%;
+    margin-left: -30rpx;
+    bottom: -1rpx;
+    width: 60rpx;
+    background: #f75665;
+    height: 5rpx;
+}
+
+.playlist-main {
+    z-index: 10;
+    position: absolute;
+    top: 600rpx;
+    margin-top: -80rpx;
+    width: 100%;
+
+}
+
+.main {
+    border-radius: 30rpx 30rpx 0 0;
+    box-shadow: 0 0 0 3rpx rgba(150, 150, 150, 0.253);
+    background: white;
+}
+
+.main-box {
+    padding: 0 20rpx;
+    background: white;
+}
+
+.songs-index {
+    font-size: 32rpx;
+    color: gray;
+    font-weight: 700;
+    line-height: 100rpx;
+    width: 80rpx;
+    height: 100rpx;
+    text-align: center;
+}
+
+.songs-top {
+    overflow: hidden;
+    height: 40rpx;
+    font-size: 32rpx;
+}
+
+.songs-icon {
+    font-size: 30rpx;
+    margin: 0 10rpx;
+}
+
+.song-title {
+    font-size: 30rpx;
+    line-height: 40rpx;
+    width: 560rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.song-info {
+    margin-left: 20rpx;
+    font-size: 26rpx;
+    height: 60rpx;
+    color: #bbbbbb;
+    width: 500rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.song-info view {
+    margin-right: 10rpx;
+}
+
+.song-each {
+    position: relative;
+    margin-top: 20rpx;
+}
+
+.control {
+    position: absolute;
+    right: 20rpx;
+    top: 50%;
+    width: 40rpx;
+    height: 40rpx;
+    margin-top: -20rpx;
+}
+
+.desc-title {
+    font-size: 32rpx;
+    margin: 10rpx 0;
+    font-weight: 700;
+}
+
+.desc-creater {
+    height: 120rpx;
+}
+
+.desc-pic {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    margin: 20rpx;
+}
+
+.desc-name {
+    font-size: 32rpx;
+    line-height: 50rpx;
+}
+
+.desc-type {
+    font-size: 28rpx;
+    color: #bbbbbb;
+    line-height: 50rpx;
+}
+
+.desc-cate {
+    color: #f75665;
+    border: 1rpx solid #f75665;
+    padding: 0 10rpx;
+    border-radius: 24rpx;
+}
+
+.desc-main {
+    margin-top: 20rpx;
+    line-height: 1.5;
+    text-indent: 2em;
+}
+
+.comment-each {
+    margin: 20rpx auto;
+}
+
+.comment-pic {
+    width: 65rpx;
+    border-radius: 50%;
+    margin-left: 5%;
+}
+
+.item-right {
+    padding: 10rpx 0 10rpx 10rpx;
+    border-bottom: 1px solid #ebedf0;
+    flex: 1;
+}
+
+.nickname {
+    font-size: 29rpx;
+    color: rgb(59, 59, 59);
+}
+
+.content {
+    font-size: 31rpx;
+    margin: 20rpx auto;
+}
+
+.time {
+    font-size: 26rpx;
+    color: rgb(100, 100, 100);
+    margin-bottom: 10rpx;
+}
+
+.readmore {
+    color: #bbbbbb;
+}

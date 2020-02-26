@@ -1,2 +1,92 @@
-<!--pages/djRadioDetail/djRadioDetail.wxml-->
-<text>pages/djRadioDetail/djRadioDetail.wxml</text>
+<wxs module="DateFr" src=".../../../../lib/filter/filter.wxs"></wxs>
+<wxs module="numFr" src=".../../../../lib/filter/filter.wxs"></wxs>
+<view class="playlist-top">
+    <view class="top-pic">
+        <image class="top-pic" src="{{djRadio.picUrl}}" />
+        <view class="top-nav flex jc-between">
+            <view bind:tap="navBack" class="flex">
+                <image class="top-nav-icon" src="../../assets/images/back-white.png" />
+                <view>电台</view>
+            </view>
+            <view>
+                <image class="top-nav-icon" src="../../assets/images/share.png" />
+                <image class="top-nav-icon" src="../../assets/images/control.png" />
+            </view>
+        </view>
+    </view>
+    <view class="top-info flex jc-around">
+        <view>
+            <view class="info-name">{{djRadio.name}}</view>
+            <view class="info-count">{{djRadio.subCount}}人已订阅</view>
+        </view>
+        <view class="info-follow a-center">
+            <van-icon name="plus" />
+            <text class="right-text">订阅</text>
+        </view>
+    </view>
+</view>
+<view class="playlist-main">
+    <view class="main flex">
+        <view wx:for="{{navList}}" bind:tap="changNav" data-title="{{item.title}}" class="artist-nav-each {{active===item.title?'artist-nav-actived':''}}">
+            <view>
+                <view>{{item.title}}</view>
+                <view class="artist-num" wx:if="{{item.num}}">{{item.num}}</view>
+                <view class="{{active===item.title?'artist-nav-line':''}}"></view>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{active==='节目'}}" class="main-box">
+        <view class="flex jc-between">
+            <view>共{{programs.length}}期</view>
+            <view class="flex songs-top a-center">
+                <van-icon name="down" class="songs-icon" />
+                <view>排序</view>
+                <van-icon name="bars" class="songs-icon" />
+                <view>多选</view>
+            </view>
+        </view>
+        <view wx:for="{{programs}}" wx:key="index" class="flex song-each">
+            <view class="songs-index">{{index+1}}</view>
+            <view>
+                <view class="song-title">{{item.name}}</view>
+                <view class="flex a-center song-info">
+                    <view>{{DateFr.getDate1(item.createTime)}}</view>
+                    <van-icon name="play-circle-o" />
+                    <view>{{numFr.getCount(item.listenerCount)}}</view>
+                    <van-icon name="underway-o" details-ico />
+                    <view>{{numFr.getCount(item.duration)}}</view>
+                </view>
+            </view>
+            <image src="../../assets/images/control.png" class="control" />
+        </view>
+    </view>
+    <view wx:else class="main-box">
+        <view class="desc-title">主播</view>
+        <view class="flex desc-creater a-center">
+            <image class="desc-pic" src="{{djRadio.dj.avatarUrl}}" />
+            <view>
+                <view class="desc-name">{{djRadio.dj.nickname}}</view>
+                <view class="desc-type">{{djRadio.dj.description}}</view>
+            </view>
+        </view>
+        <view class="desc-title">电台内容简介</view>
+        <view>
+            <view>
+                <view>
+                    分类：
+                    <text class="desc-cate">{{djRadio.category}}</text>
+                </view>
+                <view class="desc-main">{{djRadio.desc}}</view>
+            </view>
+        </view>
+        <view wx:if="{{djRadio.commentDatas}}" class="desc-title">精彩评论</view>
+        <view class="comment-each flex" wx:for="{{djRadio.commentDatas}}" wx:key="index">
+            <image class="comment-pic" src="{{item.userProfile.avatarUrl}}" mode="widthFix" />
+            <view class="item-right">
+                <view class="nickname">{{item.userProfile.nickname}}</view>
+                <view class="content">{{item.content}}</view>
+                <view class="time">———{{item.programName}}</view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,6 @@
+.btn {
+    margin-top: 40rpx;
+    width: 200rpx !important;
+    height: 80rpx !important;
+    border-radius: 20rpx !important;
+}

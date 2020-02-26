@@ -5,7 +5,11 @@
     "pages/my/my",
     "pages/artistDetail/artistDetail",
     "pages/playListDetail/playListDetail",
-    "pages/djRadioDetail/djRadioDetail"
+    "pages/djRadioDetail/djRadioDetail",
+    "pages/player/player",
+    "pages/editor/editor",
+    "pages/login/login",
+    "pages/register/register"
   ],
   "window": {
     "backgroundTextStyle": "light",

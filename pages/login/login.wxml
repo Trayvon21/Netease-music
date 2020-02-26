@@ -1,0 +1,14 @@
+<van-tabs active="{{ active }}" bind:change="onChange">
+    <van-tab title="手机号登陆" />
+    <van-tab title="邮箱登陆" />
+</van-tabs>
+<van-field value="{{user}}" bind:change="changeUser" left-icon="{{active===0?'phone-o':'envelop-o'}}" required clearable label="{{active===0?'手机号':'邮箱'}}" placeholder="请输入{{active===0?'手机号':'网易云邮箱'}}" />
+<van-field value="{{password}}" bind:change="changePass"  left-icon="../../../assets/images/password.png" bind:confirm="login" type="password" label="密码" placeholder="请输入密码" required />
+<view class="flex jc-around">
+    <van-button custom-class="btn" color="#F7A26F" size="normal" block bind:tap="toRegister">
+        前往注册
+    </van-button>
+    <van-button custom-class="btn" color="#F76147" size="normal" block bind:tap="login">
+        立即登录
+    </van-button>
+</view>

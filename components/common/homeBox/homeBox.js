@@ -37,10 +37,22 @@ Component({
         wx.navigateTo({
           url: `/pages/playListDetail/playListDetail?id=${e.currentTarget.dataset.id}`
         });
+      } else if (this.properties.type === 'album') {
+        wx.navigateTo({
+          url: `/pages/playListDetail/playListDetail?albumId=${e.currentTarget.dataset.id}`
+        });
+      } else if (this.properties.type === 'dj') {
+        wx.navigateTo({
+          url: `/pages/djRadioDetail/djRadioDetail?id=${e.currentTarget.dataset.id}`
+        });
       } else if (this.properties.type === 'song') {
-        console.log(1);
-      }else if(this.properties.type==='dj'){
-        console.log('dj');
+        wx.navigateTo({
+          url: `/pages/player/player?songId=${e.currentTarget.dataset.id}`
+        });
+      } else if (this.properties.type === 'program') {
+        wx.navigateTo({
+          url: `/pages/player/player?programId=${e.currentTarget.dataset.id}`
+        });
       }
 
     }

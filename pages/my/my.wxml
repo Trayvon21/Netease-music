@@ -1,2 +1,39 @@
-<!--pages/my/my.wxml-->
-<text bind:tap="go">pages/my/my.wxml</text>
+<view class="my-container" wx:if="{{uid===''}}">
+    <view class="msg">你还没有登录哦！</view>
+    <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" bind:tap="toLogin">
+        立即登录
+    </van-button>
+</view>
+<view wx:else class="my-container">
+    <view class="flex user-info a-center">
+        <image class="user-pic" src="{{user.profile.avatarUrl}}" />
+        <view>
+            <view class="user-name">{{user.profile.nickname}}</view>
+            <text class="user-level">Lv:{{user.level}}</text>
+        </view>
+        <view class="user-control">签到</view>
+    </view>
+    <view class="flex jc-around user-nav">
+        <view>
+            <view class="nav-top">{{user.profile.eventCount}}</view>
+            <view>动态</view>
+        </view>
+        <view>
+            <view class="nav-top">{{user.profile.follows}}</view>
+            <view>关注</view>
+        </view>
+        <view>
+            <view class="nav-top">{{user.profile.followeds}}</view>
+            <view>粉丝</view>
+        </view>
+        <view bind:tap="changeEditor">
+            <view class="nav-top">
+                <image class="edit-icon" src="../../assets/images/edit.png" />
+            </view>
+            <view>资料编辑</view>
+        </view>
+    </view>
+    <view>
+        <van-button color="#F77626" custom-class="{{'btn'}}" bind:tap="outLogin">退出登录</van-button>
+    </view>
+</view>

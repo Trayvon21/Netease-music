@@ -1,11 +1,13 @@
+<wxs module="numFr" src="../../../lib/filter/filter.wxs"></wxs>
 <view class="flex playlist-main" bind:tap="goPlaylist">
     <view>
         <image class="playlist-pic" src="{{item.coverImgUrl}}" />
     </view>
     <view>
-        <view class="playlist-name" data-id="{{item.id}}">{{item.name}}</view>
+        <view class="playlist-name">{{item.name}}</view>
+        <view class="playlist-desc">{{item.description!==null?item.description:' '}}</view>
         <view class="playlist-info">
-            {{item.trackCount}}首 by {{item.creator.nickname}},播放{{(item.playCount/10000)}}万次
+            {{item.trackCount}}首 by {{item.creator.nickname}},播放{{numFr.getCount(item.playCount)}}次
         </view>
     </view>
 </view>

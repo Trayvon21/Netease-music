@@ -1,4 +1,4 @@
-<view class="dj-main flex">
+<view class="dj-main flex" bind:tap="gotoDetail">
     <view>
         <image class="dj-pic" src="{{item.picUrl}}" />
     </view>

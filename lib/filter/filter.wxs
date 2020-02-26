@@ -1,0 +1,57 @@
+var DateFr = {
+
+    getDate: function (time) {
+
+        if (!time) return '';
+        var date = getDate(time);
+        var M = date.getMonth() + 1;
+        var y = date.getFullYear();
+        var d = date.getDate();
+        if (M < 10) M = "0" + M;
+        if (d < 10) d = "0" + d;
+        return y + '.' + M + '.' + d;
+    },
+    /**
+     * minute
+     * second
+     */
+    getTime: function (time) {
+        if (!time) return '';
+        var temp = Math.ceil(time / 100);
+        var second = temp % 60;
+        var minute = Math.ceil(temp / 60);
+        if (minute < 10) minute = "0" + minute
+        if (second < 10) second = "0" + second
+        return minute + ":" + second;
+    },
+    getDate1: function (time) {
+        if (!time) return '';
+        var date = getDate(time);
+        var dateNow = getDate()
+        var yearNow = dateNow.getFullYear()
+        var M = date.getMonth() + 1;
+        var y = date.getFullYear();
+        var d = date.getDate();
+        if (M < 10) M = "0" + M;
+        if (d < 10) d = "0" + d;
+        if (yearNow === y) return M + '-' + d;
+        else return y + '-' + M + '-' + d;
+    }
+}
+var NumFr = {
+    getCount: function (num) {
+        if (num > 100000000) {
+            return (num / 100000000).toFixed(1) + '亿';
+        } else if (num > 100000) {
+            return (num / 10000).toFixed(0) + '万';
+        } else {
+            return num;
+        }
+    }
+}
+module.exports = {
+    getTime: DateFr.getTime,
+    getDate: DateFr.getDate,
+    getDate1: DateFr.getDate1,
+    getCount: NumFr.getCount
+}
