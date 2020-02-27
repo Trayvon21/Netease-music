@@ -13,3 +13,4 @@
     <artistBox wx:for="{{artistList}}" wx:key="index" item="{{item}}"></artistBox>
   </scroll-view>
 </view>
+<footerPlayer></footerPlayer>

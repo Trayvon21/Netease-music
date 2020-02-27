@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "albumBox":"../../components/common/albumBox/albumBox",
-    "mvBox":"../../components/common/mvBox/mvBox"
+    "mvBox":"../../components/common/mvBox/mvBox",
+    "footerPlayer":"../../components/common/footerPlayer/footerPlayer"
   },
   "navigationStyle":"custom"
 }

@@ -1,69 +1,72 @@
-<view class="playlist-top">
-    <view class="top-pic">
-        <image class="top-pic filter" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
-        <view class="top-nav flex jc-between">
-            <view bind:tap="navBack" class="flex">
-                <image class="top-nav-icon" src="../../assets/images/back-white.png" />
-                <view>{{playlist.name?'歌单':'专辑'}}</view>
+<view>
+    <view class="playlist-top">
+        <view class="top-pic">
+            <image class="top-pic filter" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
+            <view class="top-nav flex jc-between">
+                <view bind:tap="navBack" class="flex">
+                    <image class="top-nav-icon" src="../../assets/images/back-white.png" />
+                    <view>{{playlist.name?'歌单':'专辑'}}</view>
+                </view>
+                <view>
+                    <image class="nav-icon" src="../../assets/images/share.png" />
+                    <image class="nav-icon" src="../../assets/images/control.png" />
+                </view>
             </view>
-            <view>
-                <image class="nav-icon" src="../../assets/images/share.png" />
-                <image class="nav-icon" src="../../assets/images/control.png" />
-            </view>
-        </view>
-        <view class="top-info flex">
-            <view class="top-info-box">
-                <image class="top-info-pic" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
-                <view class="top-info-playCount">{{playlist.playCount}}</view>
-            </view>
-            <view>
-                <view class="top-info-title">{{playlist.name?playlist.name:album.name}}</view>
-                <view class="flex">
-                    <image class="top-info-icon" src="{{playlist.creator.avatarUrl?playlist.creator.avatarUrl:album.artist.picUrl}}" />
-                    <view class="top-info-nickname">
-                        {{playlist.creator.nickname?playlist.creator.nickname:album.artist.name}}>
+            <view class="top-info flex">
+                <view class="top-info-box">
+                    <image class="top-info-pic" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
+                    <view class="top-info-playCount">{{playlist.playCount}}</view>
+                </view>
+                <view>
+                    <view class="top-info-title">{{playlist.name?playlist.name:album.name}}</view>
+                    <view class="flex">
+                        <image class="top-info-icon" src="{{playlist.creator.avatarUrl?playlist.creator.avatarUrl:album.artist.picUrl}}" />
+                        <view class="top-info-nickname">
+                            {{playlist.creator.nickname?playlist.creator.nickname:album.artist.name}}>
+                        </view>
+                    </view>
+                    <view class="top-info-desc">
+                        {{playlist.description?playlist.description:album.description}}>
                     </view>
                 </view>
-                <view class="top-info-desc">
-                    {{playlist.description?playlist.description:album.description}}>
+            </view>
+        </view>
+        <view class="top-info-nav flex jc-around">
+            <view class="nav-each">
+                <image class="nav-icon" src="../../assets/images/commit.png" />
+                <view>评论</view>
+            </view>
+            <view class="nav-each">
+                <image class="nav-icon" src="../../assets/images/share.png" />
+                <view>分享</view>
+            </view>
+            <view class="nav-each">
+                <image class="nav-icon" src="../../assets/images/download.png" />
+                <view>下载</view>
+            </view>
+            <view class="nav-each">
+                <image class="nav-icon" src="../../assets/images/checkbox.png" />
+                <view>多选</view>
+            </view>
+        </view>
+    </view>
+    <view class="playlist-main">
+        <view class="main-box">
+            <view>播放全部</view>
+            <view wx:for="{{playlist.tracks?playlist.tracks:songs}}" data-id="{{item.id}}" bind:tap="toplay" wx:key="index" class="flex song-each">
+                <view class="song-index">{{index+1}}</view>
+                <view>
+                    <view class="song-name">{{item.name}}</view>
+                    <view class="song-desc">
+                        <text wx:for="{{item.ar}}" wx:for-item="i">{{i.name}}</text>
+                        <text>-{{item.al.name}}</text>
+                    </view>
+                </view>
+                <view>
+                    <image class="song-control" src="../../assets/images/control.png" />
                 </view>
             </view>
         </view>
     </view>
-    <view class="top-info-nav flex jc-around">
-        <view class="nav-each">
-            <image class="nav-icon" src="../../assets/images/commit.png" />
-            <view>评论</view>
-        </view>
-        <view class="nav-each">
-            <image class="nav-icon" src="../../assets/images/share.png" />
-            <view>分享</view>
-        </view>
-        <view class="nav-each">
-            <image class="nav-icon" src="../../assets/images/download.png" />
-            <view>下载</view>
-        </view>
-        <view class="nav-each">
-            <image class="nav-icon" src="../../assets/images/checkbox.png" />
-            <view>多选</view>
-        </view>
-    </view>
 </view>
-<view class="playlist-main">
-    <view class="main-box">
-        <view>播放全部</view>
-        <view wx:for="{{playlist.tracks?playlist.tracks:songs}}" wx:key="index" class="flex song-each">
-            <view class="song-index">{{index+1}}</view>
-            <view>
-                <view class="song-name">{{item.name}}</view>
-                <view class="song-desc">
-                    <text wx:for="{{item.ar}}" wx:for-item="i">{{i.name}}</text>
-                    <text>-{{item.al.name}}</text>
-                </view>
-            </view>
-            <view>
-                <image class="song-control" src="../../assets/images/control.png" />
-            </view>
-        </view>
-    </view>
-</view>
+<footerPlayer></footerPlayer>

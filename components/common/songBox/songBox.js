@@ -21,6 +21,12 @@ Component({
   /**
    * 组件的方法列表
    */
-  methods: {},
+  methods: {
+    goto(){
+      wx.navigateTo({
+        url: `/pages/player/player?songId=${this.properties.item.id}`
+      });
+    }
+  },
   ready() {}
 })

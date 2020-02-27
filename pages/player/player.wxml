@@ -1,28 +1,52 @@
-<view class="flex player-top">
-    <view>
-        <image />
+<view class="player-container">
+    <image class="pic-bg" src="{{show.coverImgUrl}}" />
+    <view class="player-title">{{show.title}}</view>
+    <view class="player-info">{{show.singer}}-{{show.epname}}</view>
+    <view >
+        <image animation="{{controlMove}}" class="control" mode="widthFix" src="../../assets/images/player/player-control.png" />
     </view>
-    <view>
-        <view></view>
-        <view></view>
+    <view class="cd-box">
+        <view class="cd-main" animation="{{cdmove}}">
+            <image class="cd" src="../../assets/images/player/player-cd.png" />
+            <image class="cd-pic" src="{{show.coverImgUrl}}" />
+        </view>
     </view>
-    <view>
-        <image />
+    <view class="flex jc-around info-list">
+        <view>
+            <image class="player-icon" src="../../assets/images/player/player-like.png" />
+        </view>
+        <view>
+            <image class="player-icon" src="../../assets/images/player/player-download.png" />
+        </view>
+        <view>
+            <image class="player-icon" src="../../assets/images/player/player-info.png" />
+        </view>
+        <view>
+            <image class="player-icon" src="../../assets/images/player/player-more.png" />
+        </view>
+    </view>
+    <view class="flex line">
+        <view class="time-size">{{starttime}}</view>
+        <view class="line-width">
+            <van-slider value="{{offset}}" min="0" max="{{max}}" bar-height="4px" active-color="#ee0a24" bind:change="onChange" />
+        </view>
+        <view class="time-size">{{duration}}</view>
+    </view>
+    <view class="flex bottom-nav jc-around">
+        <view>
+            <image class="player-icon" src="../../assets/images/player/player-{{type==='list'?'list':type==='one'?'one':'random'}}.png" />
+        </view>
+        <view>
+            <image class="player-icon" src="../../assets/images/player/player-back.png" />
+        </view>
+        <view bind:tap='playStop'>
+            <image class="player-icon-big" src="../../assets/images/player/player-{{play===true?'stop':'play'}}.png" />
+        </view>
+        <view>
+            <image class="player-icon" src="../../assets/images/player/player-up.png" />
+        </view>
+        <view>
+            <image class="player-icon" src="../../assets/images/player/player-right.png" />
+        </view>
     </view>
 </view>
-<view class="flex">
-    <view>
-        <image />
-    </view>
-    <view>
-        <view></view>
-        <view></view>
-    </view>
-    <view>订阅</view>
-</view>
-<view>
-    <view animation="{{}}">
-        <image />
-    </view>
-</view>
-<view></view>

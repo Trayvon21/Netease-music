@@ -5,6 +5,7 @@
     "van-icon":"../../lib/vant/icon/index",
     "searchResult":"../../components/search/searchResult/searchResult",
     "searchHot":"../../components/search/searchHot/searchHot",
-    "searchHistory":"../../components/search/searchHistory/searchHistory"
+    "searchHistory":"../../components/search/searchHistory/searchHistory",
+    "footerPlayer":"../../components/common/footerPlayer/footerPlayer"
   }
 }

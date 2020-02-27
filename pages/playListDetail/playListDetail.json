@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "footerPlayer":"../../components/common/footerPlayer/footerPlayer"
+  },
   "navigationStyle":"custom"
 }

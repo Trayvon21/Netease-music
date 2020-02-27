@@ -33,7 +33,7 @@
     </view>
     <view class="main-box">
         <view class="main-title" wx:if="{{active==='主页'||active==='歌曲'}}">播放全部</view>
-        <view class="flex song-each" wx:for="{{artists.hotSongs}}" wx:key="index" wx:if="{{active==='歌曲'?index>=0:active==='主页'?index<3:''}}">
+        <view class="flex song-each" wx:for="{{artists.hotSongs}}" wx:key="index" data-id="{{item.id}}" bind:tap="toplay" wx:if="{{active==='歌曲'?index>=0:active==='主页'?index<3:''}}">
             <view class="song-index">{{index+1}}</view>
             <view>
                 <image class="song-pic" src="{{item.al.picUrl}}" />
@@ -68,3 +68,4 @@
         </view>
     </view>
 </view>
+<footerPlayer></footerPlayer>

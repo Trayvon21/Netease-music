@@ -1,0 +1,38 @@
+.player-container {
+    width: 100%;
+    height: 100rpx;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    left: 0;
+    z-index: 999;
+    border-top: 1rpx solid #ededed;
+}
+
+.palyer-pic {
+    width: 80rpx;
+    height: 80rpx;
+    margin: 10rpx;
+}
+
+.player-title {
+    font-size: 30rpx;
+    line-height: 50rpx;
+    white-space: nowrap;
+    width: 600rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.palyer-msg {
+    color: #bbbbbb;
+    font-size: 26rpx;
+    line-height: 50rpx;
+    white-space: nowrap;
+    width: 600rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.player-control{
+   margin-top: 25rpx;
+}

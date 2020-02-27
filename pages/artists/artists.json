@@ -2,6 +2,7 @@
   "usingComponents": {
     "artistBox":"../../components/common/artistBox/artistBox",
     "van-tab": "../../lib/vant/tab/index",
-    "van-tabs": "../../lib/vant/tabs/index"
+    "van-tabs": "../../lib/vant/tabs/index",
+    "footerPlayer":"../../components/common/footerPlayer/footerPlayer"
   }
 }

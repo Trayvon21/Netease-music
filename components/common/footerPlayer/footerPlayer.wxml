@@ -1,0 +1,15 @@
+<view class="player-container flex jc-between" bind:tap="toPlayer" wx:if="{{show.coverImgUrl}}">
+    <view class="flex">
+        <view>
+            <image class="palyer-pic" src="{{show.coverImgUrl}}" />
+        </view>
+        <view>
+            <view class="player-title">{{show.title}}</view>
+            <view class="palyer-msg">横滑可以切换上下首哦</view>
+        </view>
+    </view>
+    <view class="player-control" catch:tap="play">
+        <van-icon size="25" wx:if="{{status===0}}" name="play-circle-o" />
+        <van-icon size="25" wx:if="{{status===1}}" name="pause-circle-o" />
+    </view>
+</view>

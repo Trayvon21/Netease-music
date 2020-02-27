@@ -167,6 +167,12 @@ export default {
     getSongdetail(id) {
         return fly.get(`/song/detail?ids=${id}`)
     },
+    getSongUrl(ids) {
+        if ((typeof ids) === 'array') {
+            ids = ids.join(',')
+        }
+        return fly.get(`/song/url?id=${ids}`)
+    },
 
     /**
      * 我的(登录、注册)

@@ -1,7 +1,3 @@
-.home-container {
-   
-}
-
 /* 头部 */
 .header {
     height: 8vh;

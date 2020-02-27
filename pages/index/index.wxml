@@ -92,3 +92,4 @@
         <homeBox List="{{djprograms}}" type="program" flag="true" />
     </view>
 </view>
+<footerPlayer></footerPlayer>

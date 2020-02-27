@@ -24,6 +24,11 @@ Page({
     hotAlbums: [],
     mvs: []
   },
+  toplay(e) {
+    wx.navigateTo({
+      url: `/pages/player/player?songId=${e.currentTarget.dataset.id}`
+    });
+  },
   navBack() {
     wx.navigateBack({
       delta: 1
