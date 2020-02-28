@@ -63,11 +63,11 @@ create.Page(store, {
    */
   goAnimation() {
     var animation = wx.createAnimation({
-      duration: 1000,
+      duration: 500,
       timingFunction: 'linear'
     });
     var animation1 = wx.createAnimation({
-      duration: 1000,
+      duration: 500,
       timingFunction: 'linear',
       transformOrigin: '20.93% 22.37% 0'
     });
@@ -75,11 +75,17 @@ create.Page(store, {
     let _this = this
     let timer = this.data.timer
     //如果定时器存在，则清除
-    console.log(timer);
     clearInterval(timer)
+    animation.rotate(n * 20).step();
+    animation1.rotate(-10).step();
+    _this.setData({
+      cdmove: animation.export(),
+      controlMove: animation1.export(),
+      n: n,
+    })
     timer = setInterval(function () {
       if (_this.data.play) {
-        animation.rotate(n * 45).step();
+        animation.rotate(n * 20).step();
         animation1.rotate(-10).step();
         _this.setData({
           cdmove: animation.export(),
@@ -97,12 +103,18 @@ create.Page(store, {
           timer: null
         })
       }
-    }, 1000)
+    }, 500)
   },
   /**
    * 播放下一曲
    */
   playNext() {
+    wx.showLoading({
+      title: '加载中',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 800)
     let type = this.store.data.playType
     if (type === 1) {
       let playIndex = this.store.data.playIndex;
@@ -130,6 +142,12 @@ create.Page(store, {
    * 播放上一首
    */
   playPrev() {
+    wx.showLoading({
+      title: '加载中',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 800)
     let type = this.store.data.playType
     if (type === 1) {
       let playIndex = this.store.data.playIndex;
@@ -250,7 +268,7 @@ create.Page(store, {
                 src: res1.data[0].url
               })
               console.log(playlist);
-              this.store.data.playIndex = 0
+              this.store.data.playIndex = playlist.length - 1
               this.store.data.playlist = playlist
               this.startPlay()
             } else {
