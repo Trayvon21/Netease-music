@@ -165,6 +165,9 @@ export default {
      * @param {*} id 歌曲id
      */
     getSongdetail(id) {
+        if ((typeof id) === 'array') {
+            id = id.join(',')
+        }
         return fly.get(`/song/detail?ids=${id}`)
     },
     getSongUrl(ids) {

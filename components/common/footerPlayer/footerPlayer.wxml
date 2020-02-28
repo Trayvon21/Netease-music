@@ -1,15 +1,14 @@
-<view class="player-container flex jc-between" bind:tap="toPlayer" wx:if="{{show.coverImgUrl}}">
+<view class="player-container flex jc-between" bind:tap="toPlayer">
     <view class="flex">
         <view>
-            <image class="palyer-pic" src="{{show.coverImgUrl}}" />
+            <image class="palyer-pic" src="{{showData.coverImgUrl}}" />
         </view>
-        <view>
-            <view class="player-title">{{show.title}}</view>
-            <view class="palyer-msg">横滑可以切换上下首哦</view>
+        <view catchtouchstart='playPrev' catchtouchend="playNext">
+            <view class="player-title">{{showData.title}}</view>
+            <view class="palyer-msg">{{showData.singer}}-{{showData.epname}}</view>
         </view>
     </view>
     <view class="player-control" catch:tap="play">
-        <van-icon size="25" wx:if="{{status===0}}" name="play-circle-o" />
-        <van-icon size="25" wx:if="{{status===1}}" name="pause-circle-o" />
+        <van-icon size="25" name="{{play?'pause':'play'}}-circle-o" />
     </view>
 </view>

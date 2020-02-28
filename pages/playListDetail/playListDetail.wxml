@@ -52,7 +52,7 @@
     </view>
     <view class="playlist-main">
         <view class="main-box">
-            <view>播放全部</view>
+            <view bind:tap="toplayAll">播放全部</view>
             <view wx:for="{{playlist.tracks?playlist.tracks:songs}}" data-id="{{item.id}}" bind:tap="toplay" wx:key="index" class="flex song-each">
                 <view class="song-index">{{index+1}}</view>
                 <view>
@@ -67,6 +67,7 @@
                 </view>
             </view>
         </view>
+        <view wx:if="{{length>0}}" style="height:100rpx" />
     </view>
 </view>
-<footerPlayer></footerPlayer>
+<footerPlayer wx:if="{{length>0}}" />

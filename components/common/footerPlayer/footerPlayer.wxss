@@ -13,6 +13,7 @@
     width: 80rpx;
     height: 80rpx;
     margin: 10rpx;
+    border-radius: 50%;
 }
 
 .player-title {
@@ -33,6 +34,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.player-control{
-   margin-top: 25rpx;
+
+.player-control {
+    margin-top: 25rpx;
 }

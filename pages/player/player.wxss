@@ -7,7 +7,7 @@
     bottom: 0;
     right: 0;
     background-color: gray;
-    z-index: -1;
+    z-index: -2;
 }
 
 .pic-bg {
@@ -16,24 +16,33 @@
     position: absolute;
     filter: blur(40px);
     opacity: 0.7;
+    z-index: -1;
     background-color: gray;
 }
 
 .player-title {
     width: 100%;
     text-align: center;
-    font-size: 42rpx;
+    font-size: 44rpx;
     font-weight: 600;
     margin-top: 60rpx;
     color: white;
+    z-index: 99;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .player-info {
     width: 100%;
     text-align: center;
-    font-size: 28rpx;
+    font-size: 32rpx;
     margin-top: 30rpx;
     color: white;
+    z-index: 99;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .player-icon {
@@ -51,11 +60,12 @@
 .cd-box {
     position: absolute;
     z-index: 10;
-    width: 400rpx;
-    height: 400rpx;
-    top: 350rpx;
+    width: 500rpx;
+    height: 500rpx;
+    top: 300rpx;
     left: 50%;
-    margin-left: -200rpx;
+    margin-left: -250rpx;
+    margin-left: -250rpx;
 }
 
 .cd-main {
@@ -65,26 +75,26 @@
 }
 
 .cd {
-    width: 400rpx;
-    height: 400rpx;
+    width: 500rpx;
+    height: 500rpx;
     border-radius: 50%;
 }
 
 .cd-pic {
     position: absolute;
     z-index: 11;
-    width: 300rpx;
-    height: 300rpx;
+    width: 350rpx;
+    height: 350rpx;
     border-radius: 50%;
-    top: 50rpx;
-    left: 50rpx;
+    top: 75rpx;
+    left: 75rpx;
 }
 
 .control {
     width: 150rpx;
     position: absolute;
     z-index: 11;
-    top: 240rpx;
+    top: 190rpx;
     left: 50%;
     transform-origin: 20.93% 22.37%;
     margin-left: -30rpx;
@@ -94,7 +104,7 @@
 .info-list {
     width: 100%;
     position: absolute;
-    bottom: 240rpx;
+    bottom: 300rpx;
 }
 
 .line {

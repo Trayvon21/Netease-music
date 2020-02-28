@@ -1,8 +1,16 @@
+import create from '../../utils/store/create'
+import store from '../../store/index'
 import api from "../../http/api"
 
-// pages/djRadioDetail/djRadioDetail.js
-Page({
-
+create.Page(store, {
+  //使用共享的数据 
+  use: ['bgm', 'playlist'],
+  // 指针对store中的数据，不会对组件内部的数据生效
+  computed: {
+    length() {
+      return this.playlist.length
+    }
+  },
   /**
    * 页面的初始数据
    */
@@ -33,6 +41,11 @@ Page({
     this.setData({
       showFlag: true
     })
+  },
+  gotoPlay(e) {
+    wx.navigateTo({
+      url: `/pages/player/player?programId=${e.currentTarget.dataset.id}`
+    });
   },
   /**
    * 生命周期函数--监听页面加载

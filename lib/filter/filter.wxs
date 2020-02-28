@@ -17,9 +17,18 @@ var DateFr = {
      */
     getTime: function (time) {
         if (!time) return '';
-        var temp = Math.ceil(time / 100);
+        var temp = parseInt(time / 1000);
         var second = temp % 60;
-        var minute = Math.ceil(temp / 60);
+        var minute = parseInt(temp / 60);
+        if (minute < 10) minute = "0" + minute
+        if (second < 10) second = "0" + second
+        return minute + ":" + second;
+    },
+    getTime1: function (time) {
+        if (!time) return '';
+        var temp = parseInt(time);
+        var second = temp % 60;
+        var minute = parseInt(temp / 60);
         if (minute < 10) minute = "0" + minute
         if (second < 10) second = "0" + second
         return minute + ":" + second;
@@ -51,6 +60,7 @@ var NumFr = {
 }
 module.exports = {
     getTime: DateFr.getTime,
+    getTime1: DateFr.getTime1,
     getDate: DateFr.getDate,
     getDate1: DateFr.getDate1,
     getCount: NumFr.getCount

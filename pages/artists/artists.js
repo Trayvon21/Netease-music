@@ -1,8 +1,16 @@
-import api from "../../http/api";
+import create from '../../utils/store/create'
+import store from '../../store/index'
+import api from "../../http/api"
 
-// pages/artists/artists.js
-Page({
-
+create.Page(store, {
+  //使用共享的数据 
+  use: ['bgm', 'playlist'],
+  // 指针对store中的数据，不会对组件内部的数据生效
+  computed: {
+    length() {
+      return this.playlist.length
+    }
+  },
   /**
    * 页面的初始数据
    */

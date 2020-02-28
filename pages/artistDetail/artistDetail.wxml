@@ -67,5 +67,6 @@
             <view class="readmore" wx:if="{{mvs.length===0}}">暂无视频</view>
         </view>
     </view>
+    <view wx:if="{{length>0}}" style="height:100rpx" />
 </view>
-<footerPlayer></footerPlayer>
+<footerPlayer wx:if="{{length>0}}" />

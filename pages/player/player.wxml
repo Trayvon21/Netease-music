@@ -1,8 +1,8 @@
-<view class="player-container">
-    <image class="pic-bg" src="{{show.coverImgUrl}}" />
+<wxs module="DateFr" src="../../lib/filter/filter.wxs"></wxs>
+<view class="player-container" style="display:{{hide?'none':''}}">
     <view class="player-title">{{show.title}}</view>
     <view class="player-info">{{show.singer}}-{{show.epname}}</view>
-    <view >
+    <view>
         <image animation="{{controlMove}}" class="control" mode="widthFix" src="../../assets/images/player/player-control.png" />
     </view>
     <view class="cd-box">
@@ -26,27 +26,28 @@
         </view>
     </view>
     <view class="flex line">
-        <view class="time-size">{{starttime}}</view>
+        <view class="time-size">{{offset?DateFr.getTime1(offset):'00:00'}}</view>
         <view class="line-width">
-            <van-slider value="{{offset}}" min="0" max="{{max}}" bar-height="4px" active-color="#ee0a24" bind:change="onChange" />
+            <van-slider value="{{offset?offset:0}}" min="0" max="{{duration?duration:100}}" bar-height="4px" active-color="#ee0a24" bind:change="onChange" />
         </view>
-        <view class="time-size">{{duration}}</view>
+        <view class="time-size">{{duration?DateFr.getTime1(duration):'00:00'}}</view>
     </view>
     <view class="flex bottom-nav jc-around">
-        <view>
-            <image class="player-icon" src="../../assets/images/player/player-{{type==='list'?'list':type==='one'?'one':'random'}}.png" />
+        <view bind:tap="typeChange">
+            <image class="player-icon" src="../../assets/images/player/player-{{type===1?'list':type===2?'one':'random'}}.png" />
         </view>
-        <view>
+        <view bind:tap="playPrev">
             <image class="player-icon" src="../../assets/images/player/player-back.png" />
         </view>
         <view bind:tap='playStop'>
             <image class="player-icon-big" src="../../assets/images/player/player-{{play===true?'stop':'play'}}.png" />
         </view>
-        <view>
+        <view bind:tap="playNext">
             <image class="player-icon" src="../../assets/images/player/player-up.png" />
         </view>
         <view>
             <image class="player-icon" src="../../assets/images/player/player-right.png" />
         </view>
     </view>
+    <image class="pic-bg" src="{{show.coverImgUrl}}" />
 </view>

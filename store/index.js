@@ -1,6 +1,9 @@
 export default {
     //data等同于state
     data: {
-        readInfo: 0
+        playlist: [],
+        bgm: null,
+        playIndex: 0,
+        playType: 1
     }
 }

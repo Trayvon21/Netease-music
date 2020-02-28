@@ -45,7 +45,7 @@
                 <view>多选</view>
             </view>
         </view>
-        <view wx:for="{{programs}}" wx:key="index" class="flex song-each">
+        <view wx:for="{{programs}}" bind:tap="gotoPlay" data-id="{{item.id}}" wx:key="index" class="flex song-each">
             <view class="songs-index">{{index+1}}</view>
             <view>
                 <view class="song-title">{{item.name}}</view>
@@ -89,5 +89,6 @@
             </view>
         </view>
     </view>
+      <view wx:if="{{length>0}}" style="height:100rpx" />
 </view>
-<footerPlayer></footerPlayer>
+<footerPlayer wx:if="{{length>0}}" />

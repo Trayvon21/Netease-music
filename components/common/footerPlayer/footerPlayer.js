@@ -2,7 +2,7 @@ import create from '../../../utils/store/create'
 import store from '../../../store/index'
 create.Component(store, {
   //使用共享的数据 
-  use: ['backgroundAudioManager', 'playlist'],
+  use: ['bgm', 'playlist', 'playIndex', 'playType'],
   // 指针对store中的数据，不会对组件内部的数据生效
   computed: {
 
@@ -21,8 +21,8 @@ create.Component(store, {
    * 组件的初始数据
    */
   data: {
-    status: 2,
-    show: {}
+    play: false,
+    showData: {}
   },
 
   /**
@@ -35,50 +35,81 @@ create.Component(store, {
       });
     },
     play() {
-      if (this.data.status === 1) {
-        console.log(this.store.data.backgroundAudioManager.title);
-        this.store.data.backgroundAudioManager.pause()
-        this.setData({
-          status: 0
-        })
-      } else {
-        this.store.data.backgroundAudioManager.play()
-        this.setData({
-          status: 1
-        })
+      this.data.play ? this.store.data.bgm.pause() : this.store.data.bgm.play()
+    },
+    /**
+     * 播放下一曲
+     */
+    playNext() {
+      let type = this.store.data.playType
+      if (type === 1) {
+        let playIndex = this.store.data.playIndex;
+        if (playIndex < (this.store.data.playlist.length - 1)) {
+          playIndex = playIndex + 1
+        } else {
+          playIndex = 0
+          wx.showToast({
+            title: '滚到第一曲',
+            icon: 'none',
+            duration: 1500
+          });
+        }
+        this.store.data.playIndex = playIndex;
+      } else if (type === 0) {
+        let index = parseInt(Math.random() * (this.store.data.playlist.length - 1))
+        this.store.data.playIndex = index
+      } else if (type === 2) {
+        this.store.data.bgm.seek(0)
       }
-    }
+      clearInterval(this.data.timer)
+      this.startPlay();
+    },
+    startPlay() {
+      //获取播放歌曲
+      console.log(this.store.data.playlist);
+      console.log(this.store.data.playIndex);
+      let playNow = this.store.data.playlist[this.store.data.playIndex]
+      let bgm = this.store.data.bgm
+      bgm.title = playNow.title
+      bgm.epname = playNow.epname
+      bgm.singer = playNow.singer
+      bgm.coverImgUrl = playNow.coverImgUrl
+      // 设置了 src 之后会自动播放
+      bgm.src = playNow.src
+      this.store.data.bgm = bgm
+      //开始监听播放状态
+    },
   },
   pageLifetimes: {
     show() {
-      let _this = this
-      wx.getBackgroundAudioPlayerState({
-        success(res) {
-          setTimeout(() => {
-            _this.setData({
-              status: res.status,
-              show: _this.store.data.playlist[0]
-            })
-          }, 200)
-        }
+      setTimeout(() => {
+        this.setData({
+          showData: this.store.data.playlist[this.store.data.playIndex],
+        })
+      }, 200)
+      let bgm = this.store.data.bgm
+      //监听播放事件
+      if (bgm) {
+        bgm.onPlay(() => {
+          this.setData({
+            play: true
+          })
+        })
+        bgm.onPause(() => {
+          this.setData({
+            play: false
+          })
+        })
+      }
+      bgm.onEnded(() => {
+        this.playNext()
+      })
+      bgm.onTimeUpdate(() => {
+        this.setData({
+          showData: this.store.data.playlist[this.store.data.playIndex],
+          play: !bgm.paused
+        })
       })
     }
-
-    // let systemInfo = wx.getSystemInfoSync()
-    // // px转换到rpx的比例
-    // let pxToRpxScale = 750 / systemInfo.windowWidth;
-    // // 状态栏的高度
-    // let ktxStatusHeight = systemInfo.statusBarHeight * pxToRpxScale
-    // // 导航栏的高度
-    // let navigationHeight = 44 * pxToRpxScale
-    // // window的宽度
-    // let ktxWindowWidth = systemInfo.windowWidth * pxToRpxScale
-    // // window的高度
-    // let ktxWindowHeight = systemInfo.windowHeight * pxToRpxScale
-    // // 屏幕的高度
-    // let ktxScreentHeight = systemInfo.screenHeight * pxToRpxScale
-    // // 底部tabBar的高度
-    // let tabBarHeight = ktxScreentHeight - ktxStatusHeight - navigationHeight - ktxWindowHeight
-    // console.log(tabBarHeight);
   }
 })

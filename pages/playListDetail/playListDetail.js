@@ -1,21 +1,32 @@
+import create from '../../utils/store/create'
+import store from '../../store/index'
 import api from "../../http/api"
 
-// pages/playListDetail/playListDetail.js
-Page({
-  /**
-   * 页面的初始数据
-   */
+create.Page(store, {
+  //使用共享的数据 
+  use: ['bgm', 'playlist'],
+  // 指针对store中的数据，不会对组件内部的数据生效
+  computed: {
+    length() {
+      return this.playlist.length
+    }
+  },
   data: {
     playlist: {},
     album: {},
-    songs: []
+    songs: [],
+    ids: []
   },
   toplay(e) {
     wx.navigateTo({
       url: `/pages/player/player?songId=${e.currentTarget.dataset.id}`
     });
   },
-
+  toplayAll() {
+    wx.navigateTo({
+      url: `/pages/player/player?songId=${this.data.ids[0]}&ids=${JSON.stringify(this.data.ids)}`
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -25,9 +36,14 @@ Page({
   getAlbum(id) {
     api.getAlbum(id).then(res => {
       if (res.code === 200) {
+        let ids = []
+        res.songs.map(item => {
+          ids.push(item.id)
+        })
         this.setData({
           album: res.album,
-          songs: res.songs
+          songs: res.songs,
+          ids: ids
         })
       }
     })
@@ -39,8 +55,13 @@ Page({
     });
     api.getPlaylistDetails(id).then(res => {
       if (res.code === 200) {
+        let ids = []
+        res.playlist.tracks.map(item => {
+          ids.push(item.id)
+        })
         this.setData({
-          playlist: res.playlist
+          playlist: res.playlist,
+          ids: ids
         })
         wx.hideLoading();
       }

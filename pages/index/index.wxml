@@ -90,6 +90,7 @@
             <view class="more">更多节目</view>
         </view>
         <homeBox List="{{djprograms}}" type="program" flag="true" />
+        <view wx:if="{{length>0}}" style="height:100rpx" />
     </view>
 </view>
-<footerPlayer></footerPlayer>
+<footerPlayer wx:if="{{length>0}}" />
