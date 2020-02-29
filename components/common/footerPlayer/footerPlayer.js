@@ -44,10 +44,13 @@ create.Component(store, {
       this.data.play ? this.store.data.bgm.pause() : this.store.data.bgm.play()
     },
     /**
-     * 播放下一曲
+     * 播放上一首
      */
-    playNext() {
-      if (this.store.data.playlist.length === 1) {
+    playPrev() {
+      let type = this.store.data.playType
+      let playlist = this.store.data.playlist
+      let playIndex = this.store.data.playIndex;
+      if (playlist.length === 1) {
         wx.showToast({
           title: '您只有一首歌曲',
           icon: 'none',
@@ -55,14 +58,46 @@ create.Component(store, {
         });
       }
       //判断当前播放状态0-随机，1-列表，2-单曲
-      let type = this.store.data.playType
-      console.log(type, this.data.playlist.length);
-      if (type === 2 || this.data.playlist.length === 1) {
-
+      if (type === 2 || playlist.length === 1) {
         this.store.data.bgm.seek(0)
       } else if (type === 1) {
-        let playIndex = this.store.data.playIndex;
-        if (playIndex < (this.store.data.playlist.length - 1)) {
+        if (playIndex > 0) {
+          playIndex = playIndex - 1
+        } else {
+          playIndex = playlist.length - 1
+          wx.showToast({
+            title: '滚到最后一曲',
+            icon: 'none',
+            duration: 1500
+          });
+        }
+        this.store.data.playIndex = playIndex;
+      } else {
+        let index = parseInt(Math.random() * (playlist.length - 1))
+        this.store.data.playIndex = index
+      }
+      this.startPlay();
+    },
+    /**
+     * 播放下一曲
+     */
+    playNext() {
+      let type = this.store.data.playType
+      let playlist = this.store.data.playlist
+      let playIndex = this.store.data.playIndex;
+      if (playlist.length === 1) {
+        wx.showToast({
+          title: '您只有一首歌曲',
+          icon: 'none',
+          duration: 1500
+        });
+      }
+      //判断当前播放状态0-随机，1-列表，2-单曲
+      console.log(type, playlist.length);
+      if (type === 2 || playlist.length === 1) {
+        this.store.data.bgm.seek(0)
+      } else if (type === 1) {
+        if (playIndex < (playlist.length - 1)) {
           playIndex = playIndex + 1
         } else {
           playIndex = 0
@@ -74,7 +109,7 @@ create.Component(store, {
         }
         this.store.data.playIndex = playIndex;
       } else {
-        let index = parseInt(Math.random() * (this.store.data.playlist.length - 1))
+        let index = parseInt(Math.random() * (playlist.length - 1))
         this.store.data.playIndex = index
       }
       this.startPlay();
@@ -116,6 +151,12 @@ create.Component(store, {
           })
         })
       }
+      bgm.onNext(() => {
+        this.playNext()
+      })
+      bgm.onPrev(() => {
+        this.playPrev()
+      })
       bgm.onEnded(() => {
         this.playNext()
       })

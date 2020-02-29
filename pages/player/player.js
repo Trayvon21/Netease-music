@@ -284,6 +284,12 @@ create.Page(store, {
         play: true
       })
     })
+    bgm.onNext(() => {
+      this.playNext()
+    })
+    bgm.onPrev(() => {
+      this.playPrev()
+    })
     bgm.onPause(() => {
       this.setData({
         play: false

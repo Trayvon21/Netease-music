@@ -30,8 +30,10 @@ create.Component(store, {
    */
   methods: {
     del(e) {
+      let playIndex = this.store.data.playIndex
       let playlist = this.store.data.playlist
       this.store.data.playlist = playlist.filter(item => item.id !== e.currentTarget.dataset.id)
+      playIndex > e.currentTarget.dataset.index ? this.store.data.playIndex = playIndex - 1 : ''
     },
     typeChange() {
       let num = this.store.data.playType
