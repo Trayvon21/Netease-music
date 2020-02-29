@@ -65,10 +65,6 @@ create.Page(store, {
     })
   },
   getProgramList(id, offset = 0) {
-    wx.showLoading({
-      title: "加载中...",
-      mask: true
-    });
     let programs = this.data.programs
     api.programList(id, offset).then(res => {
       if (res.code === 200) {
@@ -78,7 +74,6 @@ create.Page(store, {
           count: res.count,
           id: id
         })
-        wx.hideLoading();
       }
     })
   },

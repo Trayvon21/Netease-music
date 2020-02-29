@@ -1,0 +1,33 @@
+<view class="list-container">
+    <view class="list-top">
+        <view class="list-title">
+            当前播放
+            <text>({{length}})</text>
+        </view>
+        <view class="flex jc-between list-nav">
+            <view class="type-info flex" bind:tap="typeChange">
+                <image class="list-icon" src="../../../assets/images/player/player-{{$.playType===1?'list':$.playType===2?'one':'random'}}.png" />
+                <view>{{$.playType===1?'列表循环':$.playType===2?'单曲循环':'随机播放'}}</view>
+            </view>
+            <view bind:tap="delAll">删除全部</view>
+        </view>
+    </view>
+    <scroll-view scroll-y="{{true}}" style="margin: 0 20rpx;height:680rpx" scroll-top="{{scrollTop}}">
+        <view wx:for="{{$.playlist}}" wx:key="index" class="flex jc-between song-each" style="color:{{$.playIndex===index?'red!important;':''}}">
+            <view class="flex" bind:tap="gotoPlay" data-id="{{item.id}}">
+                <view class="song-index" style="color:{{$.playIndex===index?'red!important;':'gray'}}">
+                    {{index+1}}
+                </view>
+                <view class="song-info flex">
+                    <view class="song-name">{{item.title}}</view>
+                    <view class="song-singer" style="color:{{$.playIndex===index?'red!important;':'gray'}}">
+                        —{{item.singer}}
+                    </view>
+                </view>
+            </view>
+            <view class="del" wx:if="{{$.playIndex!==index}}" data-id="{{item.id}}" bind:tap="del">
+                X
+            </view>
+        </view>
+    </scroll-view>
+</view>

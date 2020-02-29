@@ -1,9 +1,21 @@
-<view class="flex artist-box a-center" bind:tap="gotoArtist">
+<view class="flex artist-box a-center" bind:tap="gotoArtist" style="background:{{index%2===1?'#f5f5f5':'white'}}">
     <view>
         <image class="artist-pic" mode="aspectFill" src="{{item.picUrl}}" />
     </view>
-    <view class="artist-name">{{item.name}}</view>
-    <view class="artist-other" wx:for="{{item.alia?item.alia:item.alias}}" wx:for-item="i">
-        ({{i}})
+    <view class="artist-right">
+        <view class="flex artist-info">
+            <view>
+                <text>歌手名：</text>
+                <text class="artist-name">{{item.name}}</text>
+            </view>
+            <view class="artist-name" wx:for="{{item.alia?item.alia:item.alias}}" wx:for-item="i">
+                ({{i}})
+            </view>
+        </view>
+        <view class="flex artist-others">
+            <view>专辑数量：{{item.albumSize}}</view>
+            <view wx:if="{{item.mvSize}}">MV数量：{{item.mvSize}}</view>
+            <view wx:if="{{item.musicSize}}">单曲数量：{{item.musicSize}}</view>
+        </view>
     </view>
 </view>

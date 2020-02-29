@@ -76,10 +76,6 @@ create.Page(store, {
         result: null,
         value: ''
       })
-      wx.showLoading({
-        title: "加载中...",
-        mask: true,
-      });
       this.getSearchDefalut()
     } else {
       this.setData({
@@ -136,10 +132,6 @@ create.Page(store, {
   },
   //搜索之后
   getResult(e) {
-    wx.showLoading({
-      title: "加载中...",
-      mask: true,
-    });
     let keyword = this.data.value
     let searchType = 1018
     if (e) {
@@ -152,16 +144,11 @@ create.Page(store, {
           sugFlag: false,
           scrollTop: 0
         })
-        wx.hideLoading();
       }
     })
   },
   //上拉加载
   pullUp(e) {
-    wx.showLoading({
-      title: "加载中...",
-      mask: true,
-    });
     let info = e.detail
     let keyword = this.data.value
     let result = this.data.result
@@ -179,16 +166,13 @@ create.Page(store, {
           result: result
         })
         console.log(result);
-        wx.hideLoading();
       }
-      wx.hideLoading();
     }).catch(err => {
       wx.showToast({
         title: '列表丢失',
         icon: 'none',
         duration: 1500
       });
-      wx.hideLoading();
     })
   },
   showSug() {
@@ -205,6 +189,7 @@ create.Page(store, {
   },
   clearKeywords() {
     this.setData({
+      result: null,
       value: '',
       suggest: [],
       sugFlag: false
@@ -231,119 +216,79 @@ create.Page(store, {
   },
   //获取数据
   getData() {
-    wx.showLoading({
-      title: "加载中...",
-      mask: true
-    });
     //获取轮播图
     api.getHeader().then(res => {
       if (res.code === 200) {
         this.setData({
           banners: res.banners
         })
-        wx.hideLoading();
       }
     })
 
   },
   getPersonalized() {
-    wx.showLoading({
-      title: "加载中...",
-      mask: true
-    });
     //获取推荐歌单
     api.getPersonalized().then(res => {
       if (res.code === 200) {
         this.setData({
           recommendList: res.result
         })
-        wx.hideLoading();
       }
     })
   },
   getNewDisc() {
-    wx.showLoading({
-      title: "加载中...",
-      mask: true
-    });
     api.newDisc().then(res => {
       if (res.code === 200) {
         this.setData({
           newDisc: res.albums
         })
-        wx.hideLoading();
       }
     })
   },
   getNewSong() {
-    wx.showLoading({
-      title: "加载中...",
-      mask: true
-    });
     api.newSong().then(res => {
       if (res.code === 200) {
         this.setData({
           newsong: res.result
         })
-        wx.hideLoading();
       }
     })
   },
   djRecommend() {
-    wx.showLoading({
-      title: "加载中...",
-      mask: true
-    });
     api.djRecommend().then(res => {
       if (res.code === 200) {
         this.setData({
           recommends: res.djRadios
         })
-        wx.hideLoading();
       }
     })
   },
   programRecommend() {
-    wx.showLoading({
-      title: "加载中...",
-      mask: true
-    });
     api.programRecommend().then(res => {
       if (res.code === 200) {
         this.setData({
           djprograms: res.programs
         })
-        wx.hideLoading();
       }
     })
   },
 
   getSearchHot() {
-    wx.showLoading({
-      title: "加载中...",
-      mask: true
-    });
     api.hotSearchList().then(res => {
       if (res.code === 200) {
         this.getSearchDefalut()
         this.setData({
           hotList: res.data
         })
-        wx.hideLoading();
       }
     })
   },
   getSearchDefalut() {
-    wx.showLoading({
-      title: "加载中...",
-      mask: true
-    });
     api.searchDefalut().then(res => {
       if (res.code === 200) {
         this.setData({
           keywords: res.data
         })
-        wx.hideLoading();
       }
     })
   },

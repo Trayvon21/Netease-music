@@ -7,7 +7,3 @@
     overflow: hidden;
     overflow-y: scroll;
 }
-
-.result-pd {
-    padding: 0 20rpx;
-}

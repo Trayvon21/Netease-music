@@ -54,6 +54,20 @@
 					"pathName": "pages/player/player",
 					"query": "songId=1422989687",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/artists/artists",
+					"pathName": "pages/artists/artists",
+					"query": "songId=1422989687",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/playListDetail/playListDetail",
+					"pathName": "pages/playListDetail/playListDetail",
+					"query": "id=3233380300",
+					"scene": null
 				}
 			]
 		}

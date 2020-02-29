@@ -1,14 +1,18 @@
 <wxs module="DateFr" src="../../lib/filter/filter.wxs"></wxs>
 <view class="player-container" style="display:{{hide?'none':''}}">
-    <view class="player-title">{{show.title}}</view>
-    <view class="player-info">{{show.singer}}-{{show.epname}}</view>
+    <view class="player-top">
+        <view class="player-title">{{playlist[playIndex].title}}</view>
+        <view class="player-info">
+            {{playlist[playIndex].singer}}-{{playlist[playIndex].epname}}
+        </view>
+    </view>
     <view>
         <image animation="{{controlMove}}" class="control" mode="widthFix" src="../../assets/images/player/player-control.png" />
     </view>
     <view class="cd-box">
         <view class="cd-main" animation="{{cdmove}}">
             <image class="cd" src="../../assets/images/player/player-cd.png" />
-            <image class="cd-pic" src="{{show.coverImgUrl}}" />
+            <image class="cd-pic" src="{{playlist[playIndex].coverImgUrl}}" />
         </view>
     </view>
     <view class="flex jc-around info-list">
@@ -34,7 +38,7 @@
     </view>
     <view class="flex bottom-nav jc-around">
         <view bind:tap="typeChange">
-            <image class="player-icon" src="../../assets/images/player/player-{{type===1?'list':type===2?'one':'random'}}.png" />
+            <image class="player-icon" src="../../assets/images/player/player-{{$.playType===1?'list':$.playType===2?'one':'random'}}.png" />
         </view>
         <view bind:tap="playPrev">
             <image class="player-icon" src="../../assets/images/player/player-back.png" />
@@ -45,9 +49,12 @@
         <view bind:tap="playNext">
             <image class="player-icon" src="../../assets/images/player/player-up.png" />
         </view>
-        <view>
+        <view bind:tap="onClose">
             <image class="player-icon" src="../../assets/images/player/player-right.png" />
         </view>
     </view>
-    <image class="pic-bg" src="{{show.coverImgUrl}}" />
+    <van-popup show="{{ show }}" bind:close="onClose" round position="bottom" custom-style="height:800rpx;">
+        <playList wx:if="{{show}}"/>
+    </van-popup>
+    <image class="pic-bg" src="{{playlist[playIndex].coverImgUrl}}" />
 </view>

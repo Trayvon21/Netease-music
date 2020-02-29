@@ -1,22 +1,35 @@
-.artist-box{
+.artist-box {
     padding: 20rpx;
     width: 100%;
     height: 140rpx;
-    border-bottom: 1rpx solid #ededed;
 }
-.artist-pic{
+
+.artist-pic {
     width: 120rpx;
     height: 120rpx;
     margin: 10rpx;
     border-radius: 50%;
 }
-.artist-name{
-    line-height: 40rpx;
-    color: #84a6c7;
-    height: 40rpx;
-    margin-left:40rpx;
+
+.artist-right {
+    margin-left: 30rpx;
 }
-.artist-other{
-    line-height: 40rpx;
-    height: 40rpx;
+
+.artist-info {
+    line-height: 50rpx;
+    height: 50rpx;
+}
+
+.artist-name {
+    color: #84a6c7;
+}
+
+.artist-others {
+    font-size: 28rpx;
+    margin-top: 30rpx;
+    color: #8d8d8d;
+}
+
+.artist-others view {
+    margin-right: 20rpx;
 }

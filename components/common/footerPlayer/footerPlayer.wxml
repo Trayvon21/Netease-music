@@ -1,14 +1,22 @@
-<view class="player-container flex jc-between" bind:tap="toPlayer">
+<view class="player-container flex jc-between">
     <view class="flex">
-        <view>
+        <view bind:tap="toPlayer">
             <image class="palyer-pic" src="{{showData.coverImgUrl}}" />
         </view>
-        <view catchtouchstart='playPrev' catchtouchend="playNext">
+        <view bind:tap="playNext">
             <view class="player-title">{{showData.title}}</view>
             <view class="palyer-msg">{{showData.singer}}-{{showData.epname}}</view>
         </view>
     </view>
-    <view class="player-control" catch:tap="play">
-        <van-icon size="25" name="{{play?'pause':'play'}}-circle-o" />
+    <view class="flex a-center jc-between" style="width: 150rpx;">
+        <view class="player-control" bind:tap="play">
+            <van-icon size="25" name="{{play?'pause':'play'}}-circle-o" />
+        </view>
+        <view bind:tap="onClose" class="player-control">
+            <image class="player-control" src="../../../assets/images/player/player-right-black.png" />
+        </view>
+        <van-popup show="{{ show }}" bind:close="onClose" round position="bottom" custom-style="height:800rpx;">
+            <playList />
+        </van-popup>
     </view>
 </view>

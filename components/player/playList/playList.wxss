@@ -1,0 +1,77 @@
+.list-container {
+    overflow: hidden;
+}
+
+.list-top {
+    height: 120rpx;
+}
+
+.list-title {
+    line-height: 70rpx;
+    margin-left: 20rpx;
+}
+
+.list-nav {
+    line-height: 50rpx;
+    font-size: 28rpx;
+    height: 50rpx;
+}
+
+.list-nav>view {
+    margin: 0 20rpx;
+}
+
+.list-icon {
+    height: 40rpx;
+    width: 40rpx;
+    margin: 5rpx;
+}
+
+.type-info {
+    line-height: 50rpx;
+    color: white;
+    padding: 0 20rpx;
+    background: #bebebe;
+    border-radius: 25rpx;
+    text-align: center;
+}
+
+.song-each {
+    line-height: 80rpx;
+    height: 80rpx;
+    font-size: 32rpx;
+    position: relative;
+}
+
+.song-index {
+    width: 60rpx;
+    font-size: 28rpx;
+    text-align: center;
+}
+
+.song-info {
+    width: 600rpx;
+}
+
+.song-name {
+    max-width: 400rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-singer {
+    max-width: 200rpx;
+    font-size: 28rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.del {
+    position: absolute;
+    right: 40rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    color: gray;
+}

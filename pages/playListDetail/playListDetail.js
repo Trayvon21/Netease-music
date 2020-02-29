@@ -49,10 +49,6 @@ create.Page(store, {
     })
   },
   getPlaylistDetails(id) {
-    wx.showLoading({
-      title: '加载中',
-      mask: true
-    });
     api.getPlaylistDetails(id).then(res => {
       if (res.code === 200) {
         let ids = []
@@ -63,7 +59,6 @@ create.Page(store, {
           playlist: res.playlist,
           ids: ids
         })
-        wx.hideLoading();
       }
     })
   },

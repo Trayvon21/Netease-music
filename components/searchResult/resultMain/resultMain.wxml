@@ -1,5 +1,6 @@
-<view>您可能感兴趣</view>
-<view></view>
+<view class="main-title">您可能感兴趣</view>
+<artistBox item="{{result.artist.artists[0]}}" />
+<videoBox item="{{result.video.videos[0]}}" />
 <view class="songs">
     <view class="main-title flex jc-between">
         <view class="left">单曲</view>
@@ -52,7 +53,7 @@
             </view>
         </view>
     </view>
-     <view class="reader-more">{{result.mlog.moreText}}</view>
+    <view class="reader-more">{{result.mlog.moreText}}</view>
 </view>
 <view class="talk">
     <view class="main-title">主题</view>
@@ -72,7 +73,7 @@
 <view class="artist">
     <view class="main-title">歌手</view>
     <view>
-        <artistBox wx:for="{{result.artist.artists}}" item="{{item}}" wx:key="index" />
+        <artistBox wx:for="{{result.artist.artists}}" index="{{index}}" item="{{item}}" wx:key="index" />
     </view>
 </view>
 <view class="album">

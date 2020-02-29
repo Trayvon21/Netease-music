@@ -5,118 +5,88 @@ import api from "../../http/api"
 create.Page(store, {
   //使用共享的数据 
   use: ['bgm', 'playlist', 'playIndex', 'playType'],
-  // 指针对store中的数据，不会对组件内部的数据生效
-  computed: {},
   /**
    * 页面的初始数据
    */
   data: {
-    offset: 0,
-    duration: 100,
-    show: {},
-    play: false,
+    ids: null, //id列表
+    play: false, //播放状态
+    offset: 0, //当前位置
+    duration: 100, //媒体位置
+    playlist: [],
+    playIndex: 0,
     controlMove: {},
     cdmove: {},
     n: 1, //旋转动画基数
-    timer: null, //don
-    hide: false,
-    ids: null,
-    type: 1
+    timer: null, //动画定时器id
+    show: false //弹出层
   },
-  /**
-   * 滚动进度条
-   * @param {*} e 滚动条
-   */
-  onChange(e) {
-    var offset = parseInt(e.detail);
-    this.store.data.bgm.play();
-    this.store.data.bgm.seek(offset);
-    this.setData({
-      play: true
-    })
-  },
-  /**
-   * 类型变化
-   */
-  typeChange() {
-    let num = this.data.type
-    num === 2 ? num = 0 : num++
-    wx.showToast({
-      title: `${num===1?'列表循环':num===2?'单曲循环':'随机循环'}`,
-      icon: 'none',
-      duration: 1500
-    });
-    this.store.data.playType = num
-    this.setData({
-      type: num
-    })
-  },
+
   /**
    * 播放/暂停
    */
   playStop() {
     this.data.play ? this.store.data.bgm.pause() : this.store.data.bgm.play()
-    this.goAnimation()
+  },
+  onClose() {
+    this.setData({
+      show: !this.data.show
+    })
   },
   /**
-   * 动画
+   * 播放上一首
    */
-  goAnimation() {
-    var animation = wx.createAnimation({
-      duration: 500,
-      timingFunction: 'linear'
-    });
-    var animation1 = wx.createAnimation({
-      duration: 500,
-      timingFunction: 'linear',
-      transformOrigin: '20.93% 22.37% 0'
-    });
-    let n = this.data.n
-    let _this = this
-    let timer = this.data.timer
-    //如果定时器存在，则清除
-    clearInterval(timer)
-    animation.rotate(n * 20).step();
-    animation1.rotate(-10).step();
-    _this.setData({
-      cdmove: animation.export(),
-      controlMove: animation1.export(),
-      n: n,
-    })
-    timer = setInterval(function () {
-      if (_this.data.play) {
-        animation.rotate(n * 20).step();
-        animation1.rotate(-10).step();
-        _this.setData({
-          cdmove: animation.export(),
-          controlMove: animation1.export(),
-          n: n,
-          timer: timer
-        })
-        n++
+  playPrev() {
+    if (this.data.playlist.length === 1) {
+      wx.showToast({
+        title: '您只有一首歌曲',
+        icon: 'none',
+        duration: 1500
+      });
+    }
+    //判断当前播放状态0-随机，1-列表，2-单曲
+    let type = this.store.data.playType
+    if (type === 2 || this.data.playlist.length === 1) {
+
+      this.store.data.bgm.seek(0)
+    } else if (type === 1) {
+      let playIndex = this.store.data.playIndex;
+      if (playIndex > 0) {
+        playIndex = playIndex - 1
       } else {
-        clearInterval(timer)
-        animation1.rotate(-40).step();
-        _this.setData({
-          controlMove: animation1.export(),
-          cdmove: animation.export(),
-          timer: null
-        })
+        playIndex = this.store.data.playlist.length - 1
+        wx.showToast({
+          title: '滚到最后一曲',
+          icon: 'none',
+          duration: 1500
+        });
       }
-    }, 500)
+      this.store.data.playIndex = playIndex;
+    } else {
+      let index = parseInt(Math.random() * (this.store.data.playlist.length - 1))
+      this.store.data.playIndex = index
+    }
+    this.startPlay();
   },
+
   /**
    * 播放下一曲
    */
   playNext() {
-    wx.showLoading({
-      title: '加载中',
-    })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 800)
+    if (this.data.playlist.length === 1) {
+      wx.showToast({
+        title: '您只有一首歌曲',
+        icon: 'none',
+        duration: 1500
+      });
+    }
+    //判断当前播放状态0-随机，1-列表，2-单曲
     let type = this.store.data.playType
-    if (type === 1) {
+    console.log(type, this.data.playlist.length);
+    if (type === 2 || this.data.playlist.length === 1) {
+
+      this.store.data.bgm.seek(0)
+    } else if (type === 1) {
       let playIndex = this.store.data.playIndex;
       if (playIndex < (this.store.data.playlist.length - 1)) {
         playIndex = playIndex + 1
@@ -129,55 +99,45 @@ create.Page(store, {
         });
       }
       this.store.data.playIndex = playIndex;
-    } else if (type === 0) {
+    } else {
       let index = parseInt(Math.random() * (this.store.data.playlist.length - 1))
       this.store.data.playIndex = index
-    } else if (type === 2) {
-      this.store.data.bgm.seek(0)
     }
-    clearInterval(this.data.timer)
     this.startPlay();
   },
+
   /**
-   * 播放上一首
+   * 滚动进度条
+   * @param {*} e 滚动条
    */
-  playPrev() {
-    wx.showLoading({
-      title: '加载中',
+  onChange(e) {
+    var offset = parseInt(e.detail);
+    this.store.data.bgm.play();
+    this.store.data.bgm.seek(offset);
+    this.setData({
+      play: true
     })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 800)
-    let type = this.store.data.playType
-    if (type === 1) {
-      let playIndex = this.store.data.playIndex;
-      if (playIndex > 0) {
-        playIndex = playIndex + 1
-      } else {
-        playIndex = this.store.data.playlist.length - 1
-        wx.showToast({
-          title: '滚到最后一曲',
-          icon: 'none',
-          duration: 1500
-        });
-      }
-      this.store.data.playIndex = playIndex;
-    } else if (type === 0) {
-      let index = parseInt(Math.random() * (this.store.data.playlist.length - 1))
-      this.store.data.playIndex = index
-    } else if (type === 2) {
-      this.store.data.bgm.seek(0)
-    }
-    clearInterval(this.data.timer)
-    this.startPlay();
   },
-  onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '播放歌曲'
+
+  /**
+   * 类型变化
+   */
+  typeChange() {
+    let num = this.store.data.playType
+    num === 2 ? num = 0 : num++
+    wx.showToast({
+      title: `${num===1?'列表循环':num===2?'单曲循环':'随机循环'}`,
+      icon: 'none',
+      duration: 1500
     });
-    //区分歌曲和节目
-    options.songId ? this.getSong(options.songId, options.ids ? JSON.parse(options.ids) : null) : options.programId ? this.getProgram(options.programId) : ''
+    this.store.data.playType = num
   },
+
+  /**
+   * 获取播放列表
+   * @param {*} id 单个id
+   * @param {*} ids 播放列表
+   */
   getSong(id, ids) {
     //获取歌曲详情和地址并保存
     let playlist,
@@ -219,15 +179,17 @@ create.Page(store, {
                 success: (res => {
                   if (playlist.length === 0) {
                     wx.showToast({
-                      title: '歌单为空，返回上一页',
+                      title: '版权问题无法播放',
                       icon: 'none',
                       duration: 1500,
                       success: (result) => {
-                        wx.navigateBack({
-                          delta: 1
-                        });
+                        setTimeout(() => {
+                          wx.navigateBack({
+                            delta: 1
+                          });
+                        }, 500)
                       }
-                    })
+                    });
                   }
                 })
               })
@@ -235,13 +197,10 @@ create.Page(store, {
             if (playlist.length > 0) {
               let i = 0
               playlist.map((item, index) => {
-                console.log(item.id);
                 if (item.id == id) {
                   i = index
-                  console.log(index);
                 }
               })
-              console.log(i);
               this.store.data.playIndex = i
               this.store.data.playlist = playlist
               //开始播放
@@ -252,6 +211,11 @@ create.Page(store, {
       }
     })
   },
+
+  /**
+   * 电台节目播放列表
+   * @param {*} id 电台节目
+   */
   getProgram(id) {
     api.programDetail(id).then(res => {
       if (res.code === 200) {
@@ -267,7 +231,6 @@ create.Page(store, {
                 coverImgUrl: res.program.coverUrl,
                 src: res1.data[0].url
               })
-              console.log(playlist);
               this.store.data.playIndex = playlist.length - 1
               this.store.data.playlist = playlist
               this.startPlay()
@@ -285,12 +248,15 @@ create.Page(store, {
                 }
               });
             }
-
           }
         })
       }
     })
   },
+
+  /**
+   * 开始播放
+   */
   startPlay() {
     //获取播放歌曲
     let playNow = this.store.data.playlist[this.store.data.playIndex]
@@ -299,12 +265,16 @@ create.Page(store, {
     bgm.epname = playNow.epname
     bgm.singer = playNow.singer
     bgm.coverImgUrl = playNow.coverImgUrl
-    // 设置了 src 之后会自动播放
     bgm.src = playNow.src
     this.store.data.bgm = bgm
     //开始监听播放状态
     this.onTimeUpdate(bgm)
   },
+
+  /**
+   * 播放状态的监听
+   * @param {*} bgm 播放实例
+   */
   onTimeUpdate(bgm) {
     bgm.onEnded(() => {
       this.playNext()
@@ -327,23 +297,79 @@ create.Page(store, {
       this.setData({
         duration: duration,
         offset: currentTime,
-        show: this.store.data.playlist[this.store.data.playIndex],
-        play: !bgm.paused
-      })
+        playIndex: this.store.data.playIndex,
+        play: !bgm.paused,
+        playlist: this.store.data.playlist
+      });
+      //如果正在播放并且动画定水器未工作则触发动画效果
+      !bgm.paused && !this.data.timer ? this.goAnimation() : ''
     })
-    //触发动画
-    setTimeout(() => {
-      this.goAnimation()
-    }, 200)
-
   },
 
+  /**
+   * 动画
+   */
+  goAnimation() {
+    //创建动画实例
+    var cdmove = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'linear'
+    });
+    var controlMove = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'linear',
+      transformOrigin: '20.93% 22.37% 0'
+    });
+    let n = this.data.n
+    //定时器获取状态并控制动画
+    let timer = setInterval(() => {
+      if (this.data.play) {
+        cdmove.rotate(n * 20).step();
+        controlMove.rotate(-10).step();
+        this.setData({
+          cdmove: cdmove.export(),
+          controlMove: controlMove.export(),
+          n: n
+        })
+        n++
+      } else {
+        clearInterval(timer)
+        controlMove.rotate(-40).step();
+        this.setData({
+          controlMove: controlMove.export(),
+          timer: null
+        })
+      }
+    }, 500)
+    //控制cd与操作杆移动并输出
+    cdmove.rotate(n * 20).step();
+    controlMove.rotate(-10).step();
+    this.setData({
+      cdmove: cdmove.export(),
+      controlMove: controlMove.export(),
+      timer: timer
+    })
+  },
+
+  /**
+   * 生命周期--页面加载
+   */
+  onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '播放歌曲'
+    });
+    //区分歌曲和节目
+    options.songId ? this.getSong(options.songId, options.ids ? JSON.parse(options.ids) : null) : options.programId ? this.getProgram(options.programId) : ''
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let bgm = this.store.data.bgm
-    bgm ? this.onTimeUpdate(bgm) : ''
+    this.store.data.bgm ? this.onTimeUpdate(this.store.data.bgm) : ''
+    this.setData({
+      playlist: this.store.data.playlist,
+      playIndex: this.store.data.playIndex
+    })
   },
   /**
    * 离开时清除定时器

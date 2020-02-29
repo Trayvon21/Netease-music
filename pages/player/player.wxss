@@ -20,6 +20,13 @@
     background-color: gray;
 }
 
+.player-top {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .player-title {
     width: 100%;
     text-align: center;

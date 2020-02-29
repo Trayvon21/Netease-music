@@ -16,11 +16,13 @@
     border-radius: 50%;
 }
 
+
+
 .player-title {
     font-size: 30rpx;
     line-height: 50rpx;
     white-space: nowrap;
-    width: 600rpx;
+    width: 400rpx;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -30,11 +32,13 @@
     font-size: 26rpx;
     line-height: 50rpx;
     white-space: nowrap;
-    width: 600rpx;
+    width: 400rpx;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .player-control {
-    margin-top: 25rpx;
+    margin-right: 20rpx;
+    width: 50rpx;
+    height: 50rpx;
 }

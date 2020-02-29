@@ -6,6 +6,7 @@
 }
 .song-left{
     width: 550rpx; 
+    margin-left: 20rpx;
 }
 .song-info{
     overflow: hidden;

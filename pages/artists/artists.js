@@ -99,10 +99,6 @@ create.Page(store, {
     }
   },
   getArtists(type) {
-    wx.showLoading({
-      title: "加载中...",
-      mask: true
-    });
     let initial = null
     let temp = ''
     type ? temp = type : temp = this.data.active
@@ -123,8 +119,6 @@ create.Page(store, {
             scrollTop: 0
           })
         }
-
-        wx.hideLoading();
       }
     })
   },

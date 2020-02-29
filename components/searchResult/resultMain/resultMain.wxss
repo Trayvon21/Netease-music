@@ -1,5 +1,5 @@
 .main-title {
-    margin: 60rpx 0 ;
+    margin: 60rpx 20rpx ;
     font-size: 40rpx;
     font-weight: 700;
     line-height: 50rpx;

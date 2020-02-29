@@ -4,7 +4,7 @@
   </van-tabs>
 </view>
 <scroll-view scroll-y="{{true}}" class="result-scorll" bindscrolltolower="pullUp">
-  <view class="result-pd">
+  <view>
     <resulteAlbum wx:if="{{active===10}}" result="{{result}}"></resulteAlbum>
     <resultArtist wx:if="{{active===100}}" result="{{result}}"></resultArtist>
     <resultDjRadio wx:if="{{active===1009}}" result="{{result}}"></resultDjRadio>

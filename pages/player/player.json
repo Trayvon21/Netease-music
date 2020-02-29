@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "van-slider": "../../lib/vant/slider/index"
+    "van-slider": "../../lib/vant/slider/index",
+    "van-popup": "../../lib/vant/popup/index",
+    "playList": "../../components/player/playList/playList"
   }
 }

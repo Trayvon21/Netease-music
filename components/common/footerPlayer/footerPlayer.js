@@ -22,13 +22,19 @@ create.Component(store, {
    */
   data: {
     play: false,
-    showData: {}
+    showData: {},
+    show: false
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    onClose() {
+      this.setData({
+        show: !this.data.show
+      })
+    },
     toPlayer() {
       wx.navigateTo({
         url: '/pages/player/player'
@@ -41,8 +47,20 @@ create.Component(store, {
      * 播放下一曲
      */
     playNext() {
+      if (this.store.data.playlist.length === 1) {
+        wx.showToast({
+          title: '您只有一首歌曲',
+          icon: 'none',
+          duration: 1500
+        });
+      }
+      //判断当前播放状态0-随机，1-列表，2-单曲
       let type = this.store.data.playType
-      if (type === 1) {
+      console.log(type, this.data.playlist.length);
+      if (type === 2 || this.data.playlist.length === 1) {
+
+        this.store.data.bgm.seek(0)
+      } else if (type === 1) {
         let playIndex = this.store.data.playIndex;
         if (playIndex < (this.store.data.playlist.length - 1)) {
           playIndex = playIndex + 1
@@ -55,13 +73,10 @@ create.Component(store, {
           });
         }
         this.store.data.playIndex = playIndex;
-      } else if (type === 0) {
+      } else {
         let index = parseInt(Math.random() * (this.store.data.playlist.length - 1))
         this.store.data.playIndex = index
-      } else if (type === 2) {
-        this.store.data.bgm.seek(0)
       }
-      clearInterval(this.data.timer)
       this.startPlay();
     },
     startPlay() {
