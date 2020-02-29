@@ -4,9 +4,9 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    result:{
-      type:Object,
-      value:{}
+    result: {
+      type: Object,
+      value: {}
     }
   },
 
@@ -21,9 +21,17 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    toPlayAll() {
+      let arr = []
+      this.properties.result.songs.map(item => {
+        arr.push(item.id)
+      })
+      wx.navigateTo({
+        url: `/pages/player/player?songId=${arr[0]}&ids=${JSON.stringify(arr)}`
+      });
+    }
   },
-  ready(){
+  ready() {
     console.log(this.properties);
   }
 })

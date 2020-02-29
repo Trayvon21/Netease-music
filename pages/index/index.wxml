@@ -32,7 +32,7 @@
     <!-- 主要 -->
     <scroll-view scroll-y="{{result===null}}" scroll-top="{{scrollTop}}" wx:if="{{searchFlag}}" class="main">
         <view class="" wx:if="{{result!==null}}">
-            <searchResult class="search-result" bind:send='getResult' bind:pullUp='pullUp' result="{{result}}" />
+            <searchResult class="search-result" bind:send='getResult' bind:getStorge='SearchNow' bind:pullUp='pullUp' result="{{result}}" />
         </view>
         <view wx:else class="main-pd">
             <searchHistory wx:if="{{histories.length>0}}" bind:send='getStorge' bind:goSearch='SearchNow' histories="{{histories}}" />

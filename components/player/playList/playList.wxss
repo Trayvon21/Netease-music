@@ -45,15 +45,19 @@
 
 .song-index {
     width: 60rpx;
+    line-height: 80rpx;
+    height: 80rpx;
     font-size: 28rpx;
     text-align: center;
 }
 
 .song-info {
     width: 600rpx;
+    line-height: 80rpx;
 }
 
 .song-name {
+    line-height: 80rpx;
     max-width: 400rpx;
     white-space: nowrap;
     overflow: hidden;
@@ -61,6 +65,7 @@
 }
 
 .song-singer {
+    line-height: 80rpx;
     max-width: 200rpx;
     font-size: 28rpx;
     white-space: nowrap;

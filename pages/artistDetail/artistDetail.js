@@ -32,7 +32,8 @@ create.Page(store, {
     active: '主页',
     desc: {},
     hotAlbums: [],
-    mvs: []
+    mvs: [],
+    ids: []
   },
   toplay(e) {
     wx.navigateTo({
@@ -71,7 +72,12 @@ create.Page(store, {
         navList[1].num = res.artist.musicSize
         navList[2].num = res.artist.albumSize
         navList[3].num = res.artist.mvSize
+        let arr = []
+        res.hotSongs.map(item => {
+          arr.push(item.id)
+        })
         this.setData({
+          ids: arr,
           artists: res,
           navList: navList
         })
@@ -104,7 +110,11 @@ create.Page(store, {
       active: e.currentTarget.dataset.title
     })
   },
-  addAnimation() {},
+  toPlayAll() {
+    wx.navigateTo({
+      url: `/pages/player/player?songId=${this.data.ids[0]}&ids=${JSON.stringify(this.data.ids)}`
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

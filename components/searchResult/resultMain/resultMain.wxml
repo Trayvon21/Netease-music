@@ -4,31 +4,31 @@
 <view class="songs">
     <view class="main-title flex jc-between">
         <view class="left">单曲</view>
-        <view class="right" data-list="{{result.song.songs}}">播放全部</view>
+        <view class="right" data-list="{{result.song.songs}}" bind:tap="gotoPlay">播放全部</view>
     </view>
     <view>
         <songBox wx:for="{{result.song.songs}}" item="{{item}}" wx:key="index" />
     </view>
-    <view class="reader-more">{{result.song.moreText}}</view>
+    <view class="reader-more" data-type='1' bind:tap="readmore">{{result.song.moreText}}</view>
 </view>
 <view class="playList">
     <view class="main-title">歌单</view>
     <view>
         <playListBox wx:for="{{result.playList.playLists}}" item="{{item}}" wx:key="index" />
     </view>
-    <view class="reader-more">{{result.playList.moreText}}</view>
+    <view class="reader-more" data-type='1000' bind:tap="readmore">{{result.playList.moreText}}</view>
 </view>
 <view class="video">
     <view class="main-title">视频</view>
     <view>
         <videoBox wx:for="{{result.video.videos}}" item="{{item}}" wx:key="index" />
     </view>
-    <view class="reader-more">{{result.video.moreText}}</view>
+    <view class="reader-more" data-type='1014' bind:tap="readmore">{{result.video.moreText}}</view>
 </view>
 <view class="query">
     <view class="main-title">相关搜索</view>
     <view class="flex query-box">
-        <view class="query-each" wx:for="{{result.sim_query.sim_querys}}" wx:key="index" data-keyword="item.keyword" bind:tap="">
+        <view class="query-each" wx:for="{{result.sim_query.sim_querys}}" wx:key="index" data-keyword="{{item.keyword}}" bind:tap="gotoSearch">
             {{item.keyword}}
         </view>
     </view>
@@ -79,15 +79,15 @@
 <view class="album">
     <view class="main-title">专辑</view>
     <albumBox wx:for="{{result.album.albums}}" item="{{item}}" wx:key="index" />
-    <view class="reader-more">{{result.album.moreText}}</view>
+    <view class="reader-more" data-type='10' bind:tap="readmore">{{result.album.moreText}}</view>
 </view>
 <view class="dj-radio">
     <view class="main-title">电台</view>
     <djRadioBox wx:for="{{result.djRadio.djRadios}}" item="{{item}}" wx:key="index" />
-    <view class="reader-more">{{result.djRadio.moreText}}</view>
+    <view class="reader-more" data-type='1009' bind:tap="readmore">{{result.djRadio.moreText}}</view>
 </view>
 <view class="user">
     <view class="main-title">用户</view>
     <userBox wx:for="{{result.user.users}}" item="{{item}}" wx:key="index" />
-    <view class="reader-more">{{result.user.moreText}}</view>
+    <view class="reader-more" data-type='1002' bind:tap="readmore">{{result.user.moreText}}</view>
 </view>

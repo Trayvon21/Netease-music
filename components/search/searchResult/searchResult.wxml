@@ -9,7 +9,7 @@
     <resultArtist wx:if="{{active===100}}" result="{{result}}"></resultArtist>
     <resultDjRadio wx:if="{{active===1009}}" result="{{result}}"></resultDjRadio>
     <resultMV wx:if="{{active===1004}}" result="{{result}}"></resultMV>
-    <resultMain wx:if="{{active===1018}}" result="{{result}}"></resultMain>
+    <resultMain wx:if="{{active===1018}}" bind:readmore="onChange" bind:getStorge="getStorge" result="{{result}}"></resultMain>
     <resultPlayList wx:if="{{active===1000}}" result="{{result}}"></resultPlayList>
     <resultSong wx:if="{{active===1}}" result="{{result}}"></resultSong>
     <resultUser wx:if="{{active===1002}}" result="{{result}}"></resultUser>

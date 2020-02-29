@@ -1,3 +1,4 @@
 <view>
+    <view class="title" bind:tap="toPlayAll">播放全部</view>
     <songBox wx:for="{{result.songs}}" item="{{item}}" wx:key="index" />
 </view>

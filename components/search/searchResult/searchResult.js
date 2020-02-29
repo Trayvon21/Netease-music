@@ -61,11 +61,14 @@ Component({
    */
   methods: {
     onChange(e) {
+      let name = ''
+      e.detail.name ? name = e.detail.name : name = e.detail
       this.setData({
-        active: e.detail.name
+        active: Number(name)
       })
       console.log(e);
-      this.triggerEvent("send", e.detail.name)
+      console.log(this.data.active);
+      this.triggerEvent("send", name)
     },
     pullUp() {
       let result = this.properties.result
@@ -91,8 +94,11 @@ Component({
           duration: 1500
         })
       }
-
     },
+    getStorge(e) {
+      console.log(e);
+      this.triggerEvent('getStorge', e.detail)
+    }
   },
   observers() {
     result: (val) => {

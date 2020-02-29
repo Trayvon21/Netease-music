@@ -7,9 +7,6 @@ create.Component(store, {
   computed: {
     length() {
       return this.playlist.length
-    },
-    height() {
-      return `${this.playIndex * 60}rpx`
     }
   },
   options: {
@@ -25,7 +22,7 @@ create.Component(store, {
    */
   data: {
     type: 0,
-    scrollTop: 0
+    viewId: ''
   },
 
   /**
@@ -47,9 +44,18 @@ create.Component(store, {
       this.store.data.playType = num
     },
     gotoPlay(e) {
-      wx.navigateTo({
-        url: `/pages/player/player?songId=${e.currentTarget.dataset.id}`
-      });
+      let pages = getCurrentPages()
+      let route = pages[pages.length - 1].route
+      if (route === 'pages/player/player') {
+        wx.redirectTo({
+          url: `/pages/player/player?songId=${e.currentTarget.dataset.id}`
+        })
+      } else {
+        wx.navigateTo({
+          url: `/pages/player/player?songId=${e.currentTarget.dataset.id}`
+        });
+      }
+
     },
     delAll() {
       wx.showModal({
@@ -92,7 +98,7 @@ create.Component(store, {
     ready() {
       setTimeout(() => {
         this.setData({
-          scrollTop: `${this.store.data.playIndex*80}rpx`
+          viewId: 'playNow'
         })
       }, 500)
       console.log(this.data.scrollTop);
