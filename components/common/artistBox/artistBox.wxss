@@ -22,6 +22,10 @@
 
 .artist-name {
     color: #84a6c7;
+    width: 400rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .artist-others {

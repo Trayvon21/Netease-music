@@ -9,7 +9,7 @@
       </view>
     </view>
   </scroll-view>
-  <scroll-view scroll-y="{{true}}" scroll-top="{{scrollTop}}" class="{{active!=='5001'?'height-change':'artist-main'}}">
+  <scroll-view bindscrolltolower="pullUp" scroll-y="{{true}}" scroll-top="{{scrollTop}}" class="{{active!=='5001'?'height-change':'artist-main'}}">
     <artistBox wx:for="{{artistList}}" index="{{index}}" wx:key="index" item="{{item}}"></artistBox>
     <view wx:if="{{length>0}}" style="height:100rpx" />
   </scroll-view>

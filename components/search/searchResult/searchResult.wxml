@@ -14,5 +14,6 @@
     <resultSong wx:if="{{active===1}}" result="{{result}}"></resultSong>
     <resultUser wx:if="{{active===1002}}" result="{{result}}"></resultUser>
     <resultVideo wx:if="{{active===1014}}" result="{{result}}"></resultVideo>
+    <view wx:if="{{length>0}}" style="height:100rpx" />
   </view>
 </scroll-view>

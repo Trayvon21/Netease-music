@@ -4,18 +4,26 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
 		"coverView": true,
+		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.1",
+	"libVersion": "2.10.2",
 	"appid": "wx2adb8f3ba0ffa4b8",
 	"projectname": "Netease-music",
 	"debugOptions": {
@@ -67,6 +75,34 @@
 					"name": "pages/playListDetail/playListDetail",
 					"pathName": "pages/playListDetail/playListDetail",
 					"query": "id=3233380300",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/editor/editor",
+					"pathName": "pages/editor/editor",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/djRadioDetail/djRadioDetail",
+					"pathName": "pages/djRadioDetail/djRadioDetail",
+					"query": "id=793121457",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/artistDetail/artistDetail",
+					"pathName": "pages/artistDetail/artistDetail",
+					"query": "id=10559",
 					"scene": null
 				}
 			]

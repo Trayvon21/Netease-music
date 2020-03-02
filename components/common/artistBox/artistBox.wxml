@@ -1,15 +1,12 @@
 <view class="flex artist-box a-center" bind:tap="gotoArtist" style="background:{{index%2===1?'#f5f5f5':'white'}}">
     <view>
-        <image class="artist-pic" mode="aspectFill" src="{{item.picUrl}}" />
+        <image lazy-load="{{true}}" class="artist-pic" mode="aspectFill" src="{{item.img1v1Url}}" />
     </view>
     <view class="artist-right">
         <view class="flex artist-info">
-            <view>
-                <text>歌手名：</text>
-                <text class="artist-name">{{item.name}}</text>
-            </view>
-            <view class="artist-name" wx:for="{{item.alia?item.alia:item.alias}}" wx:for-item="i">
-                ({{i}})
+            <view class="flex">
+                <view>歌手名：</view>
+                <view class="artist-name">{{item.name}}</view>
             </view>
         </view>
         <view class="flex artist-others">

@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-button": "../../lib/vant/button/index",
+    "van-area": "../../lib/vant/area/index",
+    "van-field": "../../lib/vant/field/index",
+    "van-action-sheet": "../../lib/vant/action-sheet/index",
+    "van-picker": "../../lib/vant/picker/index",
+    "van-datetime-picker": "../../lib/vant/datetime-picker/index"
+  },
+  "navigationBarTitleText": "我的资料"
 }

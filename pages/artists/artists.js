@@ -98,13 +98,21 @@ create.Page(store, {
       this.getArtists()
     }
   },
-  getArtists(type) {
+  getArtists(type, offset = 0) {
     let initial = null
     let temp = ''
     type ? temp = type : temp = this.data.active
     this.data.active2 !== '热' ? initial = this.data.active2 : ''
-    api.artistList(temp, 1, initial).then(res => {
+    api.artistList(temp, offset, initial).then(res => {
       if (res.code === 200) {
+        if (res.artists.length === 0 || !res.artists) {
+          wx.showToast({
+            title: '到底了',
+            icon: 'none',
+            duration: 1500
+          });
+          return
+        }
         if (type) {
           this.setData({
             active: temp,
@@ -112,6 +120,12 @@ create.Page(store, {
             scrollLeft: 0,
             active2: '热',
             scrollTop: 0
+          })
+        } else if (offset > 0) {
+          let artistList = this.data.artistList
+          artistList.push(...res.artists)
+          this.setData({
+            artistList: artistList,
           })
         } else {
           this.setData({
@@ -122,54 +136,20 @@ create.Page(store, {
       }
     })
   },
+  pullUp() {
+    this.getArtists(null, this.data.artistList.length)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.getArtists()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-    let date =new Date(1466956800007)
-    console.log(date.getFullYear());
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    console.log(1);
 
   },
 

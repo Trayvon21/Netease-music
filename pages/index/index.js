@@ -1,10 +1,9 @@
 import create from '../../utils/store/create'
 import store from '../../store/index'
 import api from "../../http/api"
-
 create.Page(store, {
   //使用共享的数据 
-  use: ['bgm', 'playlist'],
+  use: ['bgm', 'playlist', 'screenMsg'],
   // 指针对store中的数据，不会对组件内部的数据生效
   computed: {
     length() {
@@ -54,7 +53,7 @@ create.Page(store, {
     hotList: [],
     histories: [],
     scrollTop: '',
-    page: 1
+    page: 1,
   },
 
   changeNew(e) {
@@ -206,6 +205,17 @@ create.Page(store, {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    let that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res);
+        that.store.data.screenMsg = {
+          statusBarHeight: res.statusBarHeight,
+          screenHeight: res.screenHeight,
+          fixedCss: `top:${res.statusBarHeight+44}px;`
+        }
+      }
+    })
     this.getData()
     this.getPersonalized()
     this.getNewDisc()

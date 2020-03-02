@@ -1,37 +1,47 @@
-<view>
-    <view class="playlist-top">
-        <view class="top-pic">
-            <image class="top-pic filter" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
-            <view class="top-nav flex jc-between">
-                <view bind:tap="navBack" class="flex">
-                    <image class="top-nav-icon" src="../../assets/images/back-white.png" />
-                    <view>{{playlist.name?'歌单':'专辑'}}</view>
-                </view>
-                <view>
-                    <image class="nav-icon" src="../../assets/images/share.png" />
-                    <image class="nav-icon" src="../../assets/images/control.png" />
+<wxs module="numFr" src="../../lib/filter/filter.wxs"></wxs>
+<scroll-view bindscroll="opacityChange" scroll-y="{{true}}" throttle="{{false}}" data-status-bar-height="{{statusBarHeight}}">
+    <!-- 顶部 -->
+    <view class="top-nav flex jc-between" style="padding-top:{{statusBarHeight}}px;background:rgba(128,128,128,{{opacity}})">
+        <view style="height:100%;width:100%;position: relative">
+            <view bind:tap="navBack" class="flex">
+                <image class="top-nav-icon " src="../../assets/images/back-white.png" />
+                <view class="top-title">
+                    {{showName?(playlist.name?'歌单':'专辑'):(playlist.name?playlist.name:album.name)}}
                 </view>
             </view>
-            <view class="top-info flex">
-                <view class="top-info-box">
-                    <image class="top-info-pic" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
-                    <view class="top-info-playCount">{{playlist.playCount}}</view>
+            <view>
+                <image class="top-bg pic-size filter" style="opacity:{{opacity}}" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
+            </view>
+        </view>
+    </view>
+    <!-- 专辑/歌单信息 -->
+    <view class="playlistInfo" style="opacity:{{0.9-opacity}}">
+        <image class="pic-size info-bg filter" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
+        <view class="flex info-main a-center" style="margin-top:{{statusBarHeight+74}}px">
+            <view class="info-pic">
+                <view class="playCount a-center">
+                    <image class="playCount-icon" src="../../assets/images/play.png" />
+                    {{numFr.getCount(playlist.playCount)}}
                 </view>
-                <view>
-                    <view class="top-info-title">{{playlist.name?playlist.name:album.name}}</view>
-                    <view class="flex">
-                        <image class="top-info-icon" src="{{playlist.creator.avatarUrl?playlist.creator.avatarUrl:album.artist.picUrl}}" />
-                        <view class="top-info-nickname">
-                            {{playlist.creator.nickname?playlist.creator.nickname:album.artist.name}}>
-                        </view>
+                <image style="height: 240rpx;width: 240rpx; border-radius: 20rpx;" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
+            </view>
+            <view class="info-desc">
+                <view class="info-title">{{playlist.name?playlist.name:album.name}}</view>
+                <view class="flex a-center info-nickname">
+                    <image class="nick-icon" src="{{playlist.creator.avatarUrl?playlist.creator.avatarUrl:album.artist.picUrl}}" />
+                    <view>
+                        {{playlist.creator.nickname?playlist.creator.nickname:album.artist.name}} >
                     </view>
-                    <view class="top-info-desc">
-                        {{playlist.description?playlist.description:album.description}}>
+                </view>
+                <view class="desc-bottom flex jc-between">
+                    <view class="info-description">
+                        {{playlist.description?playlist.description:album.description}} >
                     </view>
+                    <view style="line-height:44rpx">></view>
                 </view>
             </view>
         </view>
-        <view class="top-info-nav flex jc-around">
+        <view class="info-nav flex jc-around">
             <view class="nav-each">
                 <image class="nav-icon" src="../../assets/images/commit.png" />
                 <view>评论</view>
@@ -50,24 +60,25 @@
             </view>
         </view>
     </view>
-    <view class="playlist-main">
-        <view class="main-box">
-            <view bind:tap="toplayAll">播放全部</view>
-            <view wx:for="{{playlist.tracks?playlist.tracks:songs}}" data-id="{{item.id}}" bind:tap="toplay" wx:key="index" class="flex song-each">
-                <view class="song-index">{{index+1}}</view>
-                <view>
-                    <view class="song-name">{{item.name}}</view>
-                    <view class="song-desc">
-                        <text wx:for="{{item.ar}}" wx:for-item="i">{{i.name}}</text>
-                        <text>-{{item.al.name}}</text>
-                    </view>
+    <view class="main-box flex a-center {{fixed?'main-fixed':''}}" bind:tap="toplayAll" style="{{fixed?fixedCss:''}}">
+        <van-icon style="margin-left:20rpx" name="play-circle-o" />
+        <view style="margin-left:20rpx">播放全部</view>
+    </view>
+    <view style="margin-top:{{fixed?'20px':''}}">
+        <view wx:for="{{playlist.tracks?playlist.tracks:songs}}" data-id="{{item.id}}" bind:tap="toplay" wx:key="index" class="flex song-each">
+            <view class="song-index">{{index+1}}</view>
+            <view>
+                <view class="song-name">{{item.name}}</view>
+                <view class="song-desc">
+                    <text wx:for="{{item.ar}}" wx:for-item="i">{{i.name}}</text>
+                    <text>-{{item.al.name}}</text>
                 </view>
-                <view>
-                    <image class="song-control" src="../../assets/images/control.png" />
-                </view>
+            </view>
+            <view>
+                <image class="song-control" src="../../assets/images/control.png" />
             </view>
         </view>
         <view wx:if="{{length>0}}" style="height:100rpx" />
     </view>
-</view>
+</scroll-view>
 <footerPlayer wx:if="{{length>0}}" />

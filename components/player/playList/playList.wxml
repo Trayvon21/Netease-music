@@ -2,7 +2,7 @@
     <view class="list-top">
         <view class="list-title">
             当前播放
-            <text>({{length}})</text>
+            <text class="list-num">({{length}})</text>
         </view>
         <view class="flex jc-between list-nav">
             <view class="type-info flex" bind:tap="typeChange">
@@ -12,21 +12,21 @@
             <view bind:tap="delAll">删除全部</view>
         </view>
     </view>
-    <scroll-view scroll-y="{{true}}" style="margin: 0 20rpx;height:680rpx" scroll-into-view="{{viewId}}">
-        <view wx:for="{{$.playlist}}" id="{{$.playIndex===index?'playNow':''}}" wx:key="index" class="flex jc-between song-each" style="color:{{$.playIndex===index?'red!important;':''}}">
+    <scroll-view scroll-y="{{true}}" style="margin: 0 20rpx;height:660rpx" scroll-into-view="{{viewId}}">
+        <view wx:for="{{$.playlist}}" id="{{$.playIndex===index?'playNow':''}}" wx:key="index" class="flex jc-between list-each" style="color:{{$.playIndex===index?'red!important;':''}}">
             <view class="flex" bind:tap="{{$.playIndex!==index?'gotoPlay':''}}" data-id="{{item.id}}">
-                <view class="song-index" style="color:{{$.playIndex===index?'red!important;':'gray'}}">
+                <view class="list-index" style="color:{{$.playIndex===index?'red!important;':'gray'}}">
                     {{index+1}}
                 </view>
-                <view class="song-info flex">
-                    <view class="song-name">{{item.title}}</view>
-                    <view class="song-singer" style="color:{{$.playIndex===index?'red!important;':'gray'}}">
-                        —{{item.singer}}
+                <view class="list-info flex">
+                    <view class="list-name">{{item.title}}</view>
+                    <view class="list-singer" style="color:{{$.playIndex===index?'red!important;':'gray'}}">
+                        -{{item.singer}}
                     </view>
                 </view>
             </view>
             <view class="del" wx:if="{{$.playIndex!==index}}" data-index="{{index}}" data-id="{{item.id}}" bind:tap="del">
-                X
+                <van-icon name="cross" />
             </view>
         </view>
     </scroll-view>

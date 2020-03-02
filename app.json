@@ -9,7 +9,8 @@
     "pages/player/player",
     "pages/editor/editor",
     "pages/login/login",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/videoPlayer/videoPlayer"
   ],
   "window": {
     "backgroundTextStyle": "light",

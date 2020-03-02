@@ -26,3 +26,13 @@
 .t-center {
     text-align: center;
 }
+
+.filter {
+    filter: blur(100rpx);
+}
+
+.text-over {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

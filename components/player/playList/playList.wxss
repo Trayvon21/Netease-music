@@ -3,18 +3,26 @@
 }
 
 .list-top {
-    height: 120rpx;
+    height: 140rpx;
 }
 
 .list-title {
     line-height: 70rpx;
-    margin-left: 20rpx;
+    font-size: 38rpx;
+    margin-left: 40rpx;
+}
+
+.list-num {
+    line-height: 70rpx;
+    font-size: 26rpx;
+    color: gray;
 }
 
 .list-nav {
     line-height: 50rpx;
     font-size: 28rpx;
     height: 50rpx;
+    margin: 10rpx 0;
 }
 
 .list-nav>view {
@@ -36,27 +44,29 @@
     text-align: center;
 }
 
-.song-each {
+.list-each {
     line-height: 80rpx;
     height: 80rpx;
+    margin: 20rpx 0;
     font-size: 32rpx;
     position: relative;
 }
 
-.song-index {
+.list-index {
     width: 60rpx;
     line-height: 80rpx;
     height: 80rpx;
-    font-size: 28rpx;
+    font-size: 24rpx;
+    font-weight: 500;
     text-align: center;
 }
 
-.song-info {
+.list-info {
     width: 600rpx;
     line-height: 80rpx;
 }
 
-.song-name {
+.list-name {
     line-height: 80rpx;
     max-width: 400rpx;
     white-space: nowrap;
@@ -64,7 +74,7 @@
     text-overflow: ellipsis;
 }
 
-.song-singer {
+.list-singer {
     line-height: 80rpx;
     max-width: 200rpx;
     font-size: 28rpx;

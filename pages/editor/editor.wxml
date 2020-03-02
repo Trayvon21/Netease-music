@@ -1,2 +1,16 @@
-<!--pages/editor/editor.wxml-->
-<text>pages/editor/editor.wxml</text>
+<wxs module="DateFr" src="../../lib/filter/filter.wxs"></wxs>
+<view class="editor-container">
+    <van-cell-group>
+        <van-field value="{{nickname}}" bind:change="changeNickname" input-align="right" label="昵称" placeholder="请输入昵称" />
+        <van-field value="{{ gender === 1 ?'男' : gender===2 ? '女': '保密'}}" right-icon="arrow" readonly input-align="right" label="性别" bind:click-icon="changeGender" />
+        <van-field value="{{DateFr.getDate(birthday)}}" right-icon="arrow" readonly input-align="right" label="生日" bind:click-icon="changeBirth" />
+        <van-field value="{{cityShow}}" right-icon="arrow" readonly input-align="right" label="城市" bind:click-icon="changeCity" />
+        <van-field value="{{introduction}}" custom-style="max-height:250rpx;" bind:change="changeIntroduction" clearable type="textarea" autosize label="个性签名" border="{{ false }}" />
+    </van-cell-group>
+</view>
+<view class="editor-btns">
+    <van-button color="#F77626" custom-class="editor-btn" bind:tap="confirm">确认修改</van-button>
+</view>
+<van-action-sheet show="{{ genderFlag }}" actions="{{ genders }}" bind:close="changeGender" bind:select="selectGender" cancel-text="取消" />
+<van-datetime-picker wx:if="{{birthFlag}}" type="date" value="{{ birthday }}" min-date="{{ minDate }}" formatter="{{ formatter }}" bind:confirm="selectBirth" bind:cancel="changeBirth" />
+<van-area wx:if="{{cityFlag}}" value="{{city}}" area-list="{{ areaList }}" columns-num="{{ 2 }}" bind:cancel="changeCity" bind:confirm="selectCity"/>

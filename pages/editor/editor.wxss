@@ -1,1 +1,16 @@
-/* pages/editor/editor.wxss */
+.editor-container {
+    padding: 20rpx;
+    position: relative;
+}
+
+.editor-btns {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200rpx;
+    margin-left: -100rpx;
+}
+
+.editor-btn {
+    width: 200rpx !important;
+}

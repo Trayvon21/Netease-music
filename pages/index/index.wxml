@@ -1,8 +1,7 @@
 <view class="home-container">
     <!-- 头部 -->
-    <view>
-        <!-- 搜索 -->
-        <view class="header flex" wx:if="{{searchFlag}}">
+    <view wx:if="{{searchFlag}}">
+        <view class="header flex">
             <view>
                 <image bind:tap="goSearch" class="header-back" src="../../assets/images/back.png" />
             </view>
@@ -20,77 +19,77 @@
                 <image wx:else bind:tap="clearKeywords" class="header-pic" src="../../assets/images/clear.png" />
             </view>
         </view>
-        <!-- 主页 -->
-        <view class="header flex" wx:else>
+        <scroll-view scroll-y="{{result===null}}" scroll-top="{{scrollTop}}" class="main">
+            <view class="" wx:if="{{result!==null}}">
+                <searchResult class="search-result" bind:send='getResult' bind:getStorge='SearchNow' bind:pullUp='pullUp' result="{{result}}" />
+            </view>
+            <view wx:else class="main-pd">
+                <searchHistory wx:if="{{histories.length>0}}" bind:send='getStorge' bind:goSearch='SearchNow' histories="{{histories}}" />
+                <searchHot wx:if="{{hotList.length>0}}" bind:send='SearchNow' hotList="{{hotList}}" />
+            </view>
+        </scroll-view>
+    </view>
+    <view wx:else>
+        <view class="header flex">
             <view class="header-title">音乐馆</view>
-            <van-search bind:tap="goSearch" placeholder="请输入搜索关键词" custom-class="header-search"></van-search>
+            <van-search disabled="{{true}}" bind:tap="goSearch" placeholder="请输入搜索关键词" custom-class="header-search"></van-search>
             <view>
                 <image class="header-pic" src="../../assets/images/header-pic.png" />
             </view>
         </view>
-    </view>
-    <!-- 主要 -->
-    <scroll-view scroll-y="{{result===null}}" scroll-top="{{scrollTop}}" wx:if="{{searchFlag}}" class="main">
-        <view class="" wx:if="{{result!==null}}">
-            <searchResult class="search-result" bind:send='getResult' bind:getStorge='SearchNow' bind:pullUp='pullUp' result="{{result}}" />
-        </view>
-        <view wx:else class="main-pd">
-            <searchHistory wx:if="{{histories.length>0}}" bind:send='getStorge' bind:goSearch='SearchNow' histories="{{histories}}" />
-            <searchHot wx:if="{{hotList.length>0}}" bind:send='SearchNow' hotList="{{hotList}}" />
-        </view>
-    </scroll-view>
-    <view class="main main-pd" wx:else>
-        <!-- 轮播 -->
-        <swiper class="siwper-box" indicator-dots="true" indicator-active-color="#b62e1a" autoplay="true">
-            <swiper-item wx:for="{{banners}}" wx:key="index" class="siwper-each" bind:tap="swiperGo">
-                <image class="" src="{{item.imageUrl}}" />
-            </swiper-item>
-        </swiper>
-        <!-- 顶部导航 -->
-        <view class="top-nav flex jc-around">
-            <view wx:for="{{topNav}}" wx:key="index" class="top-nav-box">
-                <view>
-                    <image class="top-nav-pic" src="../../assets/images/top-{{item.pic}}.png" />
-                </view>
-                <view class="top-nav-title">{{item.name}}</view>
-            </view>
-        </view>
-        <!-- 推荐歌单 -->
-        <view class="zone-title flex jc-between">
-            <view class="desc">推荐歌单</view>
-            <view class="more">歌单广场</view>
-        </view>
-        <homeBox List="{{recommendList}}" type="playlist" />
-        <!-- 新碟新歌 -->
-        <view class="zone-title flex jc-between">
-            <view class="desc flex">
-                <view bind:tap='changeNew' data-active='1' class="new-title {{actived==='1'?'new-actived':''}}">
-                    新碟
-                </view>
-                <view bind:tap='changeNew' data-active='2' class="new-title {{actived==='2'?'new-actived':''}}">
-                    新歌
+        <view class="main main-pd">
+            <!-- 轮播 -->
+            <swiper class="siwper-box" indicator-dots="true" indicator-active-color="#b62e1a" autoplay="true">
+                <swiper-item wx:for="{{banners}}" wx:key="index" class="siwper-each" bind:tap="swiperGo">
+                    <image class="" src="{{item.imageUrl}}" />
+                </swiper-item>
+            </swiper>
+            <!-- 顶部导航 -->
+            <view class="top-nav flex jc-around">
+                <view wx:for="{{topNav}}" wx:key="index" class="top-nav-box" bind:tap="swiperGo">
+                    <view>
+                        <image class="top-nav-pic" src="../../assets/images/top-{{item.pic}}.png" />
+                    </view>
+                    <view class="top-nav-title">{{item.name}}</view>
                 </view>
             </view>
-            <view class="more">更多新歌</view>
+            <!-- 推荐歌单 -->
+            <view class="zone-title flex jc-between">
+                <view class="desc">推荐歌单</view>
+                <view class="more" bind:tap="swiperGo">歌单广场</view>
+            </view>
+            <homeBox List="{{recommendList}}" type="playlist" />
+            <!-- 新碟新歌 -->
+            <view class="zone-title flex jc-between">
+                <view class="desc flex">
+                    <view bind:tap='changeNew' data-active='1' class="new-title {{actived==='1'?'new-actived':''}}">
+                        新碟
+                    </view>
+                    <view bind:tap='changeNew' data-active='2' class="new-title {{actived==='2'?'new-actived':''}}">
+                        新歌
+                    </view>
+                </view>
+                <view class="more" bind:tap="swiperGo">更多新歌</view>
+            </view>
+            <homeBox List="{{actived==='1'?newDisc:newsong}}" type="{{actived==='1'?'album':'song'}}" />
+            <view class="zone-title flex jc-between">
+                <view class="desc">新歌新势力</view>
+                <view class="more" bind:tap="swiperGo">新音乐</view>
+            </view>
+            <homeBox List="{{newsong}}" type="song" />
+            <!-- 电台节目 -->
+            <view class="zone-title flex jc-between">
+                <view class="desc">推荐电台</view>
+                <view class="more" bind:tap="swiperGo">电台广场</view>
+            </view>
+            <homeBox List="{{recommends}}" type="dj" flag="true" />
+            <view class="zone-title flex jc-between">
+                <view class="desc">推荐节目</view>
+                <view class="more" bind:tap="swiperGo">更多节目</view>
+            </view>
+            <homeBox List="{{djprograms}}" type="program" flag="true" />
+            <view wx:if="{{length>0}}" style="height:100rpx" />
         </view>
-        <homeBox List="{{actived==='1'?newDisc:newsong}}" type="{{actived==='1'?'album':'song'}}" />
-        <view class="zone-title flex jc-between">
-            <view class="desc">新歌新势力</view>
-            <view class="more">新音乐</view>
-        </view>
-        <homeBox List="{{newsong}}" type="song" />
-        <!-- 电台节目 -->
-        <view class="zone-title flex jc-between">
-            <view class="desc">推荐电台</view>
-            <view class="more">电台广场</view>
-        </view>
-        <homeBox List="{{recommends}}" type="dj" flag="true" />
-        <view class="zone-title flex jc-between">
-            <view class="desc">推荐节目</view>
-            <view class="more">更多节目</view>
-        </view>
-        <homeBox List="{{djprograms}}" type="program" flag="true" />
-        <view wx:if="{{length>0}}" style="height:100rpx" />
     </view>
 </view>
 <footerPlayer wx:if="{{length>0}}" />

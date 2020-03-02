@@ -4,7 +4,7 @@ import api from "../../http/api"
 
 create.Page(store, {
   //使用共享的数据 
-  use: ['bgm', 'playlist'],
+  use: ['bgm', 'playlist', 'screenMsg'],
   // 指针对store中的数据，不会对组件内部的数据生效
   computed: {
     length() {
@@ -33,7 +33,14 @@ create.Page(store, {
     desc: {},
     hotAlbums: [],
     mvs: [],
-    ids: []
+    ids: [],
+    showName: true,
+    statusBarHeight: 0,
+    screenHeight: 0,
+    opacity: 0,
+    fixed: false,
+    fixedCss: '',
+    scrollTop: null
   },
   toplay(e) {
     wx.navigateTo({
@@ -107,13 +114,32 @@ create.Page(store, {
   },
   changNav(e) {
     this.setData({
-      active: e.currentTarget.dataset.title
+      active: e.currentTarget.dataset.title,
+      scrollTop: 241 - this.data.statusBarHeight,
+      showName: false
     })
   },
   toPlayAll() {
     wx.navigateTo({
       url: `/pages/player/player?songId=${this.data.ids[0]}&ids=${JSON.stringify(this.data.ids)}`
     });
+  },
+  opacityChange(e) {
+    let showName = true
+    e.detail.scrollTop >= 120 ? showName = false : showName = true
+    console.log(e.detail.scrollTop, 231 - this.data.statusBarHeight);
+    if (e.detail.scrollTop > (231 - this.data.statusBarHeight)) {
+      this.setData({
+        fixed: true,
+        opacity: 1,
+      })
+    } else {
+      this.setData({
+        fixed: false,
+        opacity: e.detail.scrollTop / (251 - this.data.statusBarHeight),
+        showName: showName
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -132,7 +158,11 @@ create.Page(store, {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      statusBarHeight: this.store.data.screenMsg.statusBarHeight,
+      screenHeight: this.store.data.screenMsg.screenHeight,
+      fixedCss: this.store.data.screenMsg.fixedCss
+    })
   },
 
   /**

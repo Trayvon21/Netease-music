@@ -24,6 +24,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    toPlay() {
+      wx.navigateTo({
+        url: `/pages/videoPlayer/videoPlayer?id=${this.properties.item.id}`
+      });
+    }
   }
 })

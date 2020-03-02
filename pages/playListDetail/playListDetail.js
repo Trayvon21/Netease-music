@@ -4,7 +4,7 @@ import api from "../../http/api"
 
 create.Page(store, {
   //使用共享的数据 
-  use: ['bgm', 'playlist'],
+  use: ['bgm', 'playlist', 'screenMsg'],
   // 指针对store中的数据，不会对组件内部的数据生效
   computed: {
     length() {
@@ -15,7 +15,13 @@ create.Page(store, {
     playlist: {},
     album: {},
     songs: [],
-    ids: []
+    ids: [],
+    showName: true,
+    statusBarHeight: 0,
+    screenHeight: 0,
+    opacity: 0,
+    fixed: false,
+    fixedCss: ''
   },
   toplay(e) {
     wx.navigateTo({
@@ -67,19 +73,39 @@ create.Page(store, {
       delta: 1
     });
   },
+  opacityChange(e) {
+    let showName = true
+    let opacity = (e.detail.scrollTop / (251 - this.data.statusBarHeight))
+    e.detail.scrollTop >= 120 ? showName = false : showName = true
+    if (e.detail.scrollTop > (251 - this.data.statusBarHeight)) {
+      this.setData({
+        fixed: true
+      })
+    } else {
+      this.setData({
+        fixed: false,
+        opacity: opacity,
+        showName: showName
+      })
+    }
+
+
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      statusBarHeight: this.store.data.screenMsg.statusBarHeight,
+      screenHeight: this.store.data.screenMsg.screenHeight,
+      fixedCss: this.store.data.screenMsg.fixedCss
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -98,14 +124,13 @@ create.Page(store, {
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+
 
   },
 

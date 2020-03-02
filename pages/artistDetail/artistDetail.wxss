@@ -1,74 +1,97 @@
-.artist-top {
-    height: 500rpx;
-    width: 100%;
-    position: fixed;
-    top: 0;
+page {
+    font-size: 16px;
+    height: 100%;
+    background: #eeeeee;
 }
 
-.top-nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 40rpx;
-    width: 100%;
-}
-
-.nav-icon {
-    width: 60rpx;
-    height: 60rpx;
-}
-
-.top-pic {
-    width: 100%;
+scroll-view {
     height: 100%;
 }
 
-.artist-title {
-    position: absolute;
-    top: -120rpx;
-    left: 0;
-    margin-left: 40rpx;
-    height: 120rpx;
-    color: white;
-}
-
-.artist-name {
-    font-size: 40rpx;
-    font-weight: 700;
-}
-
-.artist-alias {
-    line-height: 60rpx;
-    font-size: 32rpx;
-    color: rgba(255, 255, 255, 0.596);
-}
-
-.artist-follow {
-    position: absolute;
-    top: -120rpx;
-    right: 30rpx;
-    padding: 10rpx;
-    width: 100rpx;
-    height: 40rpx;
-    line-height: 40rpx;
-    font-size: 28rpx;
-    text-align: center;
-    border-radius: 30rpx;
-    background: #f75665;
-    color: white;
-}
-
-.artist-main {
-    z-index: 10;
-    position: absolute;
-    top: 500rpx;
-    margin-top: -80rpx;
+.top-nav {
+    overflow: hidden;
+    position: fixed;
     width: 100%;
+    height: 44px;
+    line-height: 44px;
+    background: gray;
+    font-size: 36rpx;
+    color: white;
+    padding-top: env(safe-area-inset-top);
+    z-index: 10;
 }
+
+.top-nav-icon {
+    width: 36px;
+    height: 36px;
+    margin: 4px 20rpx;
+    z-index: 99;
+}
+
+.top-title {
+    z-index: 99;
+}
+
+.pic-size {
+    width: 750rpx;
+    height: 315px;
+}
+
+.top-bg {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    background: gray;
+}
+
+.playlistInfo {
+    overflow: hidden;
+    height: 315px;
+    z-index: -2;
+    background: gray;
+    position: relative;
+}
+
+.info-bg {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+}
+
+.top-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    height: 150rpx;
+}
+
+.info-name {
+    font-size: 38rpx;
+    line-height: 50rpx;
+    white-space: nowrap;
+    width: 400rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info-count {
+    font-size: 28rpx;
+    line-height: 50rpx;
+    color: #ececec;
+}
+
+.info-follow {
+    padding: 10rpx 20rpx;
+    border-radius: 30rpx;
+    height: 40rpx;
+    font-size: 30rpx;
+    background-color: #f75665;
+}
+
 
 .artist-nav {
-    border-radius: 30rpx 30rpx 0 0;
-    box-shadow: 0 0 0 3rpx rgba(150, 150, 150, 0.253);
     width: 100%;
     height: 80rpx;
     line-height: 80rpx;
@@ -79,7 +102,8 @@
     text-align: center;
     flex: 1;
     font-size: 30rpx;
-    height: 80rpx;
+    height: 40px;
+    line-height: 40px;
     position: relative;
 }
 
@@ -107,11 +131,46 @@
     height: 5rpx;
 }
 
-/* 歌手详情 */
-.main-box {
-    padding: 20rpx;
+.main {
+    margin-top: -40rpx;
+    width: 100%;
+    border-radius: 30rpx 30rpx 0 0;
+    box-shadow: 0 0 0 3rpx rgba(150, 150, 150, 0.253);
+    height: 40px;
     background: white;
 }
+
+.playlist-main {
+    width: 100%;
+}
+
+.main-fixed {
+    position: fixed;
+    z-index: 99;
+    margin: 0 !important;
+}
+
+.main-box {
+    padding: 20rpx 40rpx;
+    background: white;
+}
+
+.artist-name {
+    font-size: 40rpx;
+    font-weight: 700;
+    width: 550rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.artist-alias {
+    line-height: 60rpx;
+    font-size: 32rpx;
+    color: rgba(255, 255, 255, 0.596);
+}
+
+/* 歌手详情 */
 
 .main-title {
     font-size: 34rpx;
@@ -164,6 +223,7 @@
     top: 50%;
     margin-top: -25rpx;
 }
-.readmore{
+
+.readmore {
     text-align: center;
 }

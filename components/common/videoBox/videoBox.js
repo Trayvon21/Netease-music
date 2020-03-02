@@ -23,6 +23,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    gotoPlay() {
+      wx.navigateTo({
+        url: `/pages/videoPlayer/videoPlayer?vid=${this.properties.item.vid}`
+      });
+    }
   }
 })

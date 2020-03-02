@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "van-search": "../../lib/vant/search/index",
+    "van-dialog": "../../lib/vant/dialog/index",
     "homeBox":"../../components/common/homeBox/homeBox",
     "van-icon":"../../lib/vant/icon/index",
     "searchResult":"../../components/search/searchResult/searchResult",

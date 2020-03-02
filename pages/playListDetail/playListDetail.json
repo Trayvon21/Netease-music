@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "footerPlayer":"../../components/common/footerPlayer/footerPlayer"
+    "footerPlayer": "../../components/common/footerPlayer/footerPlayer",
+    "van-icon": "../../lib/vant/icon/index"
   },
-  "navigationStyle":"custom"
+  "navigationStyle": "custom"
 }

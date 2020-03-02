@@ -1,29 +1,34 @@
-<view class="artist-top">
-    <view class="top-pic " animation="{{opacityChange}}">
-        <image class="top-pic" src="{{artists.artist.picUrl}}" />
-    </view>
-    <view class="top-nav flex jc-between">
-        <view bind:tap="navBack">
-            <image class="nav-icon" src="../../assets/images/back-white.png" />
-        </view>
-        <view>
-            <image class="nav-icon" src="../../assets/images/share.png" />
-            <image class="nav-icon" src="../../assets/images/control.png" />
-        </view>
-    </view>
-</view>
-<view class="artist-main">
-    <view animation="{{opacityChange}}">
-        <view class="artist-title">
-            <view class="artist-name">{{artists.artist.name}}</view>
-            <view class="artist-alias">
-                <text class="" wx:for="{{artists.artist.alias}}">{{item}}</text>
+<scroll-view bindscroll="opacityChange" scroll-y="{{true}}" scroll-top="{{scrollTop}}" throttle="{{false}}" data-status-bar-height="{{statusBarHeight}}">
+    <!-- 顶部 -->
+    <view class="top-nav flex jc-between" style="padding-top:{{statusBarHeight}}px;background:rgba(128,128,128,{{opacity}})">
+        <view style="height:100%;width:100%;position: relative">
+            <view bind:tap="navBack" class="flex">
+                <image class="top-nav-icon " src="../../assets/images/back-white.png" />
+                <view class="top-title">{{showName?'歌手':artists.artist.name}}</view>
+            </view>
+            <view>
+                <image class="top-bg pic-size filter" style="opacity:{{opacity}}" src="{{artists.artist.picUrl}}" />
             </view>
         </view>
-        <view class="artist-follow">+ 关注</view>
     </view>
-    <view class="artist-nav flex">
-        <view wx:for="{{navList}}" bind:tap="changNav" data-title="{{item.title}}" class="artist-nav-each {{active===item.title?'artist-nav-actived':''}}">
+    <!-- 专辑/歌单信息 -->
+    <view class="playlistInfo" style="opacity:{{0.8-opacity}}">
+        <image class="pic-size info-bg" src="{{artists.artist.picUrl}}" />
+        <view class="flex jc-around top-info">
+            <view>
+                <view class="artist-name">{{artists.artist.name}}</view>
+                <view class="artist-alias">
+                    <text class="" wx:for="{{artists.artist.alias}}" wx:key="index">{{item}}</text>
+                </view>
+            </view>
+            <view class="info-follow a-center">
+                <van-icon name="plus" />
+                <text class="right-text">关注</text>
+            </view>
+        </view>
+    </view>
+    <view class="main flex {{fixed?'main-fixed':''}}" style="{{fixed?fixedCss:''}}">
+        <view wx:for="{{navList}}" wx:key="index" bind:tap="changNav" data-title="{{item.title}}" class="artist-nav-each {{active===item.title?'artist-nav-actived':''}}">
             <view>
                 <view>{{item.title}}</view>
                 <view class="artist-num" wx:if="{{item.num}}">{{item.num}}</view>
@@ -32,7 +37,9 @@
         </view>
     </view>
     <view class="main-box">
-        <view class="main-title" wx:if="{{active==='主页'||active==='歌曲'}}" bind:tap="toPlayAll">播放全部</view>
+        <view class="main-title" wx:if="{{active==='主页'||active==='歌曲'}}" bind:tap="toPlayAll">
+            播放全部
+        </view>
         <view class="flex song-each" wx:for="{{artists.hotSongs}}" wx:key="index" data-id="{{item.id}}" bind:tap="toplay" wx:if="{{active==='歌曲'?index>=0:active==='主页'?index<3:''}}">
             <view class="song-index">{{index+1}}</view>
             <view>
@@ -41,7 +48,7 @@
             <view>
                 <view class="song-name">{{item.name}}</view>
                 <view class="song-desc">
-                    <text wx:for="{{item.ar}}">{{item.name}}</text>
+                    <text wx:for="{{item.ar}}" wx:key="index">{{item.name}}</text>
                     <text>-{{item.al.name}}</text>
                 </view>
             </view>
@@ -68,5 +75,5 @@
         </view>
     </view>
     <view wx:if="{{length>0}}" style="height:100rpx" />
-</view>
+</scroll-view>
 <footerPlayer wx:if="{{length>0}}" />

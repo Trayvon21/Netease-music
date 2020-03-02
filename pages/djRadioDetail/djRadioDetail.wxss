@@ -1,36 +1,66 @@
-.playlist-top {
-    height: 600rpx;
-    width: 100%;
-    position: fixed;
-    top: 0;
+page {
+    font-size: 16px;
+    height: 100%;
+    background: #eeeeee;
+}
+
+scroll-view {
+    height: 100%;
 }
 
 .top-nav {
-    position: absolute;
-    height: 60rpx;
-    top: 0;
-    left: 0;
-    padding: 40rpx;
+    overflow: hidden;
+    position: fixed;
     width: 100%;
-    line-height: 60rpx;
+    height: 44px;
+    line-height: 44px;
+    background: gray;
+    font-size: 36rpx;
     color: white;
-    font-size: 40rpx;
+    padding-top: env(safe-area-inset-top);
+    z-index: 10;
 }
 
 .top-nav-icon {
-    width: 60rpx;
-    height: 60rpx;
-    margin-right: 30rpx;
+    width: 36px;
+    height: 36px;
+    margin: 4px 20rpx;
+    z-index: 99;
 }
 
-.top-pic {
-    width: 100%;
-    height: 100%;
+.top-title {
+    z-index: 99;
+}
+
+.pic-size {
+    width: 750rpx;
+    height: 315px;
+}
+
+.top-bg {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    background: gray;
+}
+
+.playlistInfo {
+    overflow: hidden;
+    height: 315px;
+    z-index: -2;
+    background: gray;
+    position: relative;
+}
+
+.info-bg {
+    z-index: -1;
+    position: absolute;
+    top: 0;
 }
 
 .top-info {
     position: absolute;
-    bottom: 80rpx;
+    bottom: 0;
     left: 0;
     width: 100%;
     color: white;
@@ -49,7 +79,7 @@
 .info-count {
     font-size: 28rpx;
     line-height: 50rpx;
-    color: #bbbbbb;
+    color: #ececec;
 }
 
 .info-follow {
@@ -59,6 +89,7 @@
     font-size: 30rpx;
     background-color: #f75665;
 }
+
 
 .artist-nav {
     width: 100%;
@@ -71,8 +102,8 @@
     text-align: center;
     flex: 1;
     font-size: 30rpx;
-    height: 80rpx;
-    line-height: 80rpx;
+    height: 40px;
+    line-height: 40px;
     position: relative;
 }
 
@@ -100,23 +131,27 @@
     height: 5rpx;
 }
 
-.playlist-main {
-    z-index: 10;
-    position: absolute;
-    top: 600rpx;
-    margin-top: -80rpx;
-    width: 100%;
-
-}
-
 .main {
+    margin-top: -40rpx;
+    width: 100%;
     border-radius: 30rpx 30rpx 0 0;
     box-shadow: 0 0 0 3rpx rgba(150, 150, 150, 0.253);
+    height: 40px;
     background: white;
 }
 
+.playlist-main {
+    width: 100%;
+}
+
+.main-fixed {
+    position: fixed;
+    z-index: 99;
+    margin: 0 !important;
+}
+
 .main-box {
-    padding: 0 20rpx;
+    padding: 20rpx 40rpx;
     background: white;
 }
 

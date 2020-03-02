@@ -17,6 +17,25 @@ Page({
   getUserInfo() {
     api.userInfo(this.data.uid).then(res => {
       if (res.code === 200) {
+        if (!wx.getStorageSync(`userInfo-${this.data.uid}`)) {
+          let obj = {
+            nickname: res.profile.nickname,
+            gender: res.profile.gender,
+            signature: res.profile.signature,
+            province: res.profile.province,
+            city: res.profile.city,
+            birthday: res.profile.birthday,
+          }
+          wx.setStorageSync(`userInfo-${this.data.uid}`, JSON.stringify(obj));
+        } else {
+          let obj = JSON.parse(wx.getStorageSync(`userInfo-${this.data.uid}`))
+          res.profile.nickname = obj.nickname
+          res.profile.gender = obj.gender
+          res.profile.province = obj.province
+          res.profile.city = obj.city
+          res.profile.birthday = obj.birthday
+          res.profile.signature = obj.signature
+        }
         this.setData({
           user: res
         })

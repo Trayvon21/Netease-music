@@ -73,8 +73,8 @@ export default {
      * @param {*} page 页数
      * @param {*} initial 名称分类
      */
-    artistList(type, page, initial) {
-        return fly.get(`/artist/list?cat=${type}&initial=${initial}&limit=30&offset=${(page-1)*30}`)
+    artistList(type, offset, initial) {
+        return fly.get(`/artist/list?cat=${type}&initial=${initial}&limit=30&offset=${offset}`)
     },
 
     // ? 歌手详情
@@ -159,7 +159,7 @@ export default {
         return fly.get(`/album?id=${id}`)
     },
 
-    // ? 歌曲详情
+    // ? 音乐播放器
     /**
      * 歌曲详情
      * @param {*} id 歌曲id
@@ -177,6 +177,21 @@ export default {
         return fly.get(`/song/url?id=${ids}`)
     },
 
+    // ? 视频播放器
+    /**
+     * mv
+     * @param {*} id mvid
+     */
+    getMvInfo(id) {
+        return fly.get(`/mv/url?id=${id}`)
+    },
+    /**
+     * 视频
+     * @param {*} id 视频vid
+     */
+    getVideoInfo(id) {
+        return fly.get(`/video/url?id=${id}`)
+    },
     /**
      * 我的(登录、注册)
      */
