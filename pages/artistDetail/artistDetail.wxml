@@ -3,17 +3,17 @@
     <view class="top-nav flex jc-between" style="padding-top:{{statusBarHeight}}px;background:rgba(128,128,128,{{opacity}})">
         <view style="height:100%;width:100%;position: relative">
             <view bind:tap="navBack" class="flex">
-                <image class="top-nav-icon " src="../../assets/images/back-white.png" />
+                <image lazy-load="{{true}}" class="top-nav-icon " src="../../assets/images/back-white.png" />
                 <view class="top-title">{{showName?'歌手':artists.artist.name}}</view>
             </view>
             <view>
-                <image class="top-bg pic-size filter" style="opacity:{{opacity}}" src="{{artists.artist.picUrl}}" />
+                <image lazy-load="{{true}}" class="top-bg pic-size filter" style="opacity:{{opacity}}" src="{{artists.artist.picUrl}}" />
             </view>
         </view>
     </view>
     <!-- 专辑/歌单信息 -->
     <view class="playlistInfo" style="opacity:{{0.8-opacity}}">
-        <image class="pic-size info-bg" src="{{artists.artist.picUrl}}" />
+        <image lazy-load="{{true}}" class="pic-size info-bg" src="{{artists.artist.picUrl}}" />
         <view class="flex jc-around top-info">
             <view>
                 <view class="artist-name">{{artists.artist.name}}</view>
@@ -43,7 +43,7 @@
         <view class="flex song-each" wx:for="{{artists.hotSongs}}" wx:key="index" data-id="{{item.id}}" bind:tap="toplay" wx:if="{{active==='歌曲'?index>=0:active==='主页'?index<3:''}}">
             <view class="song-index">{{index+1}}</view>
             <view>
-                <image class="song-pic" src="{{item.al.picUrl}}" />
+                <image lazy-load="{{true}}" class="song-pic" src="{{item.al.picUrl}}" />
             </view>
             <view>
                 <view class="song-name">{{item.name}}</view>
@@ -53,7 +53,7 @@
                 </view>
             </view>
             <view>
-                <image class="song-control" src="../../assets/images/control.png" />
+                <image lazy-load="{{true}}" class="song-control" src="../../assets/images/control.png" />
             </view>
         </view>
         <view wx:if="{{active==='主页'}}">

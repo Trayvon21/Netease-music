@@ -1,7 +1,7 @@
 <wxs module="numFr" src="../../../lib/filter/filter.wxs"></wxs>
 <view class="flex playlist-main" bind:tap="goPlaylist">
     <view>
-        <image class="playlist-pic" src="{{item.coverImgUrl}}" />
+        <image lazy-load="{{true}}" class="playlist-pic" src="{{item.coverImgUrl}}" />
     </view>
     <view>
         <view class="playlist-name">{{item.name}}</view>

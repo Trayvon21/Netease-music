@@ -6,7 +6,7 @@
 </view>
 <view wx:else class="my-container">
     <view class="flex user-info a-center">
-        <image class="user-pic" src="{{user.profile.avatarUrl}}" />
+        <image lazy-load="{{true}}" class="user-pic" src="{{user.profile.avatarUrl}}" />
         <view>
             <view class="user-name">{{user.profile.nickname}}</view>
             <text class="user-level">Lv:{{user.level}}</text>
@@ -28,7 +28,7 @@
         </view>
         <view bind:tap="changeEditor">
             <view class="nav-top">
-                <image class="edit-icon" src="../../assets/images/edit.png" />
+                <image lazy-load="{{true}}" class="edit-icon" src="../../assets/images/edit.png" />
             </view>
             <view>资料编辑</view>
         </view>

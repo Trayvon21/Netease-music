@@ -3,7 +3,7 @@
     <view wx:if="{{searchFlag}}">
         <view class="header flex">
             <view>
-                <image bind:tap="goSearch" class="header-back" src="../../assets/images/back.png" />
+                <image lazy-load="{{true}}" bind:tap="goSearch" class="header-back" src="../../assets/images/back.png" />
             </view>
             <input type="text" value="{{value}}" auto-focus placeholder="{{keywords.showKeyword}}" bindinput="bindinput" bindconfirm="SearchNow" bindfocus="showSug" bindblur="closeSug" confirm-type="search" class="header-search1" />
             <!-- 搜索建议 -->
@@ -15,8 +15,8 @@
                 </view>
             </view>
             <view>
-                <image wx:if="{{value===''}}" class="header-pic" src="../../assets/images/search.png" />
-                <image wx:else bind:tap="clearKeywords" class="header-pic" src="../../assets/images/clear.png" />
+                <image lazy-load="{{true}}" wx:if="{{value===''}}" class="header-pic" src="../../assets/images/search.png" />
+                <image lazy-load="{{true}}" wx:else bind:tap="clearKeywords" class="header-pic" src="../../assets/images/clear.png" />
             </view>
         </view>
         <scroll-view scroll-y="{{result===null}}" scroll-top="{{scrollTop}}" class="main">
@@ -34,21 +34,21 @@
             <view class="header-title">音乐馆</view>
             <van-search disabled="{{true}}" bind:tap="goSearch" placeholder="请输入搜索关键词" custom-class="header-search"></van-search>
             <view>
-                <image class="header-pic" src="../../assets/images/header-pic.png" />
+                <image lazy-load="{{true}}" class="header-pic" src="../../assets/images/header-pic.png" />
             </view>
         </view>
         <view class="main main-pd">
             <!-- 轮播 -->
             <swiper class="siwper-box" indicator-dots="true" indicator-active-color="#b62e1a" autoplay="true">
                 <swiper-item wx:for="{{banners}}" wx:key="index" class="siwper-each" bind:tap="swiperGo">
-                    <image class="" src="{{item.imageUrl}}" />
+                    <image lazy-load="{{true}}" class="" src="{{item.imageUrl}}" />
                 </swiper-item>
             </swiper>
             <!-- 顶部导航 -->
             <view class="top-nav flex jc-around">
                 <view wx:for="{{topNav}}" wx:key="index" class="top-nav-box" bind:tap="swiperGo">
                     <view>
-                        <image class="top-nav-pic" src="../../assets/images/top-{{item.pic}}.png" />
+                        <image lazy-load="{{true}}" class="top-nav-pic" src="../../assets/images/top-{{item.pic}}.png" />
                     </view>
                     <view class="top-nav-title">{{item.name}}</view>
                 </view>

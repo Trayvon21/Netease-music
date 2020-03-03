@@ -1,6 +1,6 @@
 <view class="dj-main flex" bind:tap="gotoDetail">
     <view>
-        <image class="dj-pic" src="{{item.picUrl}}" />
+        <image lazy-load="{{true}}"  class="dj-pic" src="{{item.picUrl}}" />
     </view>
     <view class="dj-right">
         <view class="dj-title">{{item.name}}</view>

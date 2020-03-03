@@ -2,7 +2,7 @@
 <view class="mv-box" bind:tap="toPlay">
     <view class="mv-top">
         <view class="mv-count">{{numFr.getCount(item.playCount)}}</view>
-        <image class="mv-pic" mode="aspectFill" src="{{item.cover?item.cover:item.imgurl}}"></image>
+        <image lazy-load="{{true}}" class="mv-pic" mode="aspectFill" src="{{item.cover?item.cover:item.imgurl}}"></image>
     </view>
     <view class="mv-title">{{item.name}}</view>
 </view>

@@ -3,15 +3,15 @@
     <view wx:for="{{6}}" wx:key="index" class="rp-box" data-id="{{List[item].id}}" bind:tap="goDetail">
         <view wx:if="{{!flag}}">
             <view class="rp-playCount flex" wx:if="{{List[item].playCount}}">
-                <image class="rp-icon" src="../../../assets/images/play.png" />
+                <image lazy-load="{{true}}" class="rp-icon" src="../../../assets/images/play.png" />
                 <view class="">{{numFr.getCount(List[item].playCount)}}</view>
             </view>
             <view class="rp-play" wx:else>
-                <image class="rp-icon2" src="../../../assets/images/play2.png" />
+                <image lazy-load="{{true}}" class="rp-icon2" src="../../../assets/images/play2.png" />
             </view>
         </view>
         <view>
-            <image class="rp-pic" src="{{List[item].picUrl?List[item].picUrl:List[item].coverUrl}}" />
+            <image lazy-load="{{true}}" class="rp-pic" src="{{List[item].picUrl?List[item].picUrl:List[item].coverUrl}}" />
         </view>
         <view class="rp-name">{{List[item].name}}</view>
     </view>

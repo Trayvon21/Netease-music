@@ -6,7 +6,7 @@
         </view>
         <view class="flex jc-between list-nav">
             <view class="type-info flex" bind:tap="typeChange">
-                <image class="list-icon" src="../../../assets/images/player/player-{{$.playType===1?'list':$.playType===2?'one':'random'}}.png" />
+                <image lazy-load="{{true}}" class="list-icon" src="../../../assets/images/player/player-{{$.playType===1?'list':$.playType===2?'one':'random'}}.png" />
                 <view>{{$.playType===1?'列表循环':$.playType===2?'单曲循环':'随机播放'}}</view>
             </view>
             <view bind:tap="delAll">删除全部</view>

@@ -38,14 +38,14 @@
     <view class="flex jc-around mlog-box">
         <view class="mlog-each" wx:for="{{result.mlog.mlogs}}" wx:key="index">
             <view class="mlog-pic-box">
-                <image class="mlog-pic" src="{{item.resource.mlogBaseData.coverUrl}}" />
+                <image lazy-load="{{true}}" class="mlog-pic" src="{{item.resource.mlogBaseData.coverUrl}}" />
                 <view class="content">{{item.matchFieldContent}}</view>
             </view>
             <view class="mlog-bottom">
                 <view class="mlog-text">{{item.resource.mlogBaseData.text}}</view>
                 <view class="flex jc-between mlog-user">
                     <view class="flex">
-                        <image class="mlog-icon" src="{{item.resource.userProfile.avatarUrl}}" />
+                        <image lazy-load="{{true}}" class="mlog-icon" src="{{item.resource.userProfile.avatarUrl}}" />
                         <view>{{item.resource.userProfile.nickname}}</view>
                     </view>
                     <view>{{item.resource.mlogExtVO.likedCount}}赞</view>
@@ -60,7 +60,7 @@
     <view>
         <view class="flex" wx:for="{{result.talk.talks}}" wx:key="index">
             <view>
-                <image class="talk-pic" mode="aspectFill" src="{{item.showCover.url}}" />
+                <image lazy-load="{{true}}" class="talk-pic" mode="aspectFill" src="{{item.showCover.url}}" />
             </view>
             <view class="talk-right">
                 <view class="talk-title">#{{item.talkName}}</view>

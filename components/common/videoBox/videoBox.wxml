@@ -3,9 +3,9 @@
 <view>
     <view class="flex" bind:tap="gotoPlay">
         <view class="video-left">
-            <image class="video-pic" src="{{item.coverUrl}}" />
+            <image lazy-load="{{true}}" class="video-pic" src="{{item.coverUrl}}" />
             <view class="playCount flex">
-                <image class="play-icon" src="../../../assets/images/play.png" />
+                <image lazy-load="{{true}}" class="play-icon" src="../../../assets/images/play.png" />
                 <view>{{numFr.getCount(item.playTime)}}</view>
             </view>
         </view>

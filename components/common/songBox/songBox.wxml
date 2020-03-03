@@ -7,7 +7,7 @@
         </view>
     </view>
     <view>
-        <image class="play-pic" src="../../../assets/images/play3.png" />
-        <image class="contorl-pic" src="../../../assets/images/control.png" />
+        <image lazy-load="{{true}}" class="play-pic" src="../../../assets/images/play3.png" />
+        <image lazy-load="{{true}}" class="contorl-pic" src="../../../assets/images/control.png" />
     </view>
 </view>

@@ -12,8 +12,8 @@ create.Page(store, {
     }
   },
   data: {
-    playlist: {},
-    album: {},
+    playlist: null,
+    album: null,
     songs: [],
     ids: [],
     showName: true,

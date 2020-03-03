@@ -1,34 +1,34 @@
 <wxs module="numFr" src="../../lib/filter/filter.wxs"></wxs>
-<scroll-view bindscroll="opacityChange" scroll-y="{{true}}" throttle="{{false}}" data-status-bar-height="{{statusBarHeight}}">
+<scroll-view wx:if="{{playlist||album}}" bindscroll="opacityChange" scroll-y="{{true}}" throttle="{{false}}" data-status-bar-height="{{statusBarHeight}}">
     <!-- 顶部 -->
     <view class="top-nav flex jc-between" style="padding-top:{{statusBarHeight}}px;background:rgba(128,128,128,{{opacity}})">
         <view style="height:100%;width:100%;position: relative">
             <view bind:tap="navBack" class="flex">
-                <image class="top-nav-icon " src="../../assets/images/back-white.png" />
+                <image lazy-load="{{true}}" class="top-nav-icon " src="../../assets/images/back-white.png" />
                 <view class="top-title">
                     {{showName?(playlist.name?'歌单':'专辑'):(playlist.name?playlist.name:album.name)}}
                 </view>
             </view>
             <view>
-                <image class="top-bg pic-size filter" style="opacity:{{opacity}}" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
+                <image lazy-load="{{true}}" class="top-bg pic-size filter" style="opacity:{{opacity}}" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
             </view>
         </view>
     </view>
     <!-- 专辑/歌单信息 -->
     <view class="playlistInfo" style="opacity:{{0.9-opacity}}">
-        <image class="pic-size info-bg filter" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
+        <image lazy-load="{{true}}" class="pic-size info-bg filter" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
         <view class="flex info-main a-center" style="margin-top:{{statusBarHeight+74}}px">
             <view class="info-pic">
-                <view class="playCount a-center">
-                    <image class="playCount-icon" src="../../assets/images/play.png" />
+                <view wx:if="{{playlist.playCount}}" class="playCount a-center">
+                    <image lazy-load="{{true}}" class="playCount-icon" src="../../assets/images/play.png" />
                     {{numFr.getCount(playlist.playCount)}}
                 </view>
-                <image style="height: 240rpx;width: 240rpx; border-radius: 20rpx;" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
+                <image lazy-load="{{true}}" style="height: 240rpx;width: 240rpx; border-radius: 20rpx;" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
             </view>
             <view class="info-desc">
                 <view class="info-title">{{playlist.name?playlist.name:album.name}}</view>
                 <view class="flex a-center info-nickname">
-                    <image class="nick-icon" src="{{playlist.creator.avatarUrl?playlist.creator.avatarUrl:album.artist.picUrl}}" />
+                    <image lazy-load="{{true}}" class="nick-icon" src="{{playlist.creator.avatarUrl?playlist.creator.avatarUrl:album.artist.picUrl}}" />
                     <view>
                         {{playlist.creator.nickname?playlist.creator.nickname:album.artist.name}} >
                     </view>
@@ -43,19 +43,19 @@
         </view>
         <view class="info-nav flex jc-around">
             <view class="nav-each">
-                <image class="nav-icon" src="../../assets/images/commit.png" />
+                <image lazy-load="{{true}}" class="nav-icon" src="../../assets/images/commit.png" />
                 <view>评论</view>
             </view>
             <view class="nav-each">
-                <image class="nav-icon" src="../../assets/images/share.png" />
+                <image lazy-load="{{true}}" class="nav-icon" src="../../assets/images/share.png" />
                 <view>分享</view>
             </view>
             <view class="nav-each">
-                <image class="nav-icon" src="../../assets/images/download.png" />
+                <image lazy-load="{{true}}" class="nav-icon" src="../../assets/images/download.png" />
                 <view>下载</view>
             </view>
             <view class="nav-each">
-                <image class="nav-icon" src="../../assets/images/checkbox.png" />
+                <image lazy-load="{{true}}" class="nav-icon" src="../../assets/images/checkbox.png" />
                 <view>多选</view>
             </view>
         </view>

@@ -5,7 +5,7 @@
         <view class="hot-main">
             <view class="hot-title">
                 <text>{{item.searchWord}}</text>
-                <image class="hot-icon" mode="aspectFit" src="{{item.iconUrl}}"></image>
+                <image lazy-load="{{true}}" class="hot-icon" mode="aspectFit" src="{{item.iconUrl}}"></image>
             </view>
             <view class="hot-content">{{item.content}}</view>
         </view>

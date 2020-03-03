@@ -7,26 +7,26 @@
         </view>
     </view>
     <view>
-        <image animation="{{controlMove}}" class="control" mode="widthFix" src="../../assets/images/player/player-control.png" />
+        <image lazy-load="{{true}}" animation="{{controlMove}}" class="control" mode="widthFix" src="../../assets/images/player/player-control.png" />
     </view>
     <view class="cd-box">
         <view class="cd-main" animation="{{cdmove}}">
-            <image class="cd" src="../../assets/images/player/player-cd.png" />
-            <image class="cd-pic" src="{{playlist[playIndex].coverImgUrl}}" />
+            <image lazy-load="{{true}}" class="cd" src="../../assets/images/player/player-cd.png" />
+            <image lazy-load="{{true}}" class="cd-pic" src="{{playlist[playIndex].coverImgUrl}}" />
         </view>
     </view>
     <view class="flex jc-around info-list">
         <view>
-            <image class="player-icon" src="../../assets/images/player/player-like.png" />
+            <image lazy-load="{{true}}" class="player-icon" src="../../assets/images/player/player-like.png" />
         </view>
         <view>
-            <image class="player-icon" src="../../assets/images/player/player-download.png" />
+            <image  lazy-load="{{true}}" class="player-icon" src="../../assets/images/player/player-download.png" />
         </view>
         <view>
-            <image class="player-icon" src="../../assets/images/player/player-info.png" />
+            <image lazy-load="{{true}}" class="player-icon" src="../../assets/images/player/player-info.png" />
         </view>
         <view>
-            <image class="player-icon" src="../../assets/images/player/player-more.png" />
+            <image lazy-load="{{true}}" class="player-icon" src="../../assets/images/player/player-more.png" />
         </view>
     </view>
     <view class="flex line">
@@ -38,23 +38,23 @@
     </view>
     <view class="flex bottom-nav jc-around">
         <view bind:tap="typeChange">
-            <image class="player-icon" src="../../assets/images/player/player-{{$.playType===1?'list':$.playType===2?'one':'random'}}.png" />
+            <image lazy-load="{{true}}" class="player-icon" src="../../assets/images/player/player-{{$.playType===1?'list':$.playType===2?'one':'random'}}.png" />
         </view>
         <view bind:tap="playPrev">
-            <image class="player-icon" src="../../assets/images/player/player-back.png" />
+            <image lazy-load="{{true}}" class="player-icon" src="../../assets/images/player/player-back.png" />
         </view>
         <view bind:tap='playStop'>
-            <image class="player-icon-big" src="../../assets/images/player/player-{{play===true?'stop':'play'}}.png" />
+            <image lazy-load="{{true}}" class="player-icon-big" src="../../assets/images/player/player-{{play===true?'stop':'play'}}.png" />
         </view>
         <view bind:tap="playNext">
-            <image class="player-icon" src="../../assets/images/player/player-up.png" />
+            <image lazy-load="{{true}}" class="player-icon" src="../../assets/images/player/player-up.png" />
         </view>
         <view bind:tap="onClose">
-            <image class="player-icon" src="../../assets/images/player/player-right.png" />
+            <image lazy-load="{{true}}" class="player-icon" src="../../assets/images/player/player-right.png" />
         </view>
     </view>
     <van-popup show="{{ show }}" bind:close="onClose" round position="bottom" custom-style="height:800rpx;">
         <playList wx:if="{{show}}"/>
     </van-popup>
-    <image class="pic-bg" src="{{playlist[playIndex].coverImgUrl}}" />
+    <image lazy-load="{{true}}" class="pic-bg" src="{{playlist[playIndex].coverImgUrl}}" />
 </view>

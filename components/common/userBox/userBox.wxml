@@ -1,6 +1,6 @@
 <view class="user-main flex">
     <view>
-        <image class="user-pic" src="{{item.avatarUrl}}" />
+        <image lazy-load="{{true}}" class="user-pic" src="{{item.avatarUrl}}" />
     </view>
     <view class="user-right">
         <view class="user-title">{{item.nickname}}</view>

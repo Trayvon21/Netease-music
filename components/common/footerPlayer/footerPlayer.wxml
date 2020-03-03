@@ -1,7 +1,7 @@
 <view class="player-container flex jc-between">
     <view class="flex">
         <view bind:tap="toPlayer">
-            <image class="palyer-pic" src="{{showData.coverImgUrl}}" />
+            <image lazy-load="{{true}}" class="palyer-pic" src="{{showData.coverImgUrl}}" />
         </view>
         <view bind:tap="playNext">
             <view class="player-title">{{showData.title}}</view>
@@ -13,7 +13,7 @@
             <van-icon size="25" name="{{play?'pause':'play'}}-circle-o" />
         </view>
         <view bind:tap="onClose" class="player-control">
-            <image class="player-control" src="../../../assets/images/player/player-right-black.png" />
+            <image lazy-load="{{true}}" class="player-control" src="../../../assets/images/player/player-right-black.png" />
         </view>
         <van-popup show="{{ show }}" bind:close="onClose" round position="bottom" custom-style="height:800rpx;">
             <playList />

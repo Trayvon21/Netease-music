@@ -5,17 +5,17 @@
     <view class="top-nav flex jc-between" style="padding-top:{{statusBarHeight}}px;background:rgba(128,128,128,{{opacity}})">
         <view style="height:100%;width:100%;position: relative">
             <view bind:tap="navBack" class="flex">
-                <image class="top-nav-icon " src="../../assets/images/back-white.png" />
+                <image lazy-load="{{true}}" class="top-nav-icon " src="../../assets/images/back-white.png" />
                 <view class="top-title">{{showName?'电台':djRadio.name}}</view>
             </view>
             <view>
-                <image class="top-bg pic-size filter" style="opacity:{{opacity}}" src="{{djRadio.picUrl}}" />
+                <image lazy-load="{{true}}" class="top-bg pic-size filter" style="opacity:{{opacity}}" src="{{djRadio.picUrl}}" />
             </view>
         </view>
     </view>
     <!-- 专辑/歌单信息 -->
     <view class="playlistInfo" style="opacity:{{0.8-opacity}}">
-        <image class="pic-size info-bg" src="{{djRadio.picUrl}}" />
+        <image lazy-load="{{true}}" class="pic-size info-bg" src="{{djRadio.picUrl}}" />
         <view class="flex jc-around top-info">
             <view>
                 <view class="info-name">{{djRadio.name}}</view>
@@ -59,13 +59,13 @@
                         <view>{{numFr.getCount(item.duration)}}</view>
                     </view>
                 </view>
-                <image src="../../assets/images/control.png" class="control" />
+                <image lazy-load="{{true}}" src="../../assets/images/control.png" class="control" />
             </view>
         </view>
         <view wx:else class="main-box">
             <view class="desc-title">主播</view>
             <view class="flex desc-creater a-center">
-                <image class="desc-pic" src="{{djRadio.dj.avatarUrl}}" />
+                <image lazy-load="{{true}}" class="desc-pic" src="{{djRadio.dj.avatarUrl}}" />
                 <view>
                     <view class="desc-name">{{djRadio.dj.nickname}}</view>
                     <view class="desc-type">{{djRadio.dj.description}}</view>
@@ -83,7 +83,7 @@
             </view>
             <view wx:if="{{djRadio.commentDatas}}" class="desc-title">精彩评论</view>
             <view class="comment-each flex" wx:for="{{djRadio.commentDatas}}" wx:key="index">
-                <image class="comment-pic" src="{{item.userProfile.avatarUrl}}" mode="widthFix" />
+                <image lazy-load="{{true}}" class="comment-pic" src="{{item.userProfile.avatarUrl}}" mode="widthFix" />
                 <view class="item-right">
                     <view class="nickname">{{item.userProfile.nickname}}</view>
                     <view class="content">{{item.content}}</view>
