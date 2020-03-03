@@ -5,7 +5,7 @@
         <van-field value="{{ gender === 1 ?'男' : gender===2 ? '女': '保密'}}" right-icon="arrow" readonly input-align="right" label="性别" bind:click-icon="changeGender" />
         <van-field value="{{DateFr.getDate(birthday)}}" right-icon="arrow" readonly input-align="right" label="生日" bind:click-icon="changeBirth" />
         <van-field value="{{cityShow}}" right-icon="arrow" readonly input-align="right" label="城市" bind:click-icon="changeCity" />
-        <van-field value="{{introduction}}" custom-style="max-height:250rpx;" bind:change="changeIntroduction" clearable type="textarea" autosize label="个性签名" border="{{ false }}" />
+        <van-field value="{{signature}}" custom-style="max-height:250rpx;" bind:change="changeSignature" clearable type="textarea" autosize label="个性签名" border="{{ false }}" />
     </van-cell-group>
 </view>
 <view class="editor-btns">

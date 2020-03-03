@@ -13,7 +13,7 @@ Page({
     province: '510000',
     city: '510100',
     cityShow: '',
-    introduction: '',
+    signature: '',
     genderFlag: false,
     birthFlag: false,
     cityFlag: false,
@@ -82,6 +82,11 @@ Page({
       cityFlag: !this.data.cityFlag
     })
   },
+  changeSignature(e) {
+    this.setData({
+      signature: e.detail
+    })
+  },
   confirm() {
     let obj = {
       nickname: this.data.nickname,
@@ -91,26 +96,37 @@ Page({
       city: this.data.city,
       birthday: this.data.birthday,
     }
-    wx.setStorageSync(`userInfo-${this.data.uid}`, JSON.stringify(obj));
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
 
+    wx.showModal({
+      title: '确认修改',
+      content: '点击确认将保存修改，取消则恢复',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          wx.setStorageSync(`userInfo-${this.data.uid}`, JSON.stringify(obj));
+          wx.showToast({
+            title: '修改成功',
+            duration: 500
+          });
+          setTimeout(() => {
+            wx.switchTab({
+              url: '/pages/my/my'
+            });
+          }, 500)
+        }
+        if (result.cancel) {
+          this.setDefault()
+        }
+      },
+      fail: () => {},
+      complete: () => {}
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    console.log(area);
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  setDefault() {
     let uid = wx.getStorageSync('uid')
     console.log(uid);
     let obj = JSON.parse(wx.getStorageSync(`userInfo-${uid}`))
@@ -124,41 +140,11 @@ Page({
       signature: obj.signature,
       cityShow: area.province_list[obj.province] + area.city_list[obj.city]
     })
-
   },
-
   /**
-   * 生命周期函数--监听页面隐藏
+   * 生命周期函数--监听页面显示
    */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onShow: function () {
+    this.setDefault()
   }
 })
