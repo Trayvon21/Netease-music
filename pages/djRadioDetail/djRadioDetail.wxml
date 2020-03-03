@@ -38,7 +38,7 @@
     </view>
     <view class="playlist-main">
         <view wx:if="{{active==='节目'}}" class="main-box">
-            <view class="flex jc-between">
+            <view class="flex jc-between" style="padding:0 20rpx">
                 <view>共{{programs.length}}期</view>
                 <view class="flex songs-top a-center">
                     <van-icon name="down" class="songs-icon" />
