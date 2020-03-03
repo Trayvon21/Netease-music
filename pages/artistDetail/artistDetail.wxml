@@ -6,9 +6,6 @@
                 <image lazy-load="{{true}}" class="top-nav-icon " src="../../assets/images/back-white.png" />
                 <view class="top-title">{{showName?'歌手':artists.artist.name}}</view>
             </view>
-            <view>
-                <image lazy-load="{{true}}" class="top-bg pic-size filter" style="opacity:{{opacity}}" src="{{artists.artist.picUrl}}" />
-            </view>
         </view>
     </view>
     <!-- 专辑/歌单信息 -->
@@ -27,7 +24,7 @@
             </view>
         </view>
     </view>
-    <view class="main flex {{fixed?'main-fixed':''}}" style="{{fixed?fixedCss:''}}">
+    <view class="main flex {{fixed?'main-fixed':''}}" id="nav" style="{{fixed?fixedCss:''}}">
         <view wx:for="{{navList}}" wx:key="index" bind:tap="changNav" data-title="{{item.title}}" class="artist-nav-each {{active===item.title?'artist-nav-actived':''}}">
             <view>
                 <view>{{item.title}}</view>

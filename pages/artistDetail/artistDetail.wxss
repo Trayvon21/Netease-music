@@ -1,5 +1,5 @@
 page {
-    font-size: 16px;
+    /* font-size: 16px; */
     height: 100%;
     background: #eeeeee;
 }
@@ -34,7 +34,7 @@ scroll-view {
 
 .pic-size {
     width: 750rpx;
-    height: 315px;
+    height: 630rpx;
 }
 
 .top-bg {
@@ -46,7 +46,7 @@ scroll-view {
 
 .playlistInfo {
     overflow: hidden;
-    height: 315px;
+    height: 630rpx;
     z-index: -2;
     background: gray;
     position: relative;
@@ -102,8 +102,8 @@ scroll-view {
     text-align: center;
     flex: 1;
     font-size: 30rpx;
-    height: 40px;
-    line-height: 40px;
+    height: 80rpx;
+    line-height: 80rpx;
     position: relative;
 }
 
@@ -136,7 +136,7 @@ scroll-view {
     width: 100%;
     border-radius: 30rpx 30rpx 0 0;
     box-shadow: 0 0 0 3rpx rgba(150, 150, 150, 0.253);
-    height: 40px;
+    height: 80rpx;
     background: white;
 }
 

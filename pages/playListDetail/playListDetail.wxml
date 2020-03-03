@@ -9,9 +9,6 @@
                     {{showName?(playlist.name?'歌单':'专辑'):(playlist.name?playlist.name:album.name)}}
                 </view>
             </view>
-            <view>
-                <image lazy-load="{{true}}" class="top-bg pic-size filter" style="opacity:{{opacity}}" src="{{playlist.coverImgUrl?playlist.coverImgUrl:album.picUrl}}" />
-            </view>
         </view>
     </view>
     <!-- 专辑/歌单信息 -->
@@ -60,7 +57,7 @@
             </view>
         </view>
     </view>
-    <view class="main-box flex a-center {{fixed?'main-fixed':''}}" bind:tap="toplayAll" style="{{fixed?fixedCss:''}}">
+    <view class="main-box flex a-center {{fixed?'main-fixed':''}}" bind:tap="toplayAll" id="toplayAll" style="{{fixed?fixedCss:''}}">
         <van-icon style="margin-left:20rpx" name="play-circle-o" />
         <view style="margin-left:20rpx">播放全部</view>
     </view>

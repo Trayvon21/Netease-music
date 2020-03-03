@@ -27,7 +27,7 @@
             </view>
         </view>
     </view>
-    <view class="main flex {{fixed?'main-fixed':''}}" style="{{fixed?fixedCss:''}}">
+    <view class="main flex {{fixed?'main-fixed':''}}" id="nav" style="{{fixed?fixedCss:''}}">
         <view wx:for="{{navList}}" wx:key="index" bind:tap="changNav" data-title="{{item.title}}" class="artist-nav-each {{active===item.title?'artist-nav-actived':''}}">
             <view>
                 <view>{{item.title}}</view>

@@ -21,7 +21,8 @@ create.Page(store, {
     screenHeight: 0,
     opacity: 0,
     fixed: false,
-    fixedCss: ''
+    fixedCss: '',
+    scrollTop: null
   },
   toplay(e) {
     wx.navigateTo({
@@ -51,6 +52,11 @@ create.Page(store, {
           songs: res.songs,
           ids: ids
         })
+        wx.createSelectorQuery().select('#toplayAll').boundingClientRect(rect => {
+          this.setData({
+            scrollTop: rect.top
+          })
+        }).exec()
       }
     })
   },
@@ -65,6 +71,11 @@ create.Page(store, {
           playlist: res.playlist,
           ids: ids
         })
+        wx.createSelectorQuery().select('#toplayAll').boundingClientRect(rect => {
+          this.setData({
+            scrollTop: rect.top
+          })
+        }).exec()
       }
     })
   },
@@ -75,11 +86,12 @@ create.Page(store, {
   },
   opacityChange(e) {
     let showName = true
-    let opacity = (e.detail.scrollTop / (251 - this.data.statusBarHeight))
+    let opacity = (e.detail.scrollTop / (this.data.scrollTop - this.data.statusBarHeight - 44))
     e.detail.scrollTop >= 120 ? showName = false : showName = true
-    if (e.detail.scrollTop > (251 - this.data.statusBarHeight)) {
+    if (e.detail.scrollTop > (this.data.scrollTop - this.data.statusBarHeight - 44)) {
       this.setData({
-        fixed: true
+        fixed: true,
+        opacity: 1
       })
     } else {
       this.setData({

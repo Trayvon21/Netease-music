@@ -1,5 +1,5 @@
 page {
-    font-size: 14px;
+    /* font-size: 14px; */
     height: 100%;
     background: #eeeeee;
 }
@@ -29,12 +29,13 @@ scroll-view {
 }
 
 .top-title {
+    font-size: 14px;
     z-index: 99;
 }
 
 .pic-size {
     width: 750rpx;
-    height: 315px;
+    height: 630rpx;
 }
 
 .top-bg {
@@ -46,7 +47,7 @@ scroll-view {
 
 .playlistInfo {
     overflow: hidden;
-    height: 315px;
+    height: 630rpx;
     z-index: -2;
     background: gray;
     position: relative;
@@ -66,7 +67,7 @@ scroll-view {
 
 .info-pic {
     position: relative;
-    height: 120px;
+    height: 240rpx;
     width: 240rpx;
     margin-right: 40rpx;
 }
@@ -156,10 +157,11 @@ scroll-view {
 /* 歌手详情 */
 .main-box {
     width: 100%;
-    margin-top: -20px;
+    margin-top: -40rpx;
+    overflow: hidden;
     border-radius: 40rpx 40rpx 0 0;
     line-height: 80rpx;
-    height: 40px;
+    height: 80rpx;
     font-size: 32rpx;
     background: white;
     border-bottom: 1rpx solid #ededed;

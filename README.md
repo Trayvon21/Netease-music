@@ -25,7 +25,6 @@
       <https://youzan.github.io/vant-weapp/#/intro>
 
    5. area.js（省市区列表数据）
-   
    6. ...
 
 ## 功能实现
@@ -38,8 +37,6 @@
 - [x] 全局迷你播放器（实现播放列表管理、切歌、底部置顶）
 - [ ] ...
 
-
-
 ## 关键点
 
 1. wxs实现过滤器效果
@@ -48,7 +45,6 @@
    //创建wxs文件,包含定义与输出
    var DateFr = {
       getDate: function (time) {
-   
            if (!time) return '';
            var date = getDate(time);
            var M = date.getMonth() + 1;
@@ -67,8 +63,6 @@
    //使用过滤器
    DateFr.getTime(需要过滤的数据)
    ```
-
-   
 
 2. 背景音乐的播放、监听及其他操作
 
@@ -110,8 +104,6 @@
      //利用.seek()的方法可以设置拉取进度条的效果
      bgm.seek(位置)
      ```
-
-   
 
 3. 事件操作与动画之间的同步
 
@@ -159,21 +151,19 @@
        })
    ```
 
-   
-
 4. 播放列表管理
 
    由于是背景音乐管理，所以列表存放于全局，本项目使用的是omix，类似于vue的vuex；当有歌曲加入列表，就立即存放在omix的store中，此时就可以用全局mini播放器或者播放页面来管理。
 
    ```js
    //playlist为播放列表，playIndex为当前播放歌曲的序列号
-   
+
    //实现单体删除功能
    let playIndex = this.store.data.playIndex
    let playlist = this.store.data.playlist
    this.store.data.playlist = playlist.filter(item => item.id !== e.currentTarget.dataset.id)
    playIndex > e.currentTarget.dataset.index ? this.store.data.playIndex = playIndex - 1 : ''
-   
+
    //全体删除（首先停止音乐播放，清空omix中存放的数据）
    this.store.data.bgm.stop()
    this.store.data.bgm = null
@@ -207,7 +197,7 @@
    //获取到statusBar后可以设置导航栏的位置和大小，高度为44px，距离顶部statusBarHeight
    //设置fixed定位和z-index提高层级可保持自定义导航栏的头部置顶
    ```
-   
 
-
-
+7. 滚动触发的效果不佳
+  图片资源过大，filter:blur占用资源巨大，导致详情页滚动时的效果触发有延时。
+  没有办法，只能减少滤镜的使用，开发者工具会出现滚动延时，但真机测试正常。

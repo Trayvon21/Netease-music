@@ -32,7 +32,8 @@ create.Page(store, {
     opacity: 0,
     fixed: false,
     fixedCss: '',
-    scrollTop: null
+    scrollTop: null,
+    scrollHeight: null
   },
   navBack() {
     wx.navigateBack({
@@ -42,7 +43,7 @@ create.Page(store, {
   changNav(e) {
     this.setData({
       active: e.currentTarget.dataset.title,
-      scrollTop: 241 - this.data.statusBarHeight,
+      scrollTop: (this.data.scrollHeight - this.data.statusBarHeight - 44),
       showName: false
     })
     console.log(this.data.scrollTop);
@@ -61,7 +62,7 @@ create.Page(store, {
     console.log(e.detail.scrollTop);
     let showName = true
     e.detail.scrollTop >= 120 ? showName = false : showName = true
-    if (e.detail.scrollTop > (231 - this.data.statusBarHeight)) {
+    if (e.detail.scrollTop > (this.data.scrollHeight - this.data.statusBarHeight - 44)) {
       this.setData({
         fixed: true,
         opacity: 1,
@@ -69,7 +70,7 @@ create.Page(store, {
     } else {
       this.setData({
         fixed: false,
-        opacity: e.detail.scrollTop / (251 - this.data.statusBarHeight),
+        opacity: (e.detail.scrollTop / (this.data.scrollHeight - this.data.statusBarHeight - 44)),
         showName: showName
       })
     }
@@ -108,6 +109,11 @@ create.Page(store, {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    wx.createSelectorQuery().select('#nav').boundingClientRect(rect => {
+      this.setData({
+        scrollHeight: rect.top
+      })
+    }).exec()
     this.setData({
       statusBarHeight: this.store.data.screenMsg.statusBarHeight,
       screenHeight: this.store.data.screenMsg.screenHeight,
